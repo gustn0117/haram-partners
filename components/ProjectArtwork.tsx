@@ -2,10 +2,10 @@
    Deterministic per-seed so server and client markup match. */
 export function ProjectArtwork({ seed }: { seed: number }) {
   const palettes = [
-    ["#1d1d27", "#c8a96a"],
-    ["#161622", "#8a79bd"],
-    ["#1a1714", "#d8a14a"],
-    ["#13201d", "#6fb0a0"],
+    ["#f3eee2", "#a8822f"],
+    ["#eee9f0", "#6f5fa6"],
+    ["#f4ece0", "#bc8a36"],
+    ["#e7f0ec", "#3f8f78"],
   ];
   const [bg, accent] = palettes[seed % palettes.length];
   const rot = (seed * 37) % 360;

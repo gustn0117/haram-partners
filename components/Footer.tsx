@@ -17,7 +17,7 @@ export function Footer() {
           </div>
           <Link
             href="/contact"
-            className="group inline-flex w-fit items-center gap-3 rounded-full bg-gold px-7 py-4 text-sm font-medium text-ink transition-colors duration-500 hover:bg-gold-bright"
+            className="group inline-flex w-fit items-center gap-3 rounded-full bg-gold px-7 py-4 text-sm font-medium text-white transition-colors duration-500 hover:bg-gold-deep"
           >
             프로젝트 의뢰하기
             <ArrowUpRight className="h-4 w-4 transition-transform duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

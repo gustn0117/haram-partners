@@ -99,7 +99,7 @@ export function ContactForm() {
               onClick={() => setType(s.title)}
               className={`rounded-full border px-4 py-2 text-sm transition-all duration-300 ${
                 type === s.title
-                  ? "border-gold bg-gold text-ink"
+                  ? "border-gold bg-gold text-white"
                   : "border-line-strong text-muted hover:border-gold hover:text-paper"
               }`}
             >
@@ -133,7 +133,7 @@ export function ContactForm() {
 
       <button
         type="submit"
-        className="group mt-1 inline-flex items-center justify-center gap-3 rounded-full bg-gold px-8 py-4 text-sm font-medium text-ink transition-colors duration-500 hover:bg-gold-bright"
+        className="group mt-1 inline-flex items-center justify-center gap-3 rounded-full bg-gold px-8 py-4 text-sm font-medium text-white transition-colors duration-500 hover:bg-gold-deep"
       >
         문의 보내기
         <ArrowRight className="h-4 w-4 transition-transform duration-500 group-hover:translate-x-1" />

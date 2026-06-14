@@ -222,7 +222,7 @@ function RentalView({ id }: { id: "sound" | "lighting" }) {
                 <div className="flex items-center gap-2.5">
                   <h3 className="font-serif text-xl">{pkg.name}</h3>
                   {pkg.badge ? (
-                    <span className="rounded-full bg-gold px-2.5 py-0.5 text-[0.68rem] font-medium text-ink">
+                    <span className="rounded-full bg-gold px-2.5 py-0.5 text-[0.68rem] font-medium text-white">
                       {pkg.badge}
                     </span>
                   ) : null}
@@ -271,7 +271,7 @@ function RentalView({ id }: { id: "sound" | "lighting" }) {
         </div>
         <Link
           href="/contact"
-          className="group inline-flex shrink-0 items-center gap-2 rounded-full bg-gold px-6 py-3 text-sm font-medium text-ink transition-colors duration-500 hover:bg-gold-bright"
+          className="group inline-flex shrink-0 items-center gap-2 rounded-full bg-gold px-6 py-3 text-sm font-medium text-white transition-colors duration-500 hover:bg-gold-deep"
         >
           맞춤 견적 받기
           <ArrowUpRight className="h-4 w-4 transition-transform duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

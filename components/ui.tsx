@@ -41,7 +41,7 @@ export function CTAButton({
     "group inline-flex items-center gap-3 rounded-full px-7 py-3.5 text-sm font-medium tracking-tight transition-all duration-500";
   const styles =
     variant === "solid"
-      ? "bg-gold text-ink hover:bg-gold-bright"
+      ? "bg-gold text-white hover:bg-gold-deep"
       : "border border-line-strong text-paper hover:border-gold hover:text-gold";
   const content = (
     <>

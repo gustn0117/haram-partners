@@ -25,7 +25,7 @@ export function PortfolioGrid() {
               onClick={() => setActive(cat.id)}
               className={`rounded-full border px-5 py-2.5 text-sm tracking-tight transition-all duration-300 ${
                 selected
-                  ? "border-gold bg-gold text-ink"
+                  ? "border-gold bg-gold text-white"
                   : "border-line-strong text-muted hover:border-gold hover:text-paper"
               }`}
             >

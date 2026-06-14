@@ -110,7 +110,7 @@ export function Header() {
           <Link
             href="/contact"
             onClick={() => setOpen(false)}
-            className="mt-4 inline-flex items-center justify-center gap-2 rounded-full bg-gold px-6 py-3.5 text-sm font-medium text-ink"
+            className="mt-4 inline-flex items-center justify-center gap-2 rounded-full bg-gold px-6 py-3.5 text-sm font-medium text-white"
           >
             프로젝트 의뢰하기
           </Link>
