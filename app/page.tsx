@@ -1,65 +1,277 @@
-import Image from "next/image";
+import Link from "next/link";
+import {
+  company,
+  stats,
+  services,
+  processSteps,
+  projects,
+  partners,
+} from "@/lib/content";
+import { Container, Eyebrow, CTAButton, SectionHeading } from "@/components/ui";
+import { Reveal } from "@/components/Reveal";
+import { CountUp } from "@/components/CountUp";
+import { Atmosphere } from "@/components/Atmosphere";
+import { ProjectArtwork } from "@/components/ProjectArtwork";
+import { ServiceIcon, ArrowUpRight } from "@/components/icons";
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+    <>
+      {/* ───────────────── Hero ───────────────── */}
+      <section className="relative flex min-h-screen items-center overflow-hidden pt-28 pb-20">
+        <Atmosphere variant="hero" />
+        <Container className="relative z-2">
+          <div className="flex flex-col gap-8">
+            <p className="rise label" style={{ animationDelay: "120ms" }}>
+              EVENT PLANNING &amp; OPERATION · SINCE {company.founded}
+            </p>
+            <h1 className="max-w-4xl font-serif text-[2.6rem] leading-[1.16] sm:text-6xl md:text-[4.6rem] md:leading-[1.08] text-balance">
+              <span className="rise block" style={{ animationDelay: "220ms" }}>
+                브랜드의 순간을
+              </span>
+              <span
+                className="rise block gold-text"
+                style={{ animationDelay: "360ms" }}
+              >
+                설계합니다.
+              </span>
+            </h1>
+            <p
+              className="rise max-w-xl text-base leading-relaxed text-muted sm:text-lg"
+              style={{ animationDelay: "520ms" }}
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+              기획부터 연출, 현장 운영까지 — 기업 행사와 공연·페스티벌의 모든
+              순간을 하나의 흐름으로 완성하는 행사 기획·운영 파트너.
+            </p>
+            <div
+              className="rise flex flex-wrap items-center gap-4 pt-2"
+              style={{ animationDelay: "660ms" }}
             >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+              <CTAButton href="/contact">프로젝트 의뢰하기</CTAButton>
+              <CTAButton href="/portfolio" variant="ghost">
+                포트폴리오 보기
+              </CTAButton>
+            </div>
+          </div>
+        </Container>
+
+        {/* scroll cue */}
+        <div className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-faint md:flex">
+          <span className="font-display text-xs tracking-[0.3em]">SCROLL</span>
+          <span className="h-12 w-px bg-gradient-to-b from-gold/60 to-transparent" />
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+      </section>
+
+      {/* ───────────────── Intro statement ───────────────── */}
+      <section className="border-t border-line py-24 md:py-32">
+        <Container>
+          <div className="grid gap-12 md:grid-cols-[0.9fr_1.1fr] md:gap-20">
+            <Reveal>
+              <Eyebrow>WHO WE ARE</Eyebrow>
+            </Reveal>
+            <Reveal delay={120}>
+              <p className="font-serif text-2xl leading-[1.6] sm:text-[1.75rem] text-balance">
+                하람파트너스는 단순한 행사 대행이 아니라,
+                <span className="text-muted">
+                  {" "}
+                  브랜드가 전하고 싶은 메시지를 사람들의 기억에 남는 경험으로
+                  번역합니다.{" "}
+                </span>
+                기획의 정교함과 현장의 안정감, 그 사이의 모든 디테일을 책임집니다.
+              </p>
+            </Reveal>
+          </div>
+        </Container>
+      </section>
+
+      {/* ───────────────── Services ───────────────── */}
+      <section className="relative overflow-hidden border-t border-line bg-ink-2 py-24 md:py-32">
+        <Atmosphere variant="soft" />
+        <Container className="relative z-2">
+          <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+            <SectionHeading
+              eyebrow="WHAT WE DO"
+              title={
+                <>
+                  네 개의 전문 영역,
+                  <br />
+                  하나의 완성도.
+                </>
+              }
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            <Reveal delay={150}>
+              <Link
+                href="/services"
+                className="link-underline inline-flex items-center gap-2 text-sm text-gold"
+              >
+                전체 서비스 보기
+                <ArrowUpRight className="h-4 w-4" />
+              </Link>
+            </Reveal>
+          </div>
+
+          <div className="mt-14 grid gap-5 sm:grid-cols-2">
+            {services.map((service, i) => (
+              <Reveal key={service.id} delay={i * 90}>
+                <Link
+                  href={`/services#${service.id}`}
+                  className="card-hover group flex h-full flex-col gap-6 rounded-2xl border border-line bg-surface/60 p-8 md:p-10"
+                >
+                  <div className="flex items-start justify-between">
+                    <div className="flex h-14 w-14 items-center justify-center rounded-xl border border-line-strong text-gold transition-colors duration-500 group-hover:border-gold">
+                      <ServiceIcon id={service.id as never} className="h-7 w-7" />
+                    </div>
+                    <span className="font-display text-3xl text-faint">
+                      {service.no}
+                    </span>
+                  </div>
+                  <div className="flex flex-col gap-3">
+                    <span className="font-display text-xs italic tracking-wide text-gold">
+                      {service.tagline}
+                    </span>
+                    <h3 className="font-serif text-2xl">{service.title}</h3>
+                    <p className="text-sm leading-relaxed text-muted">
+                      {service.description}
+                    </p>
+                  </div>
+                </Link>
+              </Reveal>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* ───────────────── Stats ───────────────── */}
+      <section className="border-t border-line py-24 md:py-32">
+        <Container>
+          <Reveal>
+            <Eyebrow>BY THE NUMBERS</Eyebrow>
+          </Reveal>
+          <div className="mt-12 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-line bg-line md:grid-cols-4">
+            {stats.map((stat, i) => (
+              <Reveal
+                key={stat.label}
+                delay={i * 100}
+                className="flex flex-col gap-3 bg-ink p-8 md:p-10"
+              >
+                <span className="font-serif text-4xl text-gold md:text-5xl">
+                  <CountUp value={stat.value} />
+                  {stat.suffix}
+                </span>
+                <span className="text-sm text-muted">{stat.label}</span>
+              </Reveal>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* ───────────────── Process ───────────────── */}
+      <section className="relative overflow-hidden border-t border-line bg-ink-2 py-24 md:py-32">
+        <Container>
+          <SectionHeading
+            eyebrow="HOW WE WORK"
+            title="검증된 4단계 운영 프로세스"
+            align="center"
+            className="mx-auto max-w-2xl"
+          />
+          <div className="mt-16 grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+            {processSteps.map((step, i) => (
+              <Reveal
+                key={step.no}
+                delay={i * 90}
+                className="group relative flex flex-col gap-5 bg-ink-2 p-8 md:p-9"
+              >
+                <span className="font-display text-5xl text-faint transition-colors duration-500 group-hover:text-gold">
+                  {step.no}
+                </span>
+                <h3 className="font-serif text-xl">{step.title}</h3>
+                <p className="text-sm leading-relaxed text-muted">
+                  {step.description}
+                </p>
+              </Reveal>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* ───────────────── Portfolio highlight ───────────────── */}
+      <section className="border-t border-line py-24 md:py-32">
+        <Container>
+          <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+            <SectionHeading
+              eyebrow="SELECTED WORK"
+              title={
+                <>
+                  최근 진행한
+                  <br />
+                  대표 프로젝트.
+                </>
+              }
+            />
+            <Reveal delay={150}>
+              <Link
+                href="/portfolio"
+                className="link-underline inline-flex items-center gap-2 text-sm text-gold"
+              >
+                전체 포트폴리오
+                <ArrowUpRight className="h-4 w-4" />
+              </Link>
+            </Reveal>
+          </div>
+
+          <div className="mt-14 grid gap-5 md:grid-cols-3">
+            {projects.slice(0, 3).map((project, i) => (
+              <Reveal key={project.id} delay={i * 110}>
+                <Link
+                  href="/portfolio"
+                  className="card-hover group flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-surface/50"
+                >
+                  <div className="relative aspect-[4/3] overflow-hidden border-b border-line">
+                    <ProjectArtwork seed={i} />
+                    <span className="absolute left-5 top-5 rounded-full border border-line-strong bg-ink/60 px-3 py-1 text-xs text-gold backdrop-blur">
+                      {project.category}
+                    </span>
+                  </div>
+                  <div className="flex flex-1 flex-col gap-4 p-7">
+                    <div className="flex items-center gap-3 text-xs text-faint">
+                      <span>{project.year}</span>
+                      <span className="h-1 w-1 rounded-full bg-faint" />
+                      <span>{project.scale}</span>
+                    </div>
+                    <h3 className="font-serif text-xl leading-snug transition-colors duration-500 group-hover:text-gold">
+                      {project.title}
+                    </h3>
+                    <p className="text-sm leading-relaxed text-muted">
+                      {project.summary}
+                    </p>
+                  </div>
+                </Link>
+              </Reveal>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* ───────────────── Partners marquee ───────────────── */}
+      <section className="overflow-hidden border-t border-line py-16">
+        <Container>
+          <Reveal className="mb-10 text-center">
+            <span className="label">TRUSTED BY</span>
+          </Reveal>
+        </Container>
+        <div className="relative flex overflow-hidden">
+          <div className="marquee-track flex shrink-0 items-center gap-16 pr-16">
+            {[...partners, ...partners].map((p, i) => (
+              <span
+                key={`${p}-${i}`}
+                className="whitespace-nowrap font-display text-2xl tracking-[0.18em] text-faint transition-colors hover:text-paper"
+              >
+                {p}
+              </span>
+            ))}
+          </div>
         </div>
-      </main>
-    </div>
+      </section>
+    </>
   );
 }
