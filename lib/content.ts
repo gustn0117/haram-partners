@@ -9,7 +9,7 @@ export const company = {
   tagline: "브랜드의 순간을 설계합니다",
   taglineEn: "We design the moments that define your brand",
   intro:
-    "기획부터 연출, 현장 운영까지. 하람파트너스는 기업 행사와 공연·페스티벌의 모든 순간을 하나의 흐름으로 완성하는 행사 기획·운영 전문 기업입니다.",
+    "기획부터 연출, 현장 운영까지. 음향·조명 장비를 직접 보유하고 전 스태프가 당사 직속으로 움직이는, 기획부터 운영까지 책임지는 행사 전문 기업입니다.",
   founded: "2014",
   email: "contact@haram-partners.kr",
   phone: "02-6952-3140",
@@ -90,6 +90,57 @@ export const services: Service[] = [
       "협력사·벤더 통합 관리",
       "현장 리스크·안전 관리",
     ],
+  },
+  {
+    id: "photobooth",
+    no: "05",
+    title: "포토부스·이벤트 부스",
+    tagline: "Photo Booth & Experience",
+    description:
+      "관객이 직접 참여하고 기록을 남기는 이벤트 존을 만듭니다. 포토부스부터 브랜드 체험 부스까지 설치와 운영을 함께 진행합니다.",
+    items: [
+      "포토부스 설치·현장 운영",
+      "브랜드 체험·인터랙션 부스",
+      "즉석 인화·디지털 공유",
+      "부스 디자인·운영 인력",
+    ],
+  },
+];
+
+// ─────────────────────────────────────────────────────────────
+//  핵심 강점 (장비 직접 보유 · 직속 운영)
+// ─────────────────────────────────────────────────────────────
+
+export type StrengthId = "equipment" | "operator" | "staff" | "onestop";
+
+export const strengths: {
+  id: StrengthId;
+  title: string;
+  description: string;
+}[] = [
+  {
+    id: "equipment",
+    title: "장비 직접 보유",
+    description:
+      "음향·조명 장비를 자체 보유해 외주 렌탈 없이 행사에 바로 투입합니다. 장비 수급에 흔들리지 않습니다.",
+  },
+  {
+    id: "operator",
+    title: "오퍼레이터 직접 운영",
+    description:
+      "검증된 자사 음향·조명 오퍼레이터가 셋업부터 본 행사까지 현장을 직접 운영합니다.",
+  },
+  {
+    id: "staff",
+    title: "전 스태프 당사 직속",
+    description:
+      "기획·연출·운영 모든 스태프가 당사 소속입니다. 외주 없는 일관된 품질과 책임을 보장합니다.",
+  },
+  {
+    id: "onestop",
+    title: "기획–운영 원스톱",
+    description:
+      "기획부터 장비, 현장 운영, 부스까지 한 팀이 처음부터 끝까지 책임지고 진행합니다.",
   },
 ];
 

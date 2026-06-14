@@ -139,11 +139,15 @@ function PlanningView() {
         </p>
       </header>
       <div className="grid gap-5 sm:grid-cols-2">
-        {services.map((service) => (
+        {services.map((service, i) => (
           <article
             key={service.id}
             id={service.id}
-            className="card-hover group flex scroll-mt-28 flex-col gap-6 rounded-2xl border border-line bg-surface/50 p-7 md:p-8"
+            className={`card-hover group flex scroll-mt-28 flex-col gap-6 rounded-2xl border border-line bg-surface/50 p-7 md:p-8 ${
+              i === services.length - 1 && services.length % 2 === 1
+                ? "sm:col-span-2"
+                : ""
+            }`}
           >
             <div className="flex items-start justify-between">
               <div className="flex h-13 w-13 items-center justify-center rounded-xl border border-line-strong text-gold transition-colors duration-500 group-hover:border-gold">

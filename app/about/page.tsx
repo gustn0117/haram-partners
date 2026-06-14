@@ -4,6 +4,7 @@ import { Container, Eyebrow, SectionHeading, CTAButton } from "@/components/ui";
 import { Reveal } from "@/components/Reveal";
 import { CountUp } from "@/components/CountUp";
 import { PageHero } from "@/components/PageHero";
+import { Strengths } from "@/components/Strengths";
 import { Quote } from "@/components/icons";
 
 export const metadata: Metadata = {
@@ -50,6 +51,9 @@ export default function AboutPage() {
           </div>
         </Container>
       </section>
+
+      {/* Strengths */}
+      <Strengths background="plain" />
 
       {/* Stats */}
       <section className="border-b border-line bg-ink-2 py-20 md:py-24">

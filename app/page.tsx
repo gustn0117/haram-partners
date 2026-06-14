@@ -13,6 +13,7 @@ import { Reveal } from "@/components/Reveal";
 import { CountUp } from "@/components/CountUp";
 import { Atmosphere } from "@/components/Atmosphere";
 import { ProjectArtwork } from "@/components/ProjectArtwork";
+import { Strengths } from "@/components/Strengths";
 import {
   ServiceIcon,
   ArrowUpRight,
@@ -90,8 +91,11 @@ export default function HomePage() {
         </Container>
       </section>
 
+      {/* ───────────────── Strengths ───────────────── */}
+      <Strengths background="alt" />
+
       {/* ───────────────── Services ───────────────── */}
-      <section className="relative overflow-hidden border-t border-line bg-ink-2 py-24 md:py-32">
+      <section className="relative overflow-hidden border-t border-line py-24 md:py-32">
         <Atmosphere variant="soft" />
         <Container className="relative z-2">
           <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
@@ -99,7 +103,7 @@ export default function HomePage() {
               eyebrow="WHAT WE DO"
               title={
                 <>
-                  네 개의 전문 영역,
+                  기획부터 부스까지,
                   <br />
                   하나의 완성도.
                 </>
@@ -118,7 +122,15 @@ export default function HomePage() {
 
           <div className="mt-14 grid gap-5 sm:grid-cols-2">
             {services.map((service, i) => (
-              <Reveal key={service.id} delay={i * 90}>
+              <Reveal
+                key={service.id}
+                delay={i * 90}
+                className={
+                  i === services.length - 1 && services.length % 2 === 1
+                    ? "sm:col-span-2"
+                    : ""
+                }
+              >
                 <Link
                   href={`/services#${service.id}`}
                   className="card-hover group flex h-full flex-col gap-6 rounded-2xl border border-line bg-surface/60 p-8 md:p-10"
@@ -148,7 +160,7 @@ export default function HomePage() {
       </section>
 
       {/* ───────────────── Equipment rental ───────────────── */}
-      <section className="border-t border-line py-24 md:py-32">
+      <section className="border-t border-line bg-ink-2 py-24 md:py-32">
         <Container>
           <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
             <SectionHeading
@@ -163,8 +175,8 @@ export default function HomePage() {
             />
             <Reveal delay={150} className="max-w-sm">
               <p className="text-sm leading-relaxed text-muted">
-                행사 규모에 맞춰 구성한 음향·조명 렌탈 패키지. 장비부터 셋업,
-                전문 엔지니어 운영까지 한 번에 제공합니다.
+                자체 보유 장비로 구성한 음향·조명 렌탈 패키지. 장비부터 셋업,
+                자사 오퍼레이터 운영까지 외주 없이 한 번에 제공합니다.
               </p>
             </Reveal>
           </div>

@@ -181,12 +181,84 @@ export function IconStage(props: IconProps) {
   );
 }
 
+export function IconPhotoBooth(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <rect x="3" y="6.5" width="18" height="12.5" rx="2.2" />
+      <path d="M8 6.5 9.2 4h5.6L16 6.5" />
+      <circle cx="12" cy="12.7" r="3.3" />
+      <path d="M17 9.6h.01" />
+    </svg>
+  );
+}
+
+/* ── Strength / capability icons ── */
+
+export function IconCase(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <rect x="3.5" y="6.5" width="17" height="12" rx="1.6" />
+      <path d="M3.5 11.2h17" />
+      <path d="M9 6.5V5h6v1.5" />
+      <path d="M6.8 14.4h.01M17.2 14.4h.01" />
+    </svg>
+  );
+}
+
+export function IconFaders(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M7 5v14M12 5v14M17 5v14" />
+      <rect x="5.4" y="8" width="3.2" height="2.4" rx="0.7" />
+      <rect x="10.4" y="12.4" width="3.2" height="2.4" rx="0.7" />
+      <rect x="15.4" y="6.8" width="3.2" height="2.4" rx="0.7" />
+    </svg>
+  );
+}
+
+export function IconTeam(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <circle cx="9" cy="8.5" r="2.7" />
+      <circle cx="16.5" cy="9.5" r="2.1" />
+      <path d="M3.8 19v-1a5.2 5.2 0 0 1 10.4 0v1" />
+      <path d="M15 19v-1a4 4 0 0 1 5.2-3.8" />
+    </svg>
+  );
+}
+
+export function IconHub(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <circle cx="12" cy="12" r="3" />
+      <path d="M12 3v3.4M12 17.6V21M3 12h3.4M17.6 12H21" />
+      <path d="M5.8 5.8 8.2 8.2M18.2 5.8 15.8 8.2M5.8 18.2 8.2 15.8M18.2 18.2 15.8 15.8" />
+    </svg>
+  );
+}
+
 const serviceIconMap = {
   corporate: IconConference,
   festival: IconFestival,
   brand: IconBrand,
   operation: IconProtocol,
+  photobooth: IconPhotoBooth,
 } as const;
+
+const strengthIconMap = {
+  equipment: IconCase,
+  operator: IconFaders,
+  staff: IconTeam,
+  onestop: IconHub,
+} as const;
+
+export function StrengthIcon({
+  id,
+  ...props
+}: { id: keyof typeof strengthIconMap } & IconProps) {
+  const Cmp = strengthIconMap[id];
+  return <Cmp {...props} />;
+}
 
 export function ServiceIcon({
   id,
