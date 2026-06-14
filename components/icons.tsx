@@ -149,6 +149,38 @@ export function IconProtocol(props: IconProps) {
   );
 }
 
+export function IconSound(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <rect x="6.5" y="2.5" width="11" height="19" rx="2.5" />
+      <circle cx="12" cy="8" r="1.8" />
+      <circle cx="12" cy="15" r="3.2" />
+      <path d="M12 8h.01" />
+    </svg>
+  );
+}
+
+export function IconLighting(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <rect x="8.5" y="2.5" width="7" height="4.2" rx="1.2" />
+      <path d="M9 6.7 5.5 20.5h13L15 6.7" />
+      <path d="M7.4 13.5h9.2" />
+    </svg>
+  );
+}
+
+export function IconStage(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M3 18h18" />
+      <path d="M5 18v-5h14v5" />
+      <path d="M8 13V8l4-3 4 3v5" />
+      <path d="M12 5v3" />
+    </svg>
+  );
+}
+
 const serviceIconMap = {
   corporate: IconConference,
   festival: IconFestival,
