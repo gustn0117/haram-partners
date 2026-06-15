@@ -13,6 +13,7 @@ import { Strengths } from "@/components/Strengths";
 import {
   ServiceIcon,
   ArrowUpRight,
+  ArrowRight,
   IconSound,
   IconLighting,
 } from "@/components/icons";
@@ -21,63 +22,70 @@ export default function HomePage() {
   return (
     <>
       {/* ───────────────── Hero ───────────────── */}
-      <section className="relative overflow-hidden pt-32 pb-16 md:pt-40 md:pb-24">
-        <Atmosphere variant="hero" />
-        <Container className="relative z-2">
-          <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
-            <div className="flex flex-col gap-7">
-              <p className="rise label" style={{ animationDelay: "120ms" }}>
-                EVENT PLANNING &amp; OPERATION
-              </p>
-              <h1 className="font-serif text-[2.6rem] leading-[1.12] sm:text-6xl md:text-[4.2rem] md:leading-[1.05] text-balance">
-                <span className="rise block" style={{ animationDelay: "220ms" }}>
-                  브랜드의 순간을
-                </span>
-                <span
-                  className="rise block gold-text"
-                  style={{ animationDelay: "360ms" }}
-                >
-                  설계합니다.
-                </span>
-              </h1>
-              <p
-                className="rise max-w-xl text-base leading-relaxed text-muted sm:text-lg"
-                style={{ animationDelay: "520ms" }}
-              >
-                기획부터 연출, 현장 운영까지 — 기업 행사와 공연·페스티벌의 모든
-                순간을 하나의 흐름으로 완성하는 행사 기획·운영 파트너.
-              </p>
-              <div
-                className="rise flex flex-wrap items-center gap-4 pt-2"
-                style={{ animationDelay: "660ms" }}
-              >
-                <CTAButton href="/contact">프로젝트 의뢰하기</CTAButton>
-                <CTAButton href="/services" variant="ghost">
-                  서비스 살펴보기
-                </CTAButton>
-              </div>
-            </div>
+      <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
+        {/* Background image */}
+        <img
+          src={heroImage}
+          alt=""
+          aria-hidden
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        {/* Scrims for text legibility */}
+        <div aria-hidden className="absolute inset-0 bg-black/45" />
+        <div
+          aria-hidden
+          className="absolute inset-0 bg-linear-to-b from-black/45 via-black/20 to-black/60"
+        />
 
-            <div
-              className="rise relative aspect-[4/5] overflow-hidden rounded-sm border border-line sm:aspect-[5/4] lg:aspect-[4/5]"
-              style={{ animationDelay: "320ms" }}
+        <Container className="relative z-2 text-center">
+          <div className="mx-auto flex max-w-3xl flex-col items-center gap-7">
+            <p
+              className="rise text-xs font-semibold uppercase tracking-[0.18em] text-gold-bright"
+              style={{ animationDelay: "120ms" }}
             >
-              <img
-                src={heroImage}
-                alt="무대 조명이 켜진 공연 현장"
-                className="h-full w-full object-cover"
-              />
-              <div className="absolute inset-x-4 bottom-4 flex items-center justify-between rounded-xl border border-white/15 bg-black/40 px-5 py-3.5 backdrop-blur">
-                <span className="text-sm font-medium text-white">
-                  현장에서 완성되는 기획
-                </span>
-                <span className="font-display text-xs tracking-wider text-white/70">
-                  HARAM PARTNERS
-                </span>
-              </div>
+              EVENT PLANNING &amp; OPERATION
+            </p>
+            <h1 className="font-serif text-[2.7rem] leading-[1.12] text-white sm:text-6xl md:text-[4.4rem] md:leading-[1.05] text-balance">
+              <span className="rise block" style={{ animationDelay: "220ms" }}>
+                브랜드의 순간을
+              </span>
+              <span
+                className="rise block gold-text"
+                style={{ animationDelay: "360ms" }}
+              >
+                설계합니다.
+              </span>
+            </h1>
+            <p
+              className="rise max-w-xl text-base leading-relaxed text-white/80 sm:text-lg"
+              style={{ animationDelay: "520ms" }}
+            >
+              기획부터 연출, 현장 운영까지 — 기업 행사와 공연·페스티벌의 모든
+              순간을 하나의 흐름으로 완성하는 행사 기획·운영 파트너.
+            </p>
+            <div
+              className="rise flex flex-wrap items-center justify-center gap-4 pt-2"
+              style={{ animationDelay: "660ms" }}
+            >
+              <CTAButton href="/contact">프로젝트 의뢰하기</CTAButton>
+              <Link
+                href="/services"
+                className="group inline-flex items-center gap-3 rounded-sm border border-white/40 px-7 py-3.5 text-sm font-medium tracking-tight text-white transition-colors duration-500 hover:border-gold-bright hover:text-gold-bright"
+              >
+                서비스 살펴보기
+                <ArrowRight className="h-4 w-4 transition-transform duration-500 group-hover:translate-x-1" />
+              </Link>
             </div>
           </div>
         </Container>
+
+        {/* Scroll cue */}
+        <div className="absolute bottom-8 left-1/2 flex -translate-x-1/2 flex-col items-center gap-2">
+          <span className="text-[0.65rem] font-medium tracking-[0.3em] text-white/60">
+            SCROLL
+          </span>
+          <span className="h-10 w-px bg-linear-to-b from-white/60 to-transparent" />
+        </div>
       </section>
 
       {/* ───────────────── Intro statement ───────────────── */}

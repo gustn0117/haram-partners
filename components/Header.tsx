@@ -43,6 +43,9 @@ export function Header() {
     };
   }, [open]);
 
+  // 홈 최상단(스크롤 전)에서는 어두운 히어로 이미지 위라 글자를 밝게
+  const lightHeader = pathname === "/" && !scrolled && !open;
+
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
@@ -57,12 +60,24 @@ export function Header() {
           className="group flex items-center gap-3"
           aria-label={`${company.nameKo} 홈`}
         >
-          <Monogram className="h-8 w-8 text-gold transition-transform duration-500 group-hover:rotate-3" />
+          <Monogram
+            className={`h-8 w-8 transition-transform duration-500 group-hover:rotate-3 ${
+              lightHeader ? "text-gold-bright" : "text-gold"
+            }`}
+          />
           <span className="flex flex-col leading-none">
-            <span className="font-serif text-base tracking-tight text-paper">
+            <span
+              className={`font-serif text-base tracking-tight ${
+                lightHeader ? "text-white" : "text-paper"
+              }`}
+            >
               {company.nameKo}
             </span>
-            <span className="font-display text-[0.68rem] tracking-[0.32em] text-faint">
+            <span
+              className={`font-display text-[0.68rem] tracking-[0.32em] ${
+                lightHeader ? "text-white/55" : "text-faint"
+              }`}
+            >
               {company.nameEn}
             </span>
           </span>
@@ -74,7 +89,13 @@ export function Header() {
               pathname === link.href ||
               (link.href !== "/" && pathname.startsWith(`${link.href}/`));
             const linkClass = `link-underline text-sm tracking-tight transition-colors ${
-              active ? "text-gold" : "text-muted hover:text-paper"
+              active
+                ? lightHeader
+                  ? "text-gold-bright"
+                  : "text-gold"
+                : lightHeader
+                  ? "text-white/75 hover:text-white"
+                  : "text-muted hover:text-paper"
             }`;
 
             if (link.href === "/services") {
@@ -141,7 +162,11 @@ export function Header() {
           })}
           <Link
             href="/contact"
-            className="group inline-flex items-center gap-2 rounded-sm border border-line-strong px-5 py-2.5 text-sm tracking-tight text-paper transition-all duration-500 hover:border-gold hover:text-gold"
+            className={`group inline-flex items-center gap-2 rounded-sm border px-5 py-2.5 text-sm tracking-tight transition-all duration-500 ${
+              lightHeader
+                ? "border-white/40 text-white hover:border-gold-bright hover:text-gold-bright"
+                : "border-line-strong text-paper hover:border-gold hover:text-gold"
+            }`}
           >
             프로젝트 의뢰
             <ArrowUpRight className="h-4 w-4 transition-transform duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -151,7 +176,9 @@ export function Header() {
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
-          className="flex h-10 w-10 items-center justify-center text-paper md:hidden"
+          className={`flex h-10 w-10 items-center justify-center md:hidden ${
+            lightHeader ? "text-white" : "text-paper"
+          }`}
           aria-label={open ? "메뉴 닫기" : "메뉴 열기"}
           aria-expanded={open}
         >
