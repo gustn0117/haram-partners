@@ -1,15 +1,10 @@
-/* eslint-disable @next/next/no-img-element */
 import type { Metadata } from "next";
 import Link from "next/link";
-import {
-  services,
-  rentalCategories,
-  processSteps,
-  offeringImages,
-} from "@/lib/content";
+import { services, rentalCategories, processSteps } from "@/lib/content";
 import { Container, Eyebrow, SectionHeading, CTAButton } from "@/components/ui";
 import { Reveal } from "@/components/Reveal";
 import { PageHero } from "@/components/PageHero";
+import { Placeholder } from "@/components/Placeholder";
 import { ServiceIcon, IconSound, IconLighting, ArrowUpRight } from "@/components/icons";
 
 export const metadata: Metadata = {
@@ -38,13 +33,8 @@ function OfferingCard({
       className="card-hover group flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-surface"
     >
       <div className="relative aspect-[16/10] overflow-hidden border-b border-line">
-        <img
-          src={offeringImages[card.id]}
-          alt={card.title}
-          loading="lazy"
-          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-        />
-        <span className="absolute left-4 top-4 flex h-10 w-10 items-center justify-center rounded-lg border border-white/20 bg-black/45 text-white backdrop-blur">
+        <Placeholder tone="light" />
+        <span className="absolute left-4 top-4 flex h-10 w-10 items-center justify-center rounded-sm border border-line-strong bg-ink/70 text-gold backdrop-blur">
           {icon}
         </span>
       </div>

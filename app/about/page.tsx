@@ -1,10 +1,10 @@
-/* eslint-disable @next/next/no-img-element */
 import type { Metadata } from "next";
-import { company, values, aboutImage } from "@/lib/content";
+import { company, values } from "@/lib/content";
 import { Container, Eyebrow, SectionHeading, CTAButton } from "@/components/ui";
 import { Reveal } from "@/components/Reveal";
 import { PageHero } from "@/components/PageHero";
 import { Strengths } from "@/components/Strengths";
+import { Placeholder } from "@/components/Placeholder";
 import { Quote } from "@/components/icons";
 
 export const metadata: Metadata = {
@@ -55,12 +55,7 @@ export default function AboutPage() {
       {/* Image band */}
       <section className="border-b border-line">
         <div className="relative h-[40vh] min-h-72 w-full overflow-hidden md:h-[52vh]">
-          <img
-            src={aboutImage}
-            alt="공연 무대 조명"
-            className="h-full w-full object-cover"
-          />
-          <div className="absolute inset-0 bg-linear-to-t from-ink/30 to-transparent" />
+          <Placeholder tone="light" label="현장 사진" />
         </div>
       </section>
 

@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -6,11 +5,11 @@ import {
   services,
   rentalCategories,
   processSteps,
-  offeringImages,
   type Service,
   type RentalCategory,
 } from "@/lib/content";
 import { Container, CTAButton } from "@/components/ui";
+import { Placeholder } from "@/components/Placeholder";
 import { ArrowLeft, ArrowRight, Plus } from "@/components/icons";
 
 type Params = { slug: string };
@@ -89,11 +88,7 @@ export default async function OfferingDetailPage({
               </p>
             </div>
             <div className="relative aspect-[16/11] overflow-hidden rounded-2xl border border-line">
-              <img
-                src={offeringImages[slug]}
-                alt={title}
-                className="h-full w-full object-cover"
-              />
+              <Placeholder tone="light" label={title} />
             </div>
           </div>
         </Container>

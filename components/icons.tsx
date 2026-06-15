@@ -294,6 +294,16 @@ export function Monogram(props: IconProps) {
   );
 }
 
+export function IconImage(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <rect x="3" y="5" width="18" height="14" rx="1.5" />
+      <circle cx="8.5" cy="10" r="1.4" />
+      <path d="m4 17 5-5 3.5 3.5L16 12l4 4.5" />
+    </svg>
+  );
+}
+
 export function Quote(props: IconProps) {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" {...props}>

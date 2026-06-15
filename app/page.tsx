@@ -1,14 +1,9 @@
-/* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
-import {
-  services,
-  rentalCategories,
-  processSteps,
-  heroImage,
-} from "@/lib/content";
+import { services, rentalCategories, processSteps } from "@/lib/content";
 import { Container, Eyebrow, SectionHeading } from "@/components/ui";
 import { Reveal } from "@/components/Reveal";
 import { Strengths } from "@/components/Strengths";
+import { Placeholder } from "@/components/Placeholder";
 import {
   ServiceIcon,
   ArrowUpRight,
@@ -22,19 +17,8 @@ export default function HomePage() {
     <>
       {/* ───────────────── Hero ───────────────── */}
       <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
-        {/* Background image */}
-        <img
-          src={heroImage}
-          alt=""
-          aria-hidden
-          className="absolute inset-0 h-full w-full object-cover"
-        />
-        {/* Scrims for text legibility */}
-        <div aria-hidden className="absolute inset-0 bg-black/45" />
-        <div
-          aria-hidden
-          className="absolute inset-0 bg-linear-to-b from-black/45 via-black/20 to-black/60"
-        />
+        {/* Background placeholder (빗금) — 실제 메인 비주얼 확보 시 교체 */}
+        <Placeholder tone="dark" />
 
         <Container className="relative z-2 text-center">
           <div className="mx-auto flex max-w-3xl flex-col items-center gap-7">
