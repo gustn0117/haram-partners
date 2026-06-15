@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import { company } from "@/lib/content";
-import { Container } from "@/components/ui";
+import { company, contactFlow, faqs } from "@/lib/content";
+import { Container, SectionHeading } from "@/components/ui";
 import { Reveal } from "@/components/Reveal";
 import { PageHero } from "@/components/PageHero";
 import { ContactForm } from "@/components/ContactForm";
+import { FaqList } from "@/components/FaqList";
 import { MapPin, Phone, Mail, Clock, Instagram } from "@/components/icons";
 
 export const metadata: Metadata = {
@@ -90,6 +91,42 @@ export default function ContactPage() {
             <Reveal delay={120}>
               <ContactForm />
             </Reveal>
+          </div>
+        </Container>
+      </section>
+
+      {/* 진행 절차 */}
+      <section className="border-t border-line bg-ink-2 py-24 md:py-32">
+        <Container>
+          <SectionHeading
+            eyebrow="HOW IT WORKS"
+            title="문의부터 행사까지, 이렇게 진행됩니다"
+          />
+          <div className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
+            {contactFlow.map((step) => (
+              <div
+                key={step.no}
+                className="group flex flex-col gap-4 bg-ink-2 p-8"
+              >
+                <span className="font-display text-4xl text-faint transition-colors duration-500 group-hover:text-gold">
+                  {step.no}
+                </span>
+                <h3 className="font-serif text-lg">{step.title}</h3>
+                <p className="text-sm leading-relaxed text-muted">
+                  {step.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* FAQ */}
+      <section className="py-24 md:py-32">
+        <Container>
+          <SectionHeading eyebrow="FAQ" title="자주 묻는 질문" />
+          <div className="mt-10">
+            <FaqList items={faqs} />
           </div>
         </Container>
       </section>

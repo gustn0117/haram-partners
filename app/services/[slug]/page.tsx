@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { services, processSteps, type Service } from "@/lib/content";
-import { Container, CTAButton } from "@/components/ui";
+import { services, processSteps, faqs, type Service } from "@/lib/content";
+import { Container, CTAButton, SectionHeading } from "@/components/ui";
 import { Placeholder } from "@/components/Placeholder";
-import { ArrowLeft } from "@/components/icons";
+import { FaqList } from "@/components/FaqList";
+import { ArrowLeft, Plus } from "@/components/icons";
 
 type Params = { slug: string };
 
@@ -63,6 +64,16 @@ export default async function OfferingDetailPage({
 
       <ServiceBody service={service} />
 
+      {/* FAQ */}
+      <section className="border-t border-line bg-ink-2 py-24 md:py-32">
+        <Container>
+          <SectionHeading eyebrow="FAQ" title="자주 묻는 질문" />
+          <div className="mt-10">
+            <FaqList items={faqs} />
+          </div>
+        </Container>
+      </section>
+
       {/* CTA */}
       <section className="border-t border-line py-24 md:py-28">
         <Container>
@@ -84,48 +95,121 @@ export default async function OfferingDetailPage({
 
 function ServiceBody({ service }: { service: Service }) {
   return (
-    <section className="py-20 md:py-28">
-      <Container>
-        <div className="grid gap-12 md:grid-cols-[0.8fr_1.2fr] md:gap-16">
-          <div className="flex flex-col gap-3">
-            <span className="label">PROGRAM</span>
-            <h2 className="font-serif text-2xl sm:text-3xl">주요 진행 항목</h2>
+    <>
+      {/* Overview */}
+      <section className="border-b border-line py-20 md:py-28">
+        <Container>
+          <div className="grid gap-10 md:grid-cols-[0.8fr_1.2fr] md:gap-16">
+            <div className="flex flex-col gap-3">
+              <span className="label">OVERVIEW</span>
+              <h2 className="font-serif text-2xl sm:text-3xl">
+                이렇게 접근합니다
+              </h2>
+            </div>
+            <div className="flex flex-col gap-6">
+              {service.overview.map((p, i) => (
+                <p
+                  key={i}
+                  className="text-base leading-[1.85] text-paper/90 sm:text-lg"
+                >
+                  {p}
+                </p>
+              ))}
+            </div>
           </div>
-          <ul className="flex flex-col">
-            {service.items.map((item, i) => (
-              <li
-                key={item}
-                className="group flex items-center gap-5 border-t border-line py-5 last:border-b"
+        </Container>
+      </section>
+
+      {/* Program + Scope */}
+      <section className="border-b border-line py-20 md:py-28">
+        <Container>
+          <div className="grid gap-12 md:grid-cols-2 md:gap-16">
+            <div className="flex flex-col gap-6">
+              <div className="flex flex-col gap-2">
+                <span className="label">PROGRAM</span>
+                <h2 className="font-serif text-2xl">주요 진행 항목</h2>
+              </div>
+              <ul className="flex flex-col">
+                {service.items.map((item, i) => (
+                  <li
+                    key={item}
+                    className="group flex items-center gap-5 border-t border-line py-4 last:border-b"
+                  >
+                    <span className="font-display text-sm text-gold">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span className="text-base transition-transform duration-500 group-hover:translate-x-1">
+                      {item}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="flex flex-col gap-6">
+              <div className="flex flex-col gap-2">
+                <span className="label">SCOPE</span>
+                <h2 className="font-serif text-2xl">진행 범위</h2>
+              </div>
+              <ul className="flex flex-col gap-3.5">
+                {service.scope.map((s) => (
+                  <li key={s} className="flex items-start gap-3 text-base">
+                    <Plus className="mt-1 h-4 w-4 shrink-0 text-gold" />
+                    <span className="text-paper/90">{s}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* Recommended for */}
+      <section className="border-b border-line bg-ink-2 py-20 md:py-28">
+        <Container>
+          <SectionHeading eyebrow="WHO IT'S FOR" title="이런 분들께 추천합니다" />
+          <div className="mt-12 grid gap-5 sm:grid-cols-3">
+            {service.recommendedFor.map((r, i) => (
+              <div
+                key={r}
+                className="flex flex-col gap-4 rounded-2xl border border-line bg-surface p-7"
               >
-                <span className="font-display text-sm text-gold">
+                <span className="font-display text-3xl text-faint">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <span className="text-base transition-transform duration-500 group-hover:translate-x-1">
-                  {item}
-                </span>
-              </li>
+                <p className="text-base leading-relaxed text-paper/90">{r}</p>
+              </div>
             ))}
-          </ul>
-        </div>
+          </div>
+        </Container>
+      </section>
 
-        {/* Process */}
-        <div className="mt-20 grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
-          {processSteps.map((step) => (
-            <div
-              key={step.no}
-              className="group flex flex-col gap-4 bg-surface p-7"
-            >
-              <span className="font-display text-4xl text-faint transition-colors duration-500 group-hover:text-gold">
-                {step.no}
-              </span>
-              <h3 className="font-serif text-lg">{step.title}</h3>
-              <p className="text-sm leading-relaxed text-muted">
-                {step.description}
-              </p>
-            </div>
-          ))}
-        </div>
-      </Container>
-    </section>
+      {/* Process */}
+      <section className="py-20 md:py-28">
+        <Container>
+          <SectionHeading
+            eyebrow="HOW WE WORK"
+            title="진행 프로세스"
+            align="center"
+            className="mx-auto max-w-2xl"
+          />
+          <div className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+            {processSteps.map((step) => (
+              <div
+                key={step.no}
+                className="group flex flex-col gap-4 bg-surface p-7"
+              >
+                <span className="font-display text-4xl text-faint transition-colors duration-500 group-hover:text-gold">
+                  {step.no}
+                </span>
+                <h3 className="font-serif text-lg">{step.title}</h3>
+                <p className="text-sm leading-relaxed text-muted">
+                  {step.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </Container>
+      </section>
+    </>
   );
 }

@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
-import { company, values } from "@/lib/content";
+import { company, values, aboutStory, faqs } from "@/lib/content";
 import { Container, Eyebrow, SectionHeading, CTAButton } from "@/components/ui";
 import { Reveal } from "@/components/Reveal";
 import { PageHero } from "@/components/PageHero";
 import { Strengths } from "@/components/Strengths";
 import { Placeholder } from "@/components/Placeholder";
+import { FaqList } from "@/components/FaqList";
 import { Quote } from "@/components/icons";
 
 export const metadata: Metadata = {
@@ -59,6 +60,29 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Story / 운영 철학 */}
+      <section className="border-b border-line bg-ink-2 py-24 md:py-32">
+        <Container>
+          <SectionHeading eyebrow="OUR PHILOSOPHY" title="우리가 일을 대하는 태도" />
+          <div className="mt-14 flex flex-col">
+            {aboutStory.map((s, i) => (
+              <Reveal
+                key={s.heading}
+                delay={i * 90}
+                className="grid gap-5 border-t border-line py-10 last:border-b md:grid-cols-[0.9fr_1.4fr] md:gap-12"
+              >
+                <h3 className="font-serif text-xl leading-snug sm:text-2xl">
+                  {s.heading}
+                </h3>
+                <p className="text-base leading-[1.85] text-paper/90">
+                  {s.body}
+                </p>
+              </Reveal>
+            ))}
+          </div>
+        </Container>
+      </section>
+
       {/* Strengths */}
       <Strengths background="plain" />
 
@@ -82,6 +106,16 @@ export default function AboutPage() {
                 </p>
               </Reveal>
             ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* FAQ */}
+      <section className="border-b border-line py-24 md:py-32">
+        <Container>
+          <SectionHeading eyebrow="FAQ" title="자주 묻는 질문" />
+          <div className="mt-10">
+            <FaqList items={faqs} />
           </div>
         </Container>
       </section>

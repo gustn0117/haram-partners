@@ -71,7 +71,17 @@ export default function ServicesPage() {
       {/* 서비스 영역 */}
       <section className="border-b border-line py-20 md:py-28">
         <Container>
-          <SectionHeading eyebrow="WHAT WE DO" title="서비스 영역" />
+          <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+            <SectionHeading eyebrow="WHAT WE DO" title="서비스 영역" />
+            <Reveal delay={150} className="max-w-md">
+              <p className="text-sm leading-relaxed text-muted">
+                성격이 다른 행사들을 하나의 팀이 같은 기준으로 다룹니다. 각
+                영역은 독립적으로 진행할 수도, 하나의 행사 안에서 함께 구성할
+                수도 있습니다. 필요한 영역을 눌러 진행 범위와 방식을 확인해
+                보세요.
+              </p>
+            </Reveal>
+          </div>
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {services.map((s, i) => (
               <Reveal key={s.id} delay={i * 80}>

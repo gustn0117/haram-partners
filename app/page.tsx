@@ -1,9 +1,10 @@
 import Link from "next/link";
-import { services, processSteps } from "@/lib/content";
+import { services, processSteps, faqs } from "@/lib/content";
 import { Container, Eyebrow, SectionHeading } from "@/components/ui";
 import { Reveal } from "@/components/Reveal";
 import { Strengths } from "@/components/Strengths";
 import { Placeholder } from "@/components/Placeholder";
+import { FaqList } from "@/components/FaqList";
 import { ServiceIcon, ArrowUpRight, ArrowRight } from "@/components/icons";
 
 export default function HomePage() {
@@ -75,7 +76,7 @@ export default function HomePage() {
             <Reveal>
               <Eyebrow>WHO WE ARE</Eyebrow>
             </Reveal>
-            <Reveal delay={120}>
+            <Reveal delay={120} className="flex flex-col gap-7">
               <p className="font-serif text-2xl leading-[1.6] sm:text-[1.75rem] text-balance">
                 하람파트너스는 단순한 행사 대행이 아니라,
                 <span className="text-muted">
@@ -84,6 +85,19 @@ export default function HomePage() {
                   번역합니다.{" "}
                 </span>
                 기획의 정교함과 현장의 안정감, 그 사이의 모든 디테일을 책임집니다.
+              </p>
+              <p className="text-base leading-[1.85] text-muted">
+                기업 행사와 컨퍼런스, 공연과 페스티벌, 브랜드 프로모션, 의전과
+                현장 운영, 포토부스, 그리고 학교·기관 행사까지 — 성격이 다른
+                행사들을 하나의 팀이 같은 기준으로 다룹니다. 음향·조명 장비를
+                직접 보유하고 모든 스태프가 당사 직속으로 움직이기에, 기획에서
+                시작된 의도가 현장의 마지막 순간까지 흐트러지지 않습니다.
+              </p>
+              <p className="text-base leading-[1.85] text-muted">
+                화려한 한 장면보다, 행사가 끝난 뒤 남는 인상을 중요하게
+                생각합니다. 그래서 우리는 보이는 무대만큼이나 보이지 않는 준비와
+                운영에 공을 들입니다. 그 차이가 결국 행사의 격을 만든다고
+                믿습니다.
               </p>
             </Reveal>
           </div>
@@ -186,6 +200,32 @@ export default function HomePage() {
         </Container>
       </section>
 
+      {/* ───────────────── FAQ ───────────────── */}
+      <section className="border-t border-line py-24 md:py-32">
+        <Container>
+          <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+            <SectionHeading
+              eyebrow="FAQ"
+              title={
+                <>
+                  자주 묻는
+                  <br />
+                  질문들.
+                </>
+              }
+            />
+            <Reveal delay={150} className="max-w-sm">
+              <p className="text-sm leading-relaxed text-muted">
+                더 궁금한 점이 있으시면 언제든 편하게 문의해 주세요. 담당
+                기획자가 직접 답변드립니다.
+              </p>
+            </Reveal>
+          </div>
+          <Reveal className="mt-12">
+            <FaqList items={faqs} />
+          </Reveal>
+        </Container>
+      </section>
     </>
   );
 }
