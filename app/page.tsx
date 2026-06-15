@@ -6,7 +6,7 @@ import {
   processSteps,
   heroImage,
 } from "@/lib/content";
-import { Container, Eyebrow, CTAButton, SectionHeading } from "@/components/ui";
+import { Container, Eyebrow, SectionHeading } from "@/components/ui";
 import { Reveal } from "@/components/Reveal";
 import { Atmosphere } from "@/components/Atmosphere";
 import { Strengths } from "@/components/Strengths";
@@ -40,7 +40,7 @@ export default function HomePage() {
         <Container className="relative z-2 text-center">
           <div className="mx-auto flex max-w-3xl flex-col items-center gap-7">
             <p
-              className="rise text-xs font-semibold uppercase tracking-[0.18em] text-gold-bright"
+              className="rise text-xs font-semibold uppercase tracking-[0.18em] text-white/70"
               style={{ animationDelay: "120ms" }}
             >
               EVENT PLANNING &amp; OPERATION
@@ -49,10 +49,7 @@ export default function HomePage() {
               <span className="rise block" style={{ animationDelay: "220ms" }}>
                 브랜드의 순간을
               </span>
-              <span
-                className="rise block text-gold-bright"
-                style={{ animationDelay: "360ms" }}
-              >
+              <span className="rise block" style={{ animationDelay: "360ms" }}>
                 설계합니다.
               </span>
             </h1>
@@ -67,10 +64,16 @@ export default function HomePage() {
               className="rise flex flex-wrap items-center justify-center gap-4 pt-2"
               style={{ animationDelay: "660ms" }}
             >
-              <CTAButton href="/contact">프로젝트 의뢰하기</CTAButton>
+              <Link
+                href="/contact"
+                className="group inline-flex items-center gap-3 rounded-sm bg-white px-7 py-3.5 text-sm font-medium tracking-tight text-gold transition-colors duration-500 hover:bg-white/90"
+              >
+                프로젝트 의뢰하기
+                <ArrowRight className="h-4 w-4 transition-transform duration-500 group-hover:translate-x-1" />
+              </Link>
               <Link
                 href="/services"
-                className="group inline-flex items-center gap-3 rounded-sm border border-white/40 px-7 py-3.5 text-sm font-medium tracking-tight text-white transition-colors duration-500 hover:border-gold-bright hover:text-gold-bright"
+                className="group inline-flex items-center gap-3 rounded-sm border border-white/45 px-7 py-3.5 text-sm font-medium tracking-tight text-white transition-colors duration-500 hover:border-white hover:bg-white/10"
               >
                 서비스 살펴보기
                 <ArrowRight className="h-4 w-4 transition-transform duration-500 group-hover:translate-x-1" />

@@ -10,10 +10,10 @@
   --color-line: rgba(26, 22, 14, 0.1);
   --color-line-strong: rgba(26, 22, 14, 0.2);
 
-  /* 포인트색: 짙은 남색 (이름은 호환을 위해 gold 유지) */
-  --color-gold: #1e3a5f; /* 메인 — 흰 배경 위 텍스트·버튼 채움 */
-  --color-gold-bright: #6f9bd6; /* 밝은 청색 — 어두운 히어로/헤더 위 */
-  --color-gold-deep: #14283f; /* 더 짙은 남색 — 버튼 호버 */
+  /* 포인트색: 검정에 가까운 아주 짙은 남색 — 밝은 배경에서만 사용 (이름은 호환을 위해 gold 유지) */
+  --color-gold: #0d1b2e; /* 메인 — 흰 배경 위 텍스트·버튼 채움 */
+  --color-gold-bright: #1e3a5f; /* 보조 남색 (밝은 배경용) */
+  --color-gold-deep: #213b5e; /* 버튼 호버 (살짝 밝게 떠 보이도록) */
 
   --color-paper: #1b1b1f;
   --color-muted: #585560;
@@ -128,9 +128,9 @@ body::before {
   text-wrap: balance;
 }
 
-/* 흰 배경 위 강조 헤드라인용 남색 그라데이션 (어두운 히어로에는 사용하지 않음) */
+/* 흰 배경 위 강조 헤드라인용 짙은 남색 그라데이션 (어두운 히어로에는 사용하지 않음) */
 .gold-text {
-  background: linear-gradient(100deg, #15304f, #2e5a93 48%, #1e3a5f);
+  background: linear-gradient(100deg, #0b1626, #20406a 50%, #0e1d31);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;

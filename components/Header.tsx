@@ -62,7 +62,7 @@ export function Header() {
         >
           <Monogram
             className={`h-8 w-8 transition-transform duration-500 group-hover:rotate-3 ${
-              lightHeader ? "text-gold-bright" : "text-gold"
+              lightHeader ? "text-white" : "text-gold"
             }`}
           />
           <span className="flex flex-col leading-none">
@@ -91,7 +91,7 @@ export function Header() {
             const linkClass = `link-underline text-sm tracking-tight transition-colors ${
               active
                 ? lightHeader
-                  ? "text-gold-bright"
+                  ? "text-white"
                   : "text-gold"
                 : lightHeader
                   ? "text-white/75 hover:text-white"
@@ -164,7 +164,7 @@ export function Header() {
             href="/contact"
             className={`group inline-flex items-center gap-2 rounded-sm border px-5 py-2.5 text-sm tracking-tight transition-all duration-500 ${
               lightHeader
-                ? "border-white/40 text-white hover:border-gold-bright hover:text-gold-bright"
+                ? "border-white/45 text-white hover:border-white hover:bg-white/10"
                 : "border-line-strong text-paper hover:border-gold hover:text-gold"
             }`}
           >
