@@ -81,7 +81,7 @@ export function SectionHeading({
       } ${className}`}
     >
       {eyebrow ? <Eyebrow>{eyebrow}</Eyebrow> : null}
-      <h2 className="font-serif text-3xl leading-[1.25] sm:text-4xl md:text-[2.75rem] text-balance">
+      <h2 className="font-serif text-[1.65rem] leading-[1.3] sm:text-3xl md:text-[2.2rem] md:leading-[1.2] text-balance">
         {title}
       </h2>
     </div>

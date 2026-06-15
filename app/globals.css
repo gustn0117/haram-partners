@@ -19,10 +19,6 @@
   --color-muted: #585560;
   --color-faint: #93909c;
 
-  --shadow-card: 0 1px 2px rgba(26, 22, 14, 0.04),
-    0 10px 30px -18px rgba(26, 22, 14, 0.18);
-  --shadow-card-hover: 0 2px 4px rgba(26, 22, 14, 0.05),
-    0 26px 50px -24px rgba(26, 22, 14, 0.28);
 
   --font-sans: "Pretendard Variable", Pretendard, ui-sans-serif, system-ui,
     sans-serif;
@@ -128,12 +124,9 @@ body::before {
   text-wrap: balance;
 }
 
-/* 흰 배경 위 강조 헤드라인용 짙은 남색 그라데이션 (어두운 히어로에는 사용하지 않음) */
+/* 흰 배경 위 강조 헤드라인용 짙은 남색 (플랫 — 솔리드) */
 .gold-text {
-  background: linear-gradient(100deg, #0b1626, #20406a 50%, #0e1d31);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: var(--color-gold);
 }
 
 /* ---------- Decorative rules & links ---------- */
@@ -262,16 +255,10 @@ body::before {
   box-shadow: 0 0 0 3px rgba(30, 58, 95, 0.15);
 }
 
-/* Card hover lift */
+/* Card hover — flat, border-only emphasis (no shadow) */
 .card-hover {
-  box-shadow: var(--shadow-card);
-  transition: transform 0.55s var(--ease-out-soft),
-    border-color 0.55s var(--ease-out-soft),
-    box-shadow 0.55s var(--ease-out-soft),
-    background-color 0.55s var(--ease-out-soft);
+  transition: border-color 0.4s var(--ease-out-soft);
 }
 .card-hover:hover {
-  transform: translateY(-6px);
   border-color: var(--color-line-strong);
-  box-shadow: var(--shadow-card-hover);
 }

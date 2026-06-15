@@ -11,7 +11,6 @@ import {
   type RentalCategory,
 } from "@/lib/content";
 import { Container, CTAButton } from "@/components/ui";
-import { Atmosphere } from "@/components/Atmosphere";
 import { ArrowLeft, ArrowRight, Plus } from "@/components/icons";
 
 type Params = { slug: string };
@@ -68,9 +67,8 @@ export default async function OfferingDetailPage({
   return (
     <>
       {/* Header */}
-      <section className="relative overflow-hidden border-b border-line pt-32 pb-16 md:pt-40 md:pb-20">
-        <Atmosphere variant="soft" />
-        <Container className="relative z-2">
+      <section className="border-b border-line pt-32 pb-16 md:pt-40 md:pb-20">
+        <Container>
           <Link
             href="/services"
             className="inline-flex items-center gap-2 text-sm text-muted transition-colors hover:text-gold"

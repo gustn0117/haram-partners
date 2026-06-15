@@ -8,7 +8,6 @@ import {
 } from "@/lib/content";
 import { Container, Eyebrow, SectionHeading } from "@/components/ui";
 import { Reveal } from "@/components/Reveal";
-import { Atmosphere } from "@/components/Atmosphere";
 import { Strengths } from "@/components/Strengths";
 import {
   ServiceIcon,
@@ -117,9 +116,8 @@ export default function HomePage() {
       <Strengths background="alt" />
 
       {/* ───────────────── Services ───────────────── */}
-      <section className="relative overflow-hidden border-t border-line py-24 md:py-32">
-        <Atmosphere variant="soft" />
-        <Container className="relative z-2">
+      <section className="border-t border-line py-24 md:py-32">
+        <Container>
           <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
             <SectionHeading
               eyebrow="WHAT WE DO"
@@ -231,7 +229,7 @@ export default function HomePage() {
                       {cat.packages.map((pkg) => (
                         <span
                           key={pkg.id}
-                          className="rounded-sm border border-line px-3 py-1.5 text-xs text-muted transition-colors group-hover:border-line-strong"
+                          className="rounded-sm bg-ink-2 px-3 py-1.5 text-xs text-muted"
                         >
                           {pkg.name}
                         </span>
