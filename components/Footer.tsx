@@ -99,7 +99,9 @@ export function Footer() {
 
         {/* Bottom bar */}
         <div className="flex flex-col gap-3 border-t border-line py-8 text-xs text-faint sm:flex-row sm:items-center sm:justify-between">
-          <p>© 2026 {company.nameKo}. All rights reserved.</p>
+          <p>
+            © 2026 {company.nameKo} · 대표 {company.ceo}. All rights reserved.
+          </p>
           <p className="font-display tracking-[0.2em]">
             {company.taglineEn.toUpperCase()}
           </p>

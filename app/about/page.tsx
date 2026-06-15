@@ -1,12 +1,27 @@
 import type { Metadata } from "next";
-import { company, values, aboutStory, faqs } from "@/lib/content";
+import { company, values, aboutStory, departments, faqs } from "@/lib/content";
 import { Container, Eyebrow, SectionHeading, CTAButton } from "@/components/ui";
 import { Reveal } from "@/components/Reveal";
 import { PageHero } from "@/components/PageHero";
 import { Strengths } from "@/components/Strengths";
 import { Placeholder } from "@/components/Placeholder";
 import { FaqList } from "@/components/FaqList";
-import { Quote } from "@/components/icons";
+import {
+  Quote,
+  IconHub,
+  IconStage,
+  IconFaders,
+  IconProtocol,
+  IconTeam,
+} from "@/components/icons";
+
+const deptIcons = {
+  plan: IconHub,
+  design: IconStage,
+  tech: IconFaders,
+  ops: IconProtocol,
+  care: IconTeam,
+} as const;
 
 export const metadata: Metadata = {
   title: "회사소개",
@@ -47,7 +62,9 @@ export default function AboutPage() {
                 </span>
                 보이지 않는 모든 것을 준비합니다.
               </p>
-              <p className="text-sm text-faint">— {company.nameKo} 운영 철학</p>
+              <p className="text-sm text-faint">
+                — {company.nameKo} 대표 {company.ceo}
+              </p>
             </Reveal>
           </div>
         </Container>
@@ -86,8 +103,64 @@ export default function AboutPage() {
       {/* Strengths */}
       <Strengths background="plain" />
 
-      {/* Values */}
+      {/* Departments / 조직 */}
       <section className="border-b border-line bg-ink-2 py-24 md:py-32">
+        <Container>
+          <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+            <SectionHeading eyebrow="OUR TEAM" title="부서 안내" />
+            <Reveal delay={150} className="max-w-md">
+              <p className="text-sm leading-relaxed text-muted">
+                기획부터 연출, 기술, 현장 운영까지 — 행사에 필요한 모든 조직을
+                당사 안에 두고, 전 스태프가 직속으로 움직입니다. 외주로
+                흩어지지 않는 한 팀의 완성도를 만듭니다.
+              </p>
+            </Reveal>
+          </div>
+          <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {departments.map((dept, i) => {
+              const Icon = deptIcons[dept.icon];
+              return (
+                <Reveal
+                  key={dept.name}
+                  delay={i * 80}
+                  className="flex h-full flex-col gap-6 rounded-2xl border border-line bg-surface p-8"
+                >
+                  <div className="flex items-center justify-between">
+                    <div className="flex h-13 w-13 items-center justify-center rounded-xl border border-line-strong text-gold">
+                      <Icon className="h-6 w-6" />
+                    </div>
+                    <span className="font-display text-3xl text-faint">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <span className="font-display text-xs tracking-wide text-gold">
+                      {dept.tagline}
+                    </span>
+                    <h3 className="font-serif text-xl">{dept.name}</h3>
+                    <p className="text-sm leading-relaxed text-muted">
+                      {dept.description}
+                    </p>
+                  </div>
+                  <ul className="mt-auto flex flex-wrap gap-2 border-t border-line pt-5">
+                    {dept.duties.map((d) => (
+                      <li
+                        key={d}
+                        className="rounded-sm bg-ink-2 px-3 py-1.5 text-xs text-muted"
+                      >
+                        {d}
+                      </li>
+                    ))}
+                  </ul>
+                </Reveal>
+              );
+            })}
+          </div>
+        </Container>
+      </section>
+
+      {/* Values */}
+      <section className="border-b border-line py-24 md:py-32">
         <Container>
           <SectionHeading eyebrow="OUR VALUES" title="우리가 일하는 방식" />
           <div className="mt-14 grid gap-5 md:grid-cols-3">
