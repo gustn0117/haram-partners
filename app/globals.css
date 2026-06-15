@@ -71,6 +71,21 @@ body::before {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
+/* ---------- 한글 워드랩(어절 단위 줄바꿈) ----------
+   :where()로 명시도 0 유지 → 개별 컴포넌트가 언제든 덮어쓸 수 있음.
+   text-wrap 미지원 브라우저는 일반 줄바꿈으로 안전하게 폴백. */
+:where(h1, h2, h3, h4, h5, h6, p, li, a, span, button, label, dt, dd,
+    blockquote, figcaption) {
+  word-break: keep-all; /* 한글 어절 중간 끊김 방지 */
+  overflow-wrap: break-word; /* 긴 단어/URL 오버플로 안전장치 */
+}
+:where(h1, h2, h3, h4, h5, h6) {
+  text-wrap: balance; /* 제목 줄 균형 분배 → 고아 글자 방지 */
+}
+:where(p, li, dd, blockquote) {
+  text-wrap: pretty; /* 본문 마지막 줄 고아 단어 방지 */
+}
+
 /* ---------- Typography helpers ---------- */
 /* Headings: same sans family, heavier weight + tight tracking for presence */
 .font-serif {
