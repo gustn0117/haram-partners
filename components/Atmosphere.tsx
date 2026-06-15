@@ -12,14 +12,14 @@ export function Atmosphere({ variant = "hero" }: { variant?: "hero" | "soft" }) 
         }`}
         style={{
           background:
-            "radial-gradient(circle at center, rgba(184,146,74,0.5), rgba(184,146,74,0) 70%)",
+            "radial-gradient(circle at center, rgba(46,90,147,0.45), rgba(46,90,147,0) 70%)",
         }}
       />
       <div
         className="absolute -left-32 bottom-[-20%] h-[460px] w-[460px] rounded-full opacity-25 blur-[130px]"
         style={{
           background:
-            "radial-gradient(circle at center, rgba(214,196,160,0.55), rgba(214,196,160,0) 70%)",
+            "radial-gradient(circle at center, rgba(111,155,214,0.5), rgba(111,155,214,0) 70%)",
         }}
       />
 

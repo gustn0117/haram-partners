@@ -50,7 +50,7 @@ export default function HomePage() {
                 브랜드의 순간을
               </span>
               <span
-                className="rise block gold-text"
+                className="rise block text-gold-bright"
                 style={{ animationDelay: "360ms" }}
               >
                 설계합니다.

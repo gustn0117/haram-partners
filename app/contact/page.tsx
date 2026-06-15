@@ -112,7 +112,7 @@ function MapArtwork() {
       </g>
       <path
         d="M0 250 L150 250 L150 150 L300 150 L300 220 L480 220"
-        stroke="rgba(154,122,44,0.5)"
+        stroke="rgba(30,58,95,0.55)"
         strokeWidth="3"
         fill="none"
       />
@@ -123,9 +123,9 @@ function MapArtwork() {
         fill="none"
       />
       <g>
-        <circle cx="230" cy="150" r="26" fill="rgba(154,122,44,0.14)" />
-        <circle cx="230" cy="150" r="14" fill="rgba(154,122,44,0.24)" />
-        <circle cx="230" cy="150" r="5" fill="#9a7a2c" />
+        <circle cx="230" cy="150" r="26" fill="rgba(30,58,95,0.14)" />
+        <circle cx="230" cy="150" r="14" fill="rgba(30,58,95,0.26)" />
+        <circle cx="230" cy="150" r="5" fill="#1e3a5f" />
       </g>
     </svg>
   );
