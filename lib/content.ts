@@ -114,7 +114,7 @@ export const strengths: {
     id: "equipment",
     title: "장비 직접 보유",
     description:
-      "음향·조명 장비를 자체 보유해 외주 렌탈 없이 행사에 바로 투입합니다. 장비 수급에 흔들리지 않습니다.",
+      "음향·조명 장비를 자체 보유해 외주 없이 행사에 바로 투입합니다. 장비 수급에 흔들리지 않습니다.",
   },
   {
     id: "operator",
@@ -133,176 +133,6 @@ export const strengths: {
     title: "기획–운영 원스톱",
     description:
       "기획부터 장비, 현장 운영, 부스까지 한 팀이 처음부터 끝까지 책임지고 진행합니다.",
-  },
-];
-
-// ─────────────────────────────────────────────────────────────
-//  장비 렌탈 (플랫폼형 카탈로그)
-// ─────────────────────────────────────────────────────────────
-
-export type RentalPackage = {
-  id: string;
-  name: string;
-  badge?: string;
-  tagline: string;
-  bestFor: string;
-  capacity: string;
-  includes: string[];
-};
-
-export type RentalCategoryId = "sound" | "lighting";
-
-export type RentalCategory = {
-  id: RentalCategoryId;
-  no: string;
-  title: string;
-  tagline: string;
-  description: string;
-  features: string[];
-  packages: RentalPackage[];
-};
-
-export const rentalCategories: RentalCategory[] = [
-  {
-    id: "sound",
-    no: "01",
-    title: "음향 렌탈",
-    tagline: "Sound System Rental",
-    description:
-      "소규모 세미나부터 수천 명 규모의 야외 공연까지. 현장 규모와 목적에 맞는 음향 시스템을 패키지로 제공하고, 검증된 엔지니어가 함께합니다.",
-    features: [
-      "현장 답사 기반 음향 설계",
-      "전문 음향 엔지니어 운영",
-      "셋업·리허설·철수 일괄 진행",
-    ],
-    packages: [
-      {
-        id: "sound-compact",
-        name: "컴팩트 패키지",
-        tagline: "소규모 실내 행사",
-        bestFor: "세미나 · 사내 행사 · 소형 강연",
-        capacity: "~ 80명",
-        includes: [
-          "파워드 스피커 2통",
-          "무선 마이크 2채널",
-          "소형 아날로그 믹서",
-          "스탠드·케이블 일체",
-        ],
-      },
-      {
-        id: "sound-standard",
-        name: "스탠다드 패키지",
-        badge: "인기",
-        tagline: "강연 · 기업 행사",
-        bestFor: "기업 행사 · 발표회 · 중형 강연",
-        capacity: "~ 300명",
-        includes: [
-          "소형 라인어레이 + 서브우퍼 2통",
-          "무선 마이크 4채널",
-          "디지털 믹싱 콘솔",
-          "스테이지 모니터 2통",
-          "음향 오퍼레이터 1인",
-        ],
-      },
-      {
-        id: "sound-conference",
-        name: "컨퍼런스 패키지",
-        tagline: "대형 컨퍼런스 · 시상식",
-        bestFor: "컨퍼런스 · 시상식 · 홀 행사",
-        capacity: "~ 800명",
-        includes: [
-          "라인어레이 + 서브우퍼 4통",
-          "핸드·핀 마이크 8채널",
-          "디지털 콘솔 + 인이어 모니터",
-          "동시통역·중계 음향 연동",
-          "음향 엔지니어 2인",
-        ],
-      },
-      {
-        id: "sound-festival",
-        name: "페스티벌 패키지",
-        tagline: "야외 공연 · 페스티벌",
-        bestFor: "야외 공연 · 페스티벌 · 다중 무대",
-        capacity: "수천 명 규모",
-        includes: [
-          "대형 라인어레이 L/R + 스택 서브",
-          "FOH·모니터 분리 콘솔",
-          "멀티 스테이지 시스템 대응",
-          "무선 통신·인이어 풀세트",
-          "음향감독 + 운영 크루",
-        ],
-      },
-    ],
-  },
-  {
-    id: "lighting",
-    no: "02",
-    title: "조명 렌탈",
-    tagline: "Lighting System Rental",
-    description:
-      "공간의 분위기를 결정하는 빛을 설계합니다. 무대 조명부터 브랜드 행사 연출 조명까지, 패키지 단위로 장비와 디자인, 운영을 함께 제공합니다.",
-    features: [
-      "행사 컨셉 기반 조명 디자인",
-      "트러스·리깅 구조 설계 및 시공",
-      "조명 오퍼레이터·감독 운영",
-    ],
-    packages: [
-      {
-        id: "light-basic",
-        name: "베이직 패키지",
-        tagline: "실내 행사 · 강연",
-        bestFor: "강연 · 사내 행사 · 소형 무대",
-        capacity: "소규모 실내",
-        includes: [
-          "LED 파라이트 8대",
-          "조광 콘솔",
-          "소형 트러스·스탠드",
-          "기본 배선·디밍",
-        ],
-      },
-      {
-        id: "light-stage",
-        name: "스테이지 패키지",
-        badge: "인기",
-        tagline: "공연 · 무대 연출",
-        bestFor: "공연 · 발표회 · 무대 행사",
-        capacity: "중형 무대",
-        includes: [
-          "무빙헤드 8대",
-          "LED 파라이트 16대",
-          "컬러 워시·이펙트 조명",
-          "조명 콘솔 + 트러스 구조물",
-          "조명 오퍼레이터 1인",
-        ],
-      },
-      {
-        id: "light-premium",
-        name: "프리미엄 패키지",
-        tagline: "대형 공연 · 페스티벌",
-        bestFor: "대형 공연 · 페스티벌 · 콘서트",
-        capacity: "대형 무대",
-        includes: [
-          "무빙헤드 24대 이상",
-          "빔·워시 믹스 + 폴로우스팟",
-          "헤이저·특수 효과",
-          "트러스 리깅·구조 설계",
-          "조명감독 + 운영 크루",
-        ],
-      },
-      {
-        id: "light-ambience",
-        name: "앰비언스 패키지",
-        tagline: "브랜드 행사 · 전시",
-        bestFor: "브랜드 행사 · 전시 · VIP 이벤트",
-        capacity: "공간 연출",
-        includes: [
-          "업라이팅·핀스팟",
-          "고보(로고) 프로젝션",
-          "데코·무드 조명",
-          "공간 조명 디자인 설계",
-        ],
-      },
-    ],
   },
 ];
 
@@ -375,15 +205,6 @@ export const serviceMenu: {
       href: `/services/${s.id}`,
       label: s.title,
       tagline: s.tagline,
-    })),
-  },
-  {
-    heading: "장비 렌탈",
-    items: rentalCategories.map((c) => ({
-      id: c.id,
-      href: `/services/${c.id}`,
-      label: c.title,
-      tagline: c.tagline,
     })),
   },
 ];

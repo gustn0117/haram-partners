@@ -1,16 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { services, rentalCategories, processSteps } from "@/lib/content";
+import { services, processSteps } from "@/lib/content";
 import { Container, Eyebrow, SectionHeading, CTAButton } from "@/components/ui";
 import { Reveal } from "@/components/Reveal";
 import { PageHero } from "@/components/PageHero";
 import { Placeholder } from "@/components/Placeholder";
-import { ServiceIcon, IconSound, IconLighting, ArrowUpRight } from "@/components/icons";
+import { ServiceIcon, ArrowUpRight } from "@/components/icons";
 
 export const metadata: Metadata = {
   title: "서비스",
   description:
-    "행사 기획·운영부터 음향·조명 장비 렌탈까지. 하람파트너스의 서비스 영역을 한눈에 확인하세요.",
+    "기업 행사·컨퍼런스, 공연·페스티벌, 브랜드 프로모션, 의전·운영, 포토부스까지. 하람파트너스의 서비스 영역을 한눈에 확인하세요.",
 };
 
 type Card = {
@@ -60,50 +60,24 @@ export default function ServicesPage() {
         eyebrow="OUR SERVICES"
         title={
           <>
-            기획부터 장비까지,
+            기획부터 현장 운영까지,
             <br />
-            <span className="text-white">필요한 모든 것.</span>
+            <span className="text-white">하나의 팀이.</span>
           </>
         }
-        description="행사 기획·운영과 음향·조명 장비 렌탈을 직접 제공합니다. 각 영역을 눌러 자세한 내용을 확인하세요."
+        description="행사의 기획·연출·현장 운영을 직접 책임집니다. 각 영역을 눌러 자세한 내용을 확인하세요."
       />
 
-      {/* 행사 기획 */}
+      {/* 서비스 영역 */}
       <section className="border-b border-line py-20 md:py-28">
         <Container>
-          <SectionHeading eyebrow="EVENT PLANNING" title="행사 기획·운영" />
+          <SectionHeading eyebrow="WHAT WE DO" title="서비스 영역" />
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {services.map((s, i) => (
               <Reveal key={s.id} delay={i * 80}>
                 <OfferingCard
                   card={s}
                   icon={<ServiceIcon id={s.id as never} className="h-5 w-5" />}
-                />
-              </Reveal>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      {/* 장비 렌탈 */}
-      <section className="border-b border-line bg-ink-2 py-20 md:py-28">
-        <Container>
-          <SectionHeading
-            eyebrow="EQUIPMENT RENTAL"
-            title="음향·조명 장비 렌탈"
-          />
-          <div className="mt-12 grid gap-5 sm:grid-cols-2">
-            {rentalCategories.map((c, i) => (
-              <Reveal key={c.id} delay={i * 90}>
-                <OfferingCard
-                  card={c}
-                  icon={
-                    c.id === "sound" ? (
-                      <IconSound className="h-5 w-5" />
-                    ) : (
-                      <IconLighting className="h-5 w-5" />
-                    )
-                  }
                 />
               </Reveal>
             ))}
@@ -148,8 +122,7 @@ export default function ServicesPage() {
               어떤 행사를 준비하고 계신가요?
             </h2>
             <p className="max-w-md text-base leading-relaxed text-muted">
-              기획·운영부터 장비 렌탈까지, 필요한 구성을 알려주시면 맞춤 제안과
-              견적을 보내드립니다.
+              행사의 목적과 규모를 알려주시면 맞춤 제안과 견적을 보내드립니다.
             </p>
             <CTAButton href="/contact">상담·견적 신청하기</CTAButton>
           </Reveal>

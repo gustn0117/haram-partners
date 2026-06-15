@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { company, navLinks, services, rentalCategories } from "@/lib/content";
+import { company, navLinks, services } from "@/lib/content";
 import { Monogram, Mail, Phone, MapPin, Instagram, ArrowUpRight } from "@/components/icons";
 
 export function Footer() {
@@ -64,16 +64,6 @@ export function Footer() {
                     className="link-underline hover:text-paper"
                   >
                     {s.title}
-                  </Link>
-                </li>
-              ))}
-              {rentalCategories.map((c) => (
-                <li key={c.id}>
-                  <Link
-                    href={`/services/${c.id}`}
-                    className="link-underline hover:text-paper"
-                  >
-                    {c.title}
                   </Link>
                 </li>
               ))}

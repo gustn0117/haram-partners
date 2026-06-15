@@ -1,16 +1,10 @@
 import Link from "next/link";
-import { services, rentalCategories, processSteps } from "@/lib/content";
+import { services, processSteps } from "@/lib/content";
 import { Container, Eyebrow, SectionHeading } from "@/components/ui";
 import { Reveal } from "@/components/Reveal";
 import { Strengths } from "@/components/Strengths";
 import { Placeholder } from "@/components/Placeholder";
-import {
-  ServiceIcon,
-  ArrowUpRight,
-  ArrowRight,
-  IconSound,
-  IconLighting,
-} from "@/components/icons";
+import { ServiceIcon, ArrowUpRight, ArrowRight } from "@/components/icons";
 
 export default function HomePage() {
   return (
@@ -159,70 +153,6 @@ export default function HomePage() {
                 </Link>
               </Reveal>
             ))}
-          </div>
-        </Container>
-      </section>
-
-      {/* ───────────────── Equipment rental ───────────────── */}
-      <section className="border-t border-line bg-ink-2 py-24 md:py-32">
-        <Container>
-          <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-            <SectionHeading
-              eyebrow="EQUIPMENT RENTAL"
-              title={
-                <>
-                  음향·조명 장비도
-                  <br />
-                  패키지로 빌려보세요.
-                </>
-              }
-            />
-            <Reveal delay={150} className="max-w-sm">
-              <p className="text-sm leading-relaxed text-muted">
-                자체 보유 장비로 구성한 음향·조명 렌탈 패키지. 장비부터 셋업,
-                자사 오퍼레이터 운영까지 외주 없이 한 번에 제공합니다.
-              </p>
-            </Reveal>
-          </div>
-
-          <div className="mt-14 grid gap-5 md:grid-cols-2">
-            {rentalCategories.map((cat, i) => {
-              const Icon = cat.id === "sound" ? IconSound : IconLighting;
-              return (
-                <Reveal key={cat.id} delay={i * 110}>
-                  <Link
-                    href={`/services/${cat.id}`}
-                    className="card-hover group flex h-full flex-col gap-7 rounded-2xl border border-line bg-surface p-8 md:p-10"
-                  >
-                    <div className="flex items-center justify-between">
-                      <div className="flex h-14 w-14 items-center justify-center rounded-xl border border-line-strong text-gold transition-colors duration-500 group-hover:border-gold">
-                        <Icon className="h-7 w-7" />
-                      </div>
-                      <ArrowUpRight className="h-5 w-5 text-faint transition-all duration-500 group-hover:text-gold group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                    </div>
-                    <div className="flex flex-col gap-2.5">
-                      <span className="font-display text-xs tracking-wide text-gold">
-                        {cat.tagline}
-                      </span>
-                      <h3 className="font-serif text-2xl">{cat.title}</h3>
-                      <p className="text-sm leading-relaxed text-muted">
-                        {cat.description}
-                      </p>
-                    </div>
-                    <div className="mt-auto flex flex-wrap gap-2 border-t border-line pt-6">
-                      {cat.packages.map((pkg) => (
-                        <span
-                          key={pkg.id}
-                          className="rounded-sm bg-ink-2 px-3 py-1.5 text-xs text-muted"
-                        >
-                          {pkg.name}
-                        </span>
-                      ))}
-                    </div>
-                  </Link>
-                </Reveal>
-              );
-            })}
           </div>
         </Container>
       </section>

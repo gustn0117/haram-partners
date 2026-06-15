@@ -10,13 +10,9 @@ import {
   Close,
   ArrowUpRight,
   ServiceIcon,
-  IconSound,
-  IconLighting,
 } from "@/components/icons";
 
 function menuIcon(id: string) {
-  if (id === "sound") return <IconSound className="h-5 w-5" />;
-  if (id === "lighting") return <IconLighting className="h-5 w-5" />;
   return <ServiceIcon id={id as never} className="h-5 w-5" />;
 }
 
