@@ -3,18 +3,8 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { company, navLinks, serviceMenu } from "@/lib/content";
-import {
-  Monogram,
-  Menu,
-  Close,
-  ArrowUpRight,
-  ServiceIcon,
-} from "@/components/icons";
-
-function menuIcon(id: string) {
-  return <ServiceIcon id={id as never} className="h-5 w-5" />;
-}
+import { company, navLinks, dropdownMenus } from "@/lib/content";
+import { Monogram, Menu, Close, ArrowUpRight } from "@/components/icons";
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -94,53 +84,25 @@ export function Header() {
                   : "text-muted hover:text-paper"
             }`;
 
-            if (link.href === "/services") {
+            const menu = dropdownMenus[link.href];
+            if (menu) {
               return (
                 <div key={link.href} className="group relative">
-                  <Link
-                    href={link.href}
-                    className={`${linkClass} inline-flex items-center gap-1`}
-                  >
+                  <Link href={link.href} className={linkClass}>
                     {link.label}
                   </Link>
-                  {/* Hover dropdown */}
+                  {/* Hover dropdown — 아이콘 없이 1열 목록 */}
                   <div className="invisible absolute left-1/2 top-full z-50 -translate-x-1/2 pt-5 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
-                    <div className="w-[500px] rounded-2xl border border-line bg-ink/95 p-5 shadow-[0_30px_60px_-30px_rgba(17,24,39,0.35)] backdrop-blur-xl">
-                      {serviceMenu.map((groupItem) => (
-                        <div key={groupItem.heading} className="flex flex-col">
-                          <span className="label px-3 pb-2 pt-1">
-                            {groupItem.heading}
-                          </span>
-                          <div className="grid grid-cols-2 gap-x-3">
-                            {groupItem.items.map((it) => (
-                              <Link
-                                key={it.id}
-                                href={it.href}
-                                className="flex items-center gap-3 rounded-lg px-3 py-2.5 transition-colors hover:bg-surface-2"
-                              >
-                                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-line text-gold">
-                                  {menuIcon(it.id)}
-                                </span>
-                                <span className="flex flex-col leading-tight">
-                                  <span className="text-sm text-paper">
-                                    {it.label}
-                                  </span>
-                                  <span className="font-display text-[0.68rem] tracking-wide text-faint">
-                                    {it.tagline}
-                                  </span>
-                                </span>
-                              </Link>
-                            ))}
-                          </div>
-                        </div>
+                    <div className="w-56 rounded-2xl border border-line bg-ink/95 p-2 shadow-[0_30px_60px_-30px_rgba(17,24,39,0.35)] backdrop-blur-xl">
+                      {menu.map((it) => (
+                        <Link
+                          key={it.href}
+                          href={it.href}
+                          className="block rounded-lg px-4 py-2.5 text-sm text-paper transition-colors hover:bg-surface-2 hover:text-gold"
+                        >
+                          {it.label}
+                        </Link>
                       ))}
-                      <Link
-                        href="/services"
-                        className="mt-3 flex items-center justify-center gap-2 border-t border-line pt-3 text-sm text-gold"
-                      >
-                        서비스 전체 보기
-                        <ArrowUpRight className="h-4 w-4" />
-                      </Link>
                     </div>
                   </div>
                 </div>
@@ -186,40 +148,35 @@ export function Header() {
         }`}
       >
         <nav className="flex flex-col gap-1 px-6 py-6">
-          {navLinks.map((link) => (
-            <div key={link.href}>
-              <Link
-                href={link.href}
-                onClick={() => setOpen(false)}
-                className="flex items-center justify-between border-b border-line py-4 font-serif text-lg text-paper"
-              >
-                {link.label}
-                <ArrowUpRight className="h-5 w-5 text-gold" />
-              </Link>
-              {link.href === "/services" ? (
-                <div className="flex flex-col border-b border-line py-2">
-                  {serviceMenu.map((groupItem) => (
-                    <div key={groupItem.heading} className="flex flex-col">
-                      <span className="label px-1 pb-1 pt-3">
-                        {groupItem.heading}
-                      </span>
-                      {groupItem.items.map((it) => (
-                        <Link
-                          key={it.id}
-                          href={it.href}
-                          onClick={() => setOpen(false)}
-                          className="flex items-center gap-3 py-2.5 pl-1 text-sm text-muted"
-                        >
-                          <span className="text-gold">{menuIcon(it.id)}</span>
-                          {it.label}
-                        </Link>
-                      ))}
-                    </div>
-                  ))}
-                </div>
-              ) : null}
-            </div>
-          ))}
+          {navLinks.map((link) => {
+            const menu = dropdownMenus[link.href];
+            return (
+              <div key={link.href}>
+                <Link
+                  href={link.href}
+                  onClick={() => setOpen(false)}
+                  className="flex items-center justify-between border-b border-line py-4 font-serif text-lg text-paper"
+                >
+                  {link.label}
+                  <ArrowUpRight className="h-5 w-5 text-gold" />
+                </Link>
+                {menu ? (
+                  <div className="flex flex-col border-b border-line py-2">
+                    {menu.map((it) => (
+                      <Link
+                        key={it.href}
+                        href={it.href}
+                        onClick={() => setOpen(false)}
+                        className="py-2.5 pl-1 text-sm text-muted"
+                      >
+                        {it.label}
+                      </Link>
+                    ))}
+                  </div>
+                ) : null}
+              </div>
+            );
+          })}
           <Link
             href="/contact"
             onClick={() => setOpen(false)}

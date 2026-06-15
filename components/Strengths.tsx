@@ -3,10 +3,17 @@ import { Container, SectionHeading } from "@/components/ui";
 import { Reveal } from "@/components/Reveal";
 import { StrengthIcon } from "@/components/icons";
 
-export function Strengths({ background = "alt" }: { background?: "alt" | "plain" }) {
+export function Strengths({
+  background = "alt",
+  id,
+}: {
+  background?: "alt" | "plain";
+  id?: string;
+}) {
   return (
     <section
-      className={`border-t border-line py-24 md:py-32 ${
+      id={id}
+      className={`scroll-mt-20 border-t border-line py-24 md:py-32 ${
         background === "alt" ? "bg-ink-2" : ""
       }`}
     >

@@ -6,22 +6,7 @@ import { PageHero } from "@/components/PageHero";
 import { Strengths } from "@/components/Strengths";
 import { Placeholder } from "@/components/Placeholder";
 import { FaqList } from "@/components/FaqList";
-import {
-  Quote,
-  IconHub,
-  IconStage,
-  IconFaders,
-  IconProtocol,
-  IconTeam,
-} from "@/components/icons";
-
-const deptIcons = {
-  plan: IconHub,
-  design: IconStage,
-  tech: IconFaders,
-  ops: IconProtocol,
-  care: IconTeam,
-} as const;
+import { Quote } from "@/components/icons";
 
 export const metadata: Metadata = {
   title: "회사소개",
@@ -78,7 +63,10 @@ export default function AboutPage() {
       </section>
 
       {/* Story / 운영 철학 */}
-      <section className="border-b border-line bg-ink-2 py-24 md:py-32">
+      <section
+        id="philosophy"
+        className="scroll-mt-20 border-b border-line bg-ink-2 py-24 md:py-32"
+      >
         <Container>
           <SectionHeading eyebrow="OUR PHILOSOPHY" title="우리가 일을 대하는 태도" />
           <div className="mt-14 flex flex-col">
@@ -101,13 +89,16 @@ export default function AboutPage() {
       </section>
 
       {/* Strengths */}
-      <Strengths background="plain" />
+      <Strengths background="plain" id="strengths" />
 
-      {/* Departments / 조직 */}
-      <section className="border-b border-line bg-ink-2 py-24 md:py-32">
+      {/* Departments / 조직도 */}
+      <section
+        id="team"
+        className="scroll-mt-20 border-b border-line bg-ink-2 py-24 md:py-32"
+      >
         <Container>
           <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-            <SectionHeading eyebrow="OUR TEAM" title="부서 안내" />
+            <SectionHeading eyebrow="OUR TEAM" title="조직도" />
             <Reveal delay={150} className="max-w-md">
               <p className="text-sm leading-relaxed text-muted">
                 기획부터 연출, 기술, 현장 운영까지 — 행사에 필요한 모든 조직을
@@ -116,51 +107,66 @@ export default function AboutPage() {
               </p>
             </Reveal>
           </div>
-          <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {departments.map((dept, i) => {
-              const Icon = deptIcons[dept.icon];
-              return (
-                <Reveal
-                  key={dept.name}
-                  delay={i * 80}
-                  className="flex h-full flex-col gap-6 rounded-2xl border border-line bg-surface p-8"
-                >
-                  <div className="flex items-center justify-between">
-                    <div className="flex h-13 w-13 items-center justify-center rounded-xl border border-line-strong text-gold">
-                      <Icon className="h-6 w-6" />
+
+          {/* Org chart */}
+          <div className="mt-16">
+            {/* CEO */}
+            <Reveal className="flex flex-col items-center">
+              <div className="w-full max-w-xs rounded-2xl border border-line-strong bg-surface px-6 py-5 text-center">
+                <span className="font-display text-xs tracking-wide text-gold">
+                  CEO
+                </span>
+                <h3 className="mt-1 font-serif text-xl">{company.ceo}</h3>
+                <p className="mt-1 text-xs text-muted">대표이사</p>
+              </div>
+              <span className="h-12 w-px bg-line-strong" />
+            </Reveal>
+
+            {/* Departments */}
+            <div className="relative">
+              <span className="absolute top-0 left-[10%] right-[10%] hidden h-px bg-line-strong lg:block" />
+              <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-5 lg:gap-4">
+                {departments.map((dept, i) => (
+                  <Reveal
+                    key={dept.name}
+                    delay={i * 70}
+                    className="flex flex-col items-center"
+                  >
+                    <span className="hidden h-12 w-px bg-line-strong lg:block" />
+                    <div className="flex h-full w-full flex-col gap-4 rounded-2xl border border-line bg-surface p-6">
+                      <div className="flex flex-col gap-1">
+                        <span className="font-display text-xs tracking-wide text-gold">
+                          {dept.tagline}
+                        </span>
+                        <h4 className="font-serif text-lg leading-snug">
+                          {dept.name}
+                        </h4>
+                      </div>
+                      <ul className="flex flex-col gap-2 border-t border-line pt-4">
+                        {dept.duties.map((d) => (
+                          <li
+                            key={d}
+                            className="flex items-start gap-2 text-xs leading-relaxed text-muted"
+                          >
+                            <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-gold" />
+                            {d}
+                          </li>
+                        ))}
+                      </ul>
                     </div>
-                    <span className="font-display text-3xl text-faint">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                  </div>
-                  <div className="flex flex-col gap-2">
-                    <span className="font-display text-xs tracking-wide text-gold">
-                      {dept.tagline}
-                    </span>
-                    <h3 className="font-serif text-xl">{dept.name}</h3>
-                    <p className="text-sm leading-relaxed text-muted">
-                      {dept.description}
-                    </p>
-                  </div>
-                  <ul className="mt-auto flex flex-wrap gap-2 border-t border-line pt-5">
-                    {dept.duties.map((d) => (
-                      <li
-                        key={d}
-                        className="rounded-sm bg-ink-2 px-3 py-1.5 text-xs text-muted"
-                      >
-                        {d}
-                      </li>
-                    ))}
-                  </ul>
-                </Reveal>
-              );
-            })}
+                  </Reveal>
+                ))}
+              </div>
+            </div>
           </div>
         </Container>
       </section>
 
       {/* Values */}
-      <section className="border-b border-line py-24 md:py-32">
+      <section
+        id="values"
+        className="scroll-mt-20 border-b border-line py-24 md:py-32"
+      >
         <Container>
           <SectionHeading eyebrow="OUR VALUES" title="우리가 일하는 방식" />
           <div className="mt-14 grid gap-5 md:grid-cols-3">
@@ -184,7 +190,10 @@ export default function AboutPage() {
       </section>
 
       {/* FAQ */}
-      <section className="border-b border-line py-24 md:py-32">
+      <section
+        id="faq"
+        className="scroll-mt-20 border-b border-line py-24 md:py-32"
+      >
         <Container>
           <SectionHeading eyebrow="FAQ" title="자주 묻는 질문" />
           <div className="mt-10">

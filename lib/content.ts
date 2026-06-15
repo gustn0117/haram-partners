@@ -469,20 +469,23 @@ export const navLinks = [
 ];
 
 // 헤더 "서비스" 호버 시 펼쳐지는 하위 메뉴 (영역별 페이지)
-export const serviceMenu: {
-  heading: string;
-  items: { id: string; href: string; label: string; tagline: string }[];
-}[] = [
-  {
-    heading: "행사 기획",
-    items: services.map((s) => ({
-      id: s.id,
-      href: `/services/${s.id}`,
-      label: s.title,
-      tagline: s.tagline,
-    })),
-  },
+// 회사소개 하위 섹션 (앵커)
+export const aboutMenu: { href: string; label: string }[] = [
+  { href: "/about#philosophy", label: "운영 철학" },
+  { href: "/about#strengths", label: "핵심 강점" },
+  { href: "/about#team", label: "조직도" },
+  { href: "/about#values", label: "우리가 일하는 방식" },
+  { href: "/about#faq", label: "자주 묻는 질문" },
 ];
+
+// 헤더 호버 드롭다운 (아이콘 없이 1열 목록)
+export const dropdownMenus: Record<string, { href: string; label: string }[]> = {
+  "/about": aboutMenu,
+  "/services": services.map((s) => ({
+    href: `/services/${s.id}`,
+    label: s.title,
+  })),
+};
 
 // ─────────────────────────────────────────────────────────────
 //  이미지 (Unsplash CDN) — 실제 촬영본 확보 시 URL만 교체
