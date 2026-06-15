@@ -302,76 +302,45 @@ export const values: { title: string; description: string }[] = [
 ];
 
 // 조직 / 부서
-export type DepartmentIcon = "plan" | "design" | "tech" | "ops" | "care";
 export const departments: {
   name: string;
   tagline: string;
-  icon: DepartmentIcon;
   description: string;
   duties: string[];
 }[] = [
   {
-    name: "기획본부",
-    tagline: "Planning",
-    icon: "plan",
+    name: "기획·연출본부",
+    tagline: "Planning & Creative",
     description:
-      "행사의 목적과 메시지를 정의하고, 전체 시나리오와 큐시트를 설계하는 핵심 조직입니다. 모든 프로젝트가 이곳에서 시작됩니다.",
+      "행사의 목적과 메시지를 정의하고, 시나리오부터 무대·공간·영상 연출까지 설계하는 핵심 조직입니다. 모든 프로젝트가 이곳에서 시작됩니다.",
     duties: [
-      "행사 기획·전략 수립",
-      "프로그램·큐시트 구성",
-      "클라이언트 커뮤니케이션",
-      "예산·일정 총괄",
-    ],
-  },
-  {
-    name: "연출·디자인팀",
-    tagline: "Creative & Design",
-    icon: "design",
-    description:
-      "무대와 공간, 그래픽과 영상을 하나의 톤으로 통합해 행사의 인상을 완성합니다.",
-    duties: [
+      "행사 기획·전략·큐시트",
       "무대·공간 디자인",
       "그래픽·영상 제작",
       "연출 디렉션",
-      "컨셉 비주얼 개발",
     ],
   },
   {
-    name: "음향·조명 기술팀",
-    tagline: "Technical",
-    icon: "tech",
+    name: "기술·운영본부",
+    tagline: "Technical & Operations",
     description:
-      "자체 보유 장비를 직접 운용하는 전문 기술 조직입니다. 셋업부터 본 행사 운영까지 자사 오퍼레이터가 책임집니다.",
+      "자체 보유 장비를 직접 운용하고 현장의 모든 변수를 통제하는 조직입니다. 셋업부터 본 행사, 안전 관리까지 자사 스태프가 책임집니다.",
     duties: [
-      "음향 시스템 운용",
-      "조명 디자인·오퍼레이팅",
-      "무대·트러스 시공",
-      "장비 관리·점검",
-    ],
-  },
-  {
-    name: "현장운영팀",
-    tagline: "Field Operations",
-    icon: "ops",
-    description:
-      "의전·등록·인력·안전까지 현장의 모든 변수를 통제하는 운영 조직입니다.",
-    duties: [
-      "VIP 의전·영접",
-      "등록·안내 운영",
+      "음향·조명 운용·시공",
+      "의전·등록·안내",
       "운영 인력 편성·교육",
       "현장 안전·리스크 관리",
     ],
   },
   {
-    name: "고객·경영지원팀",
+    name: "고객·경영지원본부",
     tagline: "Account & Support",
-    icon: "care",
     description:
-      "문의 접수부터 상담·제안·계약, 사후 관리까지 클라이언트와의 모든 접점을 담당합니다.",
+      "문의 접수부터 상담·제안·계약, 사후 관리까지 클라이언트와의 모든 접점을 담당하고 회사 운영을 지원합니다.",
     duties: [
-      "문의·상담 응대",
-      "제안·견적 관리",
-      "계약·협력사 관리",
+      "문의·상담·제안",
+      "견적·계약 관리",
+      "협력사 관리",
       "사후 피드백·정산",
     ],
   },

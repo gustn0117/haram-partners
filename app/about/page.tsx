@@ -124,15 +124,15 @@ export default function AboutPage() {
 
             {/* Departments */}
             <div className="relative">
-              <span className="absolute top-0 left-[10%] right-[10%] hidden h-px bg-line-strong lg:block" />
-              <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-5 lg:gap-4">
+              <span className="absolute top-0 left-[16.66%] right-[16.66%] hidden h-px bg-line-strong sm:block" />
+              <div className="grid grid-cols-1 gap-5 sm:grid-cols-3">
                 {departments.map((dept, i) => (
                   <Reveal
                     key={dept.name}
                     delay={i * 70}
                     className="flex flex-col items-center"
                   >
-                    <span className="hidden h-12 w-px bg-line-strong lg:block" />
+                    <span className="hidden h-12 w-px bg-line-strong sm:block" />
                     <div className="flex h-full w-full flex-col gap-4 rounded-2xl border border-line bg-surface p-6">
                       <div className="flex flex-col gap-1">
                         <span className="font-display text-xs tracking-wide text-gold">
