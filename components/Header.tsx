@@ -105,7 +105,7 @@ export function Header() {
                   </Link>
                   {/* Hover dropdown */}
                   <div className="invisible absolute left-1/2 top-full z-50 -translate-x-1/2 pt-5 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
-                    <div className="w-[500px] rounded-2xl border border-line bg-ink/95 p-5 shadow-[0_30px_60px_-30px_rgba(26,22,14,0.35)] backdrop-blur-xl">
+                    <div className="w-[500px] rounded-2xl border border-line bg-ink/95 p-5 shadow-[0_30px_60px_-30px_rgba(17,24,39,0.35)] backdrop-blur-xl">
                       {serviceMenu.map((groupItem) => (
                         <div key={groupItem.heading} className="flex flex-col">
                           <span className="label px-3 pb-2 pt-1">

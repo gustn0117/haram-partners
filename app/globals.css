@@ -2,22 +2,22 @@
 @import "tailwindcss";
 
 @theme {
-  /* Light premium palette — warm white canvas, near-black ink, antique gold */
+  /* Light palette — neutral white/gray canvas, near-black ink, navy accent */
   --color-ink: #ffffff;
-  --color-ink-2: #f6f3ec;
+  --color-ink-2: #f4f5f7;
   --color-surface: #ffffff;
-  --color-surface-2: #f1ede3;
-  --color-line: rgba(26, 22, 14, 0.1);
-  --color-line-strong: rgba(26, 22, 14, 0.2);
+  --color-surface-2: #eceef1;
+  --color-line: rgba(17, 24, 39, 0.1);
+  --color-line-strong: rgba(17, 24, 39, 0.18);
 
   /* 포인트색: 검정에 가까운 아주 짙은 남색 — 밝은 배경에서만 사용 (이름은 호환을 위해 gold 유지) */
   --color-gold: #0d1b2e; /* 메인 — 흰 배경 위 텍스트·버튼 채움 */
   --color-gold-bright: #1e3a5f; /* 보조 남색 (밝은 배경용) */
   --color-gold-deep: #213b5e; /* 버튼 호버 (살짝 밝게 떠 보이도록) */
 
-  --color-paper: #1b1b1f;
-  --color-muted: #585560;
-  --color-faint: #93909c;
+  --color-paper: #181a1d;
+  --color-muted: #565b64;
+  --color-faint: #99a0a8;
 
 
   --font-sans: "Pretendard Variable", Pretendard, ui-sans-serif, system-ui,
@@ -236,7 +236,7 @@ body::before {
 .form-input {
   width: 100%;
   border: 1px solid var(--color-line);
-  background: rgba(26, 22, 14, 0.02);
+  background: rgba(17, 24, 39, 0.02);
   border-radius: 2px;
   padding: 0.85rem 1rem;
   font-size: 0.95rem;

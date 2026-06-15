@@ -138,8 +138,8 @@ export default function ContactPage() {
 function MapArtwork() {
   return (
     <svg viewBox="0 0 480 360" className="h-full w-full" aria-hidden>
-      <rect width="480" height="360" fill="#f3eee2" />
-      <g stroke="rgba(26,22,14,0.06)" strokeWidth="1">
+      <rect width="480" height="360" fill="#eceef1" />
+      <g stroke="rgba(17,24,39,0.06)" strokeWidth="1">
         {Array.from({ length: 9 }).map((_, i) => (
           <line key={`h${i}`} x1="0" y1={i * 45} x2="480" y2={i * 45} />
         ))}
@@ -155,7 +155,7 @@ function MapArtwork() {
       />
       <path
         d="M70 0 L70 130 L230 130 L230 360"
-        stroke="rgba(26,22,14,0.12)"
+        stroke="rgba(17,24,39,0.12)"
         strokeWidth="2"
         fill="none"
       />

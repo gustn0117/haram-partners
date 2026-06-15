@@ -11,7 +11,7 @@ export function Placeholder({
 }) {
   const dark = tone === "dark";
   const line = dark ? "rgba(255,255,255,0.10)" : "rgba(13,27,46,0.14)";
-  const bg = dark ? "#0d1b2e" : "#f1ede3";
+  const bg = dark ? "#0d1b2e" : "#eceef1";
 
   return (
     <div
