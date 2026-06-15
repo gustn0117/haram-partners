@@ -11,7 +11,7 @@ export const company = {
   taglineEn: "We design the moments that define your brand",
   intro:
     "기획부터 연출, 현장 운영까지. 음향·조명 장비를 직접 보유하고 전 스태프가 당사 직속으로 움직이는, 기획부터 운영까지 책임지는 행사 전문 기업입니다.",
-  phone: "010-1234-5678",
+  phone: "010-7930-1332",
   address: "경기도 수원시 영통구",
   hours: "평일 09:30 — 18:30 (주말·공휴일 휴무)",
 };
