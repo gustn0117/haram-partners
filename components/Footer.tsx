@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { company, navLinks, services } from "@/lib/content";
-import { Monogram, Mail, Phone, MapPin, Instagram, ArrowUpRight } from "@/components/icons";
+import { Monogram, Phone, MapPin, ArrowUpRight } from "@/components/icons";
 
 export function Footer() {
   return (
@@ -82,16 +82,6 @@ export function Footer() {
                 <a href={`tel:${company.phone.replace(/-/g, "")}`} className="hover:text-paper">
                   {company.phone}
                 </a>
-              </li>
-              <li className="flex items-center gap-3">
-                <Mail className="h-4 w-4 shrink-0 text-gold" />
-                <a href={`mailto:${company.email}`} className="hover:text-paper">
-                  {company.email}
-                </a>
-              </li>
-              <li className="flex items-center gap-3">
-                <Instagram className="h-4 w-4 shrink-0 text-gold" />
-                <span>{company.instagram}</span>
               </li>
             </ul>
           </div>

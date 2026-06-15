@@ -12,7 +12,7 @@ export function ContactForm() {
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    // 데모용 — 실제 전송은 백엔드/이메일 연동 시 이 부분만 교체합니다.
+    // 데모용 — 실제 전송은 백엔드 연동 시 이 부분만 교체합니다.
     setSent(true);
   }
 
@@ -75,16 +75,6 @@ export function ContactForm() {
             name="phone"
             required
             placeholder="010-0000-0000"
-            className="form-input"
-          />
-        </Field>
-        <Field label="이메일" htmlFor="email">
-          <input
-            id="email"
-            name="email"
-            type="email"
-            required
-            placeholder="name@company.com"
             className="form-input"
           />
         </Field>

@@ -11,11 +11,9 @@ export const company = {
   taglineEn: "We design the moments that define your brand",
   intro:
     "기획부터 연출, 현장 운영까지. 음향·조명 장비를 직접 보유하고 전 스태프가 당사 직속으로 움직이는, 기획부터 운영까지 책임지는 행사 전문 기업입니다.",
-  email: "contact@haram-partners.kr",
-  phone: "02-6952-3140",
-  address: "서울특별시 강남구 테헤란로 124, 8층",
+  phone: "010-1234-5678",
+  address: "경기도 수원시 영통구",
   hours: "평일 09:30 — 18:30 (주말·공휴일 휴무)",
-  instagram: "@haram.partners",
 };
 
 export type Service = {
@@ -369,7 +367,7 @@ export const contactFlow: { no: string; title: string; description: string }[] =
       no: "01",
       title: "문의 접수",
       description:
-        "전화·이메일·문의 폼으로 행사에 대한 간단한 정보를 남겨주세요. 아직 구체적이지 않아도 괜찮습니다.",
+        "전화나 문의 폼으로 행사에 대한 간단한 정보를 남겨주세요. 아직 구체적이지 않아도 괜찮습니다.",
     },
     {
       no: "02",

@@ -5,7 +5,7 @@ import { Reveal } from "@/components/Reveal";
 import { PageHero } from "@/components/PageHero";
 import { ContactForm } from "@/components/ContactForm";
 import { FaqList } from "@/components/FaqList";
-import { MapPin, Phone, Mail, Clock, Instagram } from "@/components/icons";
+import { MapPin, Phone, Clock } from "@/components/icons";
 
 export const metadata: Metadata = {
   title: "문의",
@@ -20,15 +20,8 @@ const channels = [
     value: company.phone,
     href: `tel:${company.phone.replace(/-/g, "")}`,
   },
-  {
-    icon: Mail,
-    label: "이메일",
-    value: company.email,
-    href: `mailto:${company.email}`,
-  },
   { icon: MapPin, label: "오시는 길", value: company.address },
   { icon: Clock, label: "운영 시간", value: company.hours },
-  { icon: Instagram, label: "인스타그램", value: company.instagram },
 ];
 
 export default function ContactPage() {
@@ -76,15 +69,6 @@ export default function ContactPage() {
                   );
                 })}
               </div>
-
-              {/* Stylized map */}
-              <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-line bg-ink-2">
-                <MapArtwork />
-                <div className="absolute bottom-5 left-5 rounded-lg border border-line-strong bg-ink/70 px-4 py-2.5 text-sm backdrop-blur">
-                  <span className="text-gold">{company.nameKo}</span>
-                  <span className="ml-2 text-muted">{company.address}</span>
-                </div>
-              </div>
             </Reveal>
 
             {/* Form column */}
@@ -131,39 +115,5 @@ export default function ContactPage() {
         </Container>
       </section>
     </>
-  );
-}
-
-/* Stylized abstract map — decorative SVG stand-in for an embedded map. */
-function MapArtwork() {
-  return (
-    <svg viewBox="0 0 480 360" className="h-full w-full" aria-hidden>
-      <rect width="480" height="360" fill="#eceef1" />
-      <g stroke="rgba(17,24,39,0.06)" strokeWidth="1">
-        {Array.from({ length: 9 }).map((_, i) => (
-          <line key={`h${i}`} x1="0" y1={i * 45} x2="480" y2={i * 45} />
-        ))}
-        {Array.from({ length: 11 }).map((_, i) => (
-          <line key={`v${i}`} x1={i * 48} y1="0" x2={i * 48} y2="360" />
-        ))}
-      </g>
-      <path
-        d="M0 250 L150 250 L150 150 L300 150 L300 220 L480 220"
-        stroke="rgba(30,58,95,0.55)"
-        strokeWidth="3"
-        fill="none"
-      />
-      <path
-        d="M70 0 L70 130 L230 130 L230 360"
-        stroke="rgba(17,24,39,0.12)"
-        strokeWidth="2"
-        fill="none"
-      />
-      <g>
-        <circle cx="230" cy="150" r="26" fill="rgba(30,58,95,0.14)" />
-        <circle cx="230" cy="150" r="14" fill="rgba(30,58,95,0.26)" />
-        <circle cx="230" cy="150" r="5" fill="#1e3a5f" />
-      </g>
-    </svg>
   );
 }
