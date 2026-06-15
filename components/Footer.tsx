@@ -60,7 +60,7 @@ export function Footer() {
               {services.map((s) => (
                 <li key={s.id}>
                   <Link
-                    href={`/services#${s.id}`}
+                    href={`/services/${s.id}`}
                     className="link-underline hover:text-paper"
                   >
                     {s.title}
@@ -70,7 +70,7 @@ export function Footer() {
               {rentalCategories.map((c) => (
                 <li key={c.id}>
                   <Link
-                    href={`/services#${c.id}`}
+                    href={`/services/${c.id}`}
                     className="link-underline hover:text-paper"
                   >
                     {c.title}

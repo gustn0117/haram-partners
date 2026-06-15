@@ -1,5 +1,6 @@
+/* eslint-disable @next/next/no-img-element */
 import type { Metadata } from "next";
-import { company, stats, values, history } from "@/lib/content";
+import { company, stats, values, history, aboutImage } from "@/lib/content";
 import { Container, Eyebrow, SectionHeading, CTAButton } from "@/components/ui";
 import { Reveal } from "@/components/Reveal";
 import { CountUp } from "@/components/CountUp";
@@ -50,6 +51,18 @@ export default function AboutPage() {
             </Reveal>
           </div>
         </Container>
+      </section>
+
+      {/* Image band */}
+      <section className="border-b border-line">
+        <div className="relative h-[40vh] min-h-72 w-full overflow-hidden md:h-[52vh]">
+          <img
+            src={aboutImage}
+            alt="공연 무대 조명"
+            className="h-full w-full object-cover"
+          />
+          <div className="absolute inset-0 bg-linear-to-t from-ink/30 to-transparent" />
+        </div>
       </section>
 
       {/* Strengths */}

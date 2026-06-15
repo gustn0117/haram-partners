@@ -1,8 +1,8 @@
 "use client";
+/* eslint-disable @next/next/no-img-element */
 
 import { useState } from "react";
-import { projects, projectCategories } from "@/lib/content";
-import { ProjectArtwork } from "@/components/ProjectArtwork";
+import { projects, projectCategories, projectImages } from "@/lib/content";
 import { ArrowUpRight } from "@/components/icons";
 
 export function PortfolioGrid() {
@@ -37,17 +37,22 @@ export function PortfolioGrid() {
 
       {/* Grid */}
       <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {filtered.map((project, i) => (
+        {filtered.map((project) => (
           <article
             key={project.id}
-            className="card-hover group flex flex-col overflow-hidden rounded-2xl border border-line bg-surface/50"
+            className="card-hover group flex flex-col overflow-hidden rounded-2xl border border-line bg-surface"
           >
             <div className="relative aspect-[4/3] overflow-hidden border-b border-line">
-              <ProjectArtwork seed={i + (active === "all" ? 0 : 1)} />
-              <span className="absolute left-5 top-5 rounded-full border border-line-strong bg-ink/60 px-3 py-1 text-xs text-gold backdrop-blur">
+              <img
+                src={projectImages[project.id]}
+                alt={project.title}
+                loading="lazy"
+                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <span className="absolute left-4 top-4 rounded-full border border-white/20 bg-black/45 px-3 py-1 text-xs text-white backdrop-blur">
                 {project.category}
               </span>
-              <span className="absolute right-5 top-5 flex h-9 w-9 items-center justify-center rounded-full border border-line-strong bg-ink/60 text-paper opacity-0 backdrop-blur transition-opacity duration-500 group-hover:opacity-100">
+              <span className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full border border-white/20 bg-black/45 text-white opacity-0 backdrop-blur transition-opacity duration-500 group-hover:opacity-100">
                 <ArrowUpRight className="h-4 w-4" />
               </span>
             </div>

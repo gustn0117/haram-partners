@@ -517,7 +517,6 @@ export const values: { title: string; description: string }[] = [
 export const navLinks = [
   { href: "/about", label: "회사소개" },
   { href: "/services", label: "서비스" },
-  { href: "/services#rental", label: "장비 렌탈" },
   { href: "/portfolio", label: "포트폴리오" },
   { href: "/contact", label: "문의" },
 ];
@@ -532,3 +531,34 @@ export const partners = [
   "ODE COSMETICS",
   "MERIDIAN",
 ];
+
+// ─────────────────────────────────────────────────────────────
+//  이미지 (Unsplash CDN) — 실제 촬영본 확보 시 URL만 교체
+// ─────────────────────────────────────────────────────────────
+
+const U = (id: string, w = 800) =>
+  `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=70`;
+
+export const heroImage = U("1533174072545-7a4b6ad7a6c3", 1400);
+export const aboutImage = U("1493225457124-a3eb161ffa5f", 1100);
+
+export const projectImages: Record<string, string> = {
+  "tech-forward": U("1505373877841-8d25f7d46678"),
+  "midnight-wave": U("1470229722913-7c0e2dbbafd3"),
+  "aurora-launch": U("1492684223066-81342ee5ff30"),
+  "founders-night": U("1519671482749-fd09be7ccebf"),
+  "city-bloom": U("1429962714451-bb934ecdc4ec"),
+  "atelier-popup": U("1507924538820-ede94a04019d"),
+  "summit-protocol": U("1540575467063-178a50c2df87"),
+  "harvest-gala": U("1464366400600-7168b8af9bc3"),
+};
+
+export const offeringImages: Record<string, string> = {
+  corporate: U("1540039155733-5bb30b53aa14", 1100),
+  festival: U("1514525253161-7a46d19cd819", 1100),
+  brand: U("1492684223066-81342ee5ff30", 1100),
+  operation: U("1511578314322-379afb476865", 1100),
+  photobooth: U("1507924538820-ede94a04019d", 1100),
+  sound: U("1598488035139-bdbb2231ce04", 1100),
+  lighting: U("1516450360452-9312f5e86fc7", 1100),
+};

@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import {
   company,
@@ -7,12 +8,13 @@ import {
   processSteps,
   projects,
   partners,
+  heroImage,
+  projectImages,
 } from "@/lib/content";
 import { Container, Eyebrow, CTAButton, SectionHeading } from "@/components/ui";
 import { Reveal } from "@/components/Reveal";
 import { CountUp } from "@/components/CountUp";
 import { Atmosphere } from "@/components/Atmosphere";
-import { ProjectArtwork } from "@/components/ProjectArtwork";
 import { Strengths } from "@/components/Strengths";
 import {
   ServiceIcon,
@@ -25,48 +27,63 @@ export default function HomePage() {
   return (
     <>
       {/* ───────────────── Hero ───────────────── */}
-      <section className="relative flex min-h-screen items-center overflow-hidden pt-28 pb-20">
+      <section className="relative overflow-hidden pt-32 pb-16 md:pt-40 md:pb-24">
         <Atmosphere variant="hero" />
         <Container className="relative z-2">
-          <div className="flex flex-col gap-8">
-            <p className="rise label" style={{ animationDelay: "120ms" }}>
-              EVENT PLANNING &amp; OPERATION · SINCE {company.founded}
-            </p>
-            <h1 className="max-w-4xl font-serif text-[2.6rem] leading-[1.16] sm:text-6xl md:text-[4.6rem] md:leading-[1.08] text-balance">
-              <span className="rise block" style={{ animationDelay: "220ms" }}>
-                브랜드의 순간을
-              </span>
-              <span
-                className="rise block gold-text"
-                style={{ animationDelay: "360ms" }}
+          <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
+            <div className="flex flex-col gap-7">
+              <p className="rise label" style={{ animationDelay: "120ms" }}>
+                EVENT PLANNING &amp; OPERATION · SINCE {company.founded}
+              </p>
+              <h1 className="font-serif text-[2.6rem] leading-[1.12] sm:text-6xl md:text-[4.2rem] md:leading-[1.05] text-balance">
+                <span className="rise block" style={{ animationDelay: "220ms" }}>
+                  브랜드의 순간을
+                </span>
+                <span
+                  className="rise block gold-text"
+                  style={{ animationDelay: "360ms" }}
+                >
+                  설계합니다.
+                </span>
+              </h1>
+              <p
+                className="rise max-w-xl text-base leading-relaxed text-muted sm:text-lg"
+                style={{ animationDelay: "520ms" }}
               >
-                설계합니다.
-              </span>
-            </h1>
-            <p
-              className="rise max-w-xl text-base leading-relaxed text-muted sm:text-lg"
-              style={{ animationDelay: "520ms" }}
-            >
-              기획부터 연출, 현장 운영까지 — 기업 행사와 공연·페스티벌의 모든
-              순간을 하나의 흐름으로 완성하는 행사 기획·운영 파트너.
-            </p>
+                기획부터 연출, 현장 운영까지 — 기업 행사와 공연·페스티벌의 모든
+                순간을 하나의 흐름으로 완성하는 행사 기획·운영 파트너.
+              </p>
+              <div
+                className="rise flex flex-wrap items-center gap-4 pt-2"
+                style={{ animationDelay: "660ms" }}
+              >
+                <CTAButton href="/contact">프로젝트 의뢰하기</CTAButton>
+                <CTAButton href="/portfolio" variant="ghost">
+                  포트폴리오 보기
+                </CTAButton>
+              </div>
+            </div>
+
             <div
-              className="rise flex flex-wrap items-center gap-4 pt-2"
-              style={{ animationDelay: "660ms" }}
+              className="rise relative aspect-[4/5] overflow-hidden rounded-[1.6rem] border border-line sm:aspect-[5/4] lg:aspect-[4/5]"
+              style={{ animationDelay: "320ms" }}
             >
-              <CTAButton href="/contact">프로젝트 의뢰하기</CTAButton>
-              <CTAButton href="/portfolio" variant="ghost">
-                포트폴리오 보기
-              </CTAButton>
+              <img
+                src={heroImage}
+                alt="무대 조명이 켜진 공연 현장"
+                className="h-full w-full object-cover"
+              />
+              <div className="absolute inset-x-4 bottom-4 flex items-center justify-between rounded-xl border border-white/15 bg-black/40 px-5 py-3.5 backdrop-blur">
+                <span className="text-sm font-medium text-white">
+                  현장에서 완성되는 기획
+                </span>
+                <span className="font-display text-xs tracking-wider text-white/70">
+                  HARAM PARTNERS
+                </span>
+              </div>
             </div>
           </div>
         </Container>
-
-        {/* scroll cue */}
-        <div className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-faint md:flex">
-          <span className="font-display text-xs tracking-[0.3em]">SCROLL</span>
-          <span className="h-12 w-px bg-gradient-to-b from-gold/60 to-transparent" />
-        </div>
       </section>
 
       {/* ───────────────── Intro statement ───────────────── */}
@@ -132,8 +149,8 @@ export default function HomePage() {
                 }
               >
                 <Link
-                  href={`/services#${service.id}`}
-                  className="card-hover group flex h-full flex-col gap-6 rounded-2xl border border-line bg-surface/60 p-8 md:p-10"
+                  href={`/services/${service.id}`}
+                  className="card-hover group flex h-full flex-col gap-6 rounded-2xl border border-line bg-surface p-8 md:p-10"
                 >
                   <div className="flex items-start justify-between">
                     <div className="flex h-14 w-14 items-center justify-center rounded-xl border border-line-strong text-gold transition-colors duration-500 group-hover:border-gold">
@@ -144,7 +161,7 @@ export default function HomePage() {
                     </span>
                   </div>
                   <div className="flex flex-col gap-3">
-                    <span className="font-display text-xs italic tracking-wide text-gold">
+                    <span className="font-display text-xs tracking-wide text-gold">
                       {service.tagline}
                     </span>
                     <h3 className="font-serif text-2xl">{service.title}</h3>
@@ -187,8 +204,8 @@ export default function HomePage() {
               return (
                 <Reveal key={cat.id} delay={i * 110}>
                   <Link
-                    href={`/services#${cat.id}`}
-                    className="card-hover group flex h-full flex-col gap-7 rounded-2xl border border-line bg-surface/50 p-8 md:p-10"
+                    href={`/services/${cat.id}`}
+                    className="card-hover group flex h-full flex-col gap-7 rounded-2xl border border-line bg-surface p-8 md:p-10"
                   >
                     <div className="flex items-center justify-between">
                       <div className="flex h-14 w-14 items-center justify-center rounded-xl border border-line-strong text-gold transition-colors duration-500 group-hover:border-gold">
@@ -197,7 +214,7 @@ export default function HomePage() {
                       <ArrowUpRight className="h-5 w-5 text-faint transition-all duration-500 group-hover:text-gold group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                     </div>
                     <div className="flex flex-col gap-2.5">
-                      <span className="font-display text-xs italic tracking-wide text-gold">
+                      <span className="font-display text-xs tracking-wide text-gold">
                         {cat.tagline}
                       </span>
                       <h3 className="font-serif text-2xl">{cat.title}</h3>
@@ -306,11 +323,16 @@ export default function HomePage() {
               <Reveal key={project.id} delay={i * 110}>
                 <Link
                   href="/portfolio"
-                  className="card-hover group flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-surface/50"
+                  className="card-hover group flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-surface"
                 >
                   <div className="relative aspect-[4/3] overflow-hidden border-b border-line">
-                    <ProjectArtwork seed={i} />
-                    <span className="absolute left-5 top-5 rounded-full border border-line-strong bg-ink/60 px-3 py-1 text-xs text-gold backdrop-blur">
+                    <img
+                      src={projectImages[project.id]}
+                      alt={project.title}
+                      loading="lazy"
+                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <span className="absolute left-4 top-4 rounded-full border border-white/20 bg-black/45 px-3 py-1 text-xs text-white backdrop-blur">
                       {project.category}
                     </span>
                   </div>
