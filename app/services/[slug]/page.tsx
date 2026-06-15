@@ -198,14 +198,14 @@ function RentalBody({ rental }: { rental: RentalCategory }) {
                   <div className="flex items-center gap-2.5">
                     <h3 className="font-serif text-xl">{pkg.name}</h3>
                     {pkg.badge ? (
-                      <span className="rounded-full bg-gold px-2.5 py-0.5 text-[0.68rem] font-medium text-white">
+                      <span className="rounded-sm bg-gold px-2.5 py-0.5 text-[0.68rem] font-medium text-white">
                         {pkg.badge}
                       </span>
                     ) : null}
                   </div>
                   <span className="text-sm text-muted">{pkg.tagline}</span>
                 </div>
-                <span className="shrink-0 rounded-full border border-line-strong px-3 py-1 text-xs text-gold">
+                <span className="shrink-0 rounded-sm border border-line-strong px-3 py-1 text-xs text-gold">
                   {pkg.capacity}
                 </span>
               </div>
@@ -229,7 +229,7 @@ function RentalBody({ rental }: { rental: RentalCategory }) {
 
               <Link
                 href="/contact"
-                className="group/btn mt-auto inline-flex items-center justify-between gap-3 rounded-full border border-line-strong px-5 py-3 text-sm transition-colors duration-500 hover:border-gold hover:text-gold"
+                className="group/btn mt-auto inline-flex items-center justify-between gap-3 rounded-sm border border-line-strong px-5 py-3 text-sm transition-colors duration-500 hover:border-gold hover:text-gold"
               >
                 이 패키지로 견적 문의
                 <ArrowRight className="h-4 w-4 transition-transform duration-500 group-hover/btn:translate-x-1" />

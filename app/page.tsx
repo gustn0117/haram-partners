@@ -59,7 +59,7 @@ export default function HomePage() {
             </div>
 
             <div
-              className="rise relative aspect-[4/5] overflow-hidden rounded-[1.6rem] border border-line sm:aspect-[5/4] lg:aspect-[4/5]"
+              className="rise relative aspect-[4/5] overflow-hidden rounded-sm border border-line sm:aspect-[5/4] lg:aspect-[4/5]"
               style={{ animationDelay: "320ms" }}
             >
               <img
@@ -220,7 +220,7 @@ export default function HomePage() {
                       {cat.packages.map((pkg) => (
                         <span
                           key={pkg.id}
-                          className="rounded-full border border-line px-3 py-1.5 text-xs text-muted transition-colors group-hover:border-line-strong"
+                          className="rounded-sm border border-line px-3 py-1.5 text-xs text-muted transition-colors group-hover:border-line-strong"
                         >
                           {pkg.name}
                         </span>

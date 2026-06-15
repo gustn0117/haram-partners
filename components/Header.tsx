@@ -141,7 +141,7 @@ export function Header() {
           })}
           <Link
             href="/contact"
-            className="group inline-flex items-center gap-2 rounded-full border border-line-strong px-5 py-2.5 text-sm tracking-tight text-paper transition-all duration-500 hover:border-gold hover:text-gold"
+            className="group inline-flex items-center gap-2 rounded-sm border border-line-strong px-5 py-2.5 text-sm tracking-tight text-paper transition-all duration-500 hover:border-gold hover:text-gold"
           >
             프로젝트 의뢰
             <ArrowUpRight className="h-4 w-4 transition-transform duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -203,7 +203,7 @@ export function Header() {
           <Link
             href="/contact"
             onClick={() => setOpen(false)}
-            className="mt-4 inline-flex items-center justify-center gap-2 rounded-full bg-gold px-6 py-3.5 text-sm font-medium text-white"
+            className="mt-4 inline-flex items-center justify-center gap-2 rounded-sm bg-gold px-6 py-3.5 text-sm font-medium text-white"
           >
             프로젝트 의뢰하기
           </Link>

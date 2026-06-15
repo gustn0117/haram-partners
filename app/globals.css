@@ -30,6 +30,15 @@
   --font-display: var(--font-sans);
 
   --ease-out-soft: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* 각진 인상 — 라운딩 최소화 (rounded-full 은 점·글로우 원형용으로 유지) */
+  --radius-xs: 1px;
+  --radius-sm: 2px;
+  --radius-md: 2px;
+  --radius-lg: 2px;
+  --radius-xl: 2px;
+  --radius-2xl: 2px;
+  --radius-3xl: 3px;
 }
 
 :root {
@@ -238,7 +247,7 @@ body::before {
   width: 100%;
   border: 1px solid var(--color-line);
   background: rgba(26, 22, 14, 0.02);
-  border-radius: 0.6rem;
+  border-radius: 2px;
   padding: 0.85rem 1rem;
   font-size: 0.95rem;
   color: var(--color-paper);
