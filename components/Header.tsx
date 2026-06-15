@@ -105,16 +105,13 @@ export function Header() {
                   </Link>
                   {/* Hover dropdown */}
                   <div className="invisible absolute left-1/2 top-full z-50 -translate-x-1/2 pt-5 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
-                    <div className="w-[560px] rounded-2xl border border-line bg-ink/95 p-5 shadow-[0_30px_60px_-30px_rgba(26,22,14,0.35)] backdrop-blur-xl">
-                      <div className="grid grid-cols-2 gap-x-4">
-                        {serviceMenu.map((groupItem) => (
-                          <div
-                            key={groupItem.heading}
-                            className="flex flex-col"
-                          >
-                            <span className="label px-3 pb-2 pt-1">
-                              {groupItem.heading}
-                            </span>
+                    <div className="w-[500px] rounded-2xl border border-line bg-ink/95 p-5 shadow-[0_30px_60px_-30px_rgba(26,22,14,0.35)] backdrop-blur-xl">
+                      {serviceMenu.map((groupItem) => (
+                        <div key={groupItem.heading} className="flex flex-col">
+                          <span className="label px-3 pb-2 pt-1">
+                            {groupItem.heading}
+                          </span>
+                          <div className="grid grid-cols-2 gap-x-3">
                             {groupItem.items.map((it) => (
                               <Link
                                 key={it.id}
@@ -135,8 +132,8 @@ export function Header() {
                               </Link>
                             ))}
                           </div>
-                        ))}
-                      </div>
+                        </div>
+                      ))}
                       <Link
                         href="/services"
                         className="mt-3 flex items-center justify-center gap-2 border-t border-line pt-3 text-sm text-gold"

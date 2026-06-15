@@ -246,12 +246,23 @@ export function IconHub(props: IconProps) {
   );
 }
 
+export function IconEducation(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M12 4 2.5 8.5 12 13l9.5-4.5L12 4Z" />
+      <path d="M6.5 10.8V15c0 1.4 2.5 2.5 5.5 2.5s5.5-1.1 5.5-2.5v-4.2" />
+      <path d="M21.5 8.5v5" />
+    </svg>
+  );
+}
+
 const serviceIconMap = {
   corporate: IconConference,
   festival: IconFestival,
   brand: IconBrand,
   operation: IconProtocol,
   photobooth: IconPhotoBooth,
+  education: IconEducation,
 } as const;
 
 const strengthIconMap = {
