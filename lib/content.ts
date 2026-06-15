@@ -309,7 +309,7 @@ export const departments: {
   duties: string[];
 }[] = [
   {
-    name: "기획·연출본부",
+    name: "기획·연출부",
     tagline: "Planning & Creative",
     description:
       "행사의 목적과 메시지를 정의하고, 시나리오부터 무대·공간·영상 연출까지 설계하는 핵심 조직입니다. 모든 프로젝트가 이곳에서 시작됩니다.",
@@ -321,7 +321,7 @@ export const departments: {
     ],
   },
   {
-    name: "기술·운영본부",
+    name: "기술·운영부",
     tagline: "Technical & Operations",
     description:
       "자체 보유 장비를 직접 운용하고 현장의 모든 변수를 통제하는 조직입니다. 셋업부터 본 행사, 안전 관리까지 자사 스태프가 책임집니다.",
@@ -333,7 +333,7 @@ export const departments: {
     ],
   },
   {
-    name: "고객·경영지원본부",
+    name: "고객·경영지원부",
     tagline: "Account & Support",
     description:
       "문의 접수부터 상담·제안·계약, 사후 관리까지 클라이언트와의 모든 접점을 담당하고 회사 운영을 지원합니다.",
