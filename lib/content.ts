@@ -10,20 +10,12 @@ export const company = {
   taglineEn: "We design the moments that define your brand",
   intro:
     "기획부터 연출, 현장 운영까지. 음향·조명 장비를 직접 보유하고 전 스태프가 당사 직속으로 움직이는, 기획부터 운영까지 책임지는 행사 전문 기업입니다.",
-  founded: "2014",
   email: "contact@haram-partners.kr",
   phone: "02-6952-3140",
   address: "서울특별시 강남구 테헤란로 124, 8층",
   hours: "평일 09:30 — 18:30 (주말·공휴일 휴무)",
   instagram: "@haram.partners",
 };
-
-export const stats = [
-  { value: "11", suffix: "년", label: "행사 기획 노하우" },
-  { value: "740", suffix: "+", label: "누적 진행 프로젝트" },
-  { value: "120", suffix: "만", label: "누적 관객 동원" },
-  { value: "98", suffix: "%", label: "고객 재의뢰율" },
-];
 
 export type Service = {
   id: string;
@@ -347,155 +339,6 @@ export const processSteps: ProcessStep[] = [
   },
 ];
 
-export type Project = {
-  id: string;
-  title: string;
-  category: string;
-  categoryId: ProjectCategoryId;
-  year: string;
-  scale: string;
-  location: string;
-  summary: string;
-};
-
-export type ProjectCategoryId =
-  | "corporate"
-  | "festival"
-  | "brand"
-  | "operation";
-
-export const projectCategories: { id: ProjectCategoryId | "all"; label: string }[] =
-  [
-    { id: "all", label: "전체" },
-    { id: "corporate", label: "기업·컨퍼런스" },
-    { id: "festival", label: "공연·페스티벌" },
-    { id: "brand", label: "브랜드 프로모션" },
-    { id: "operation", label: "의전·운영" },
-  ];
-
-export const projects: Project[] = [
-  {
-    id: "tech-forward",
-    title: "테크포워드 글로벌 컨퍼런스",
-    category: "기업·컨퍼런스",
-    categoryId: "corporate",
-    year: "2025",
-    scale: "2,400석",
-    location: "코엑스 오디토리움",
-    summary:
-      "12개국 연사가 참여한 이틀간의 기술 컨퍼런스. 동시통역과 라이브 스트리밍을 포함한 통합 운영을 진행했습니다.",
-  },
-  {
-    id: "midnight-wave",
-    title: "미드나잇 웨이브 뮤직 페스티벌",
-    category: "공연·페스티벌",
-    categoryId: "festival",
-    year: "2025",
-    scale: "38,000명",
-    location: "난지한강공원",
-    summary:
-      "2일간 이어진 대규모 야외 음악 페스티벌. 3개 스테이지 무대 연출과 관객 안전 동선 설계를 총괄했습니다.",
-  },
-  {
-    id: "aurora-launch",
-    title: "오로라 시리즈 신제품 런칭쇼",
-    category: "브랜드 프로모션",
-    categoryId: "brand",
-    year: "2024",
-    scale: "초청 600명",
-    location: "동대문 DDP",
-    summary:
-      "프리미엄 가전 브랜드의 미디어 쇼케이스. 키네틱 무대와 몰입형 영상으로 제품 서사를 연출했습니다.",
-  },
-  {
-    id: "founders-night",
-    title: "파운더스 나이트 시상식",
-    category: "기업·컨퍼런스",
-    categoryId: "corporate",
-    year: "2024",
-    scale: "1,100명",
-    location: "그랜드 인터컨티넨탈",
-    summary:
-      "창립 20주년 기념 시상식 및 갈라 디너. 의전과 무대 연출, 케이터링 운영을 통합 진행했습니다.",
-  },
-  {
-    id: "city-bloom",
-    title: "시티 블룸 도시 축제",
-    category: "공연·페스티벌",
-    categoryId: "festival",
-    year: "2024",
-    scale: "92,000명",
-    location: "서울광장 일대",
-    summary:
-      "지자체 주관 봄 시즌 도시 축제. 공연·전시·체험 프로그램과 다중 무대 운영을 총괄 기획했습니다.",
-  },
-  {
-    id: "atelier-popup",
-    title: "아틀리에 팝업 익스피리언스",
-    category: "브랜드 프로모션",
-    categoryId: "brand",
-    year: "2023",
-    scale: "23일 운영",
-    location: "성수동 플래그십",
-    summary:
-      "패션 하우스의 23일간 팝업스토어. 공간 디자인부터 일일 운영, 예약 시스템까지 풀 서비스로 운영했습니다.",
-  },
-  {
-    id: "summit-protocol",
-    title: "글로벌 파트너 서밋 의전 운영",
-    category: "의전·운영",
-    categoryId: "operation",
-    year: "2023",
-    scale: "VIP 80명",
-    location: "시그니엘 서울",
-    summary:
-      "해외 파트너사 임원 초청 서밋의 의전·영접 전담. 공항 영접부터 회의 운영, 동선 관리를 책임졌습니다.",
-  },
-  {
-    id: "harvest-gala",
-    title: "하베스트 채리티 갈라",
-    category: "의전·운영",
-    categoryId: "operation",
-    year: "2023",
-    scale: "초청 450명",
-    location: "신라호텔 영빈관",
-    summary:
-      "비영리재단 후원의 밤. 등록·안내 인력 운영과 VIP 의전, 경매 프로그램 진행을 통합 관리했습니다.",
-  },
-];
-
-export const history: { year: string; title: string; description: string }[] = [
-  {
-    year: "2014",
-    title: "하람파트너스 설립",
-    description: "기업 행사 기획을 중심으로 사업을 시작했습니다.",
-  },
-  {
-    year: "2017",
-    title: "공연·페스티벌 사업부 신설",
-    description:
-      "대규모 야외 행사 운영 역량을 확보하며 사업 영역을 확장했습니다.",
-  },
-  {
-    year: "2020",
-    title: "하이브리드 행사 솔루션 도입",
-    description:
-      "온·오프라인을 결합한 행사 운영 시스템과 라이브 스트리밍 역량을 구축했습니다.",
-  },
-  {
-    year: "2023",
-    title: "누적 프로젝트 500건 돌파",
-    description:
-      "기업·축제·브랜드 전 영역에서 검증된 운영 레퍼런스를 쌓았습니다.",
-  },
-  {
-    year: "2025",
-    title: "통합 행사 운영 본부 출범",
-    description:
-      "기획·연출·운영을 아우르는 통합 본부 체계로 대형 프로젝트에 대응합니다.",
-  },
-];
-
 export const values: { title: string; description: string }[] = [
   {
     title: "디테일이 격을 만든다",
@@ -517,19 +360,32 @@ export const values: { title: string; description: string }[] = [
 export const navLinks = [
   { href: "/about", label: "회사소개" },
   { href: "/services", label: "서비스" },
-  { href: "/portfolio", label: "포트폴리오" },
   { href: "/contact", label: "문의" },
 ];
 
-export const partners = [
-  "ARC TELECOM",
-  "NOVA MOTORS",
-  "LUMEN BANK",
-  "SEOUL CITY",
-  "VERTEX",
-  "HANSOL GROUP",
-  "ODE COSMETICS",
-  "MERIDIAN",
+// 헤더 "서비스" 호버 시 펼쳐지는 하위 메뉴 (영역별 페이지)
+export const serviceMenu: {
+  heading: string;
+  items: { id: string; href: string; label: string; tagline: string }[];
+}[] = [
+  {
+    heading: "행사 기획",
+    items: services.map((s) => ({
+      id: s.id,
+      href: `/services/${s.id}`,
+      label: s.title,
+      tagline: s.tagline,
+    })),
+  },
+  {
+    heading: "장비 렌탈",
+    items: rentalCategories.map((c) => ({
+      id: c.id,
+      href: `/services/${c.id}`,
+      label: c.title,
+      tagline: c.tagline,
+    })),
+  },
 ];
 
 // ─────────────────────────────────────────────────────────────
@@ -541,17 +397,6 @@ const U = (id: string, w = 800) =>
 
 export const heroImage = U("1533174072545-7a4b6ad7a6c3", 1400);
 export const aboutImage = U("1493225457124-a3eb161ffa5f", 1100);
-
-export const projectImages: Record<string, string> = {
-  "tech-forward": U("1505373877841-8d25f7d46678"),
-  "midnight-wave": U("1470229722913-7c0e2dbbafd3"),
-  "aurora-launch": U("1492684223066-81342ee5ff30"),
-  "founders-night": U("1519671482749-fd09be7ccebf"),
-  "city-bloom": U("1429962714451-bb934ecdc4ec"),
-  "atelier-popup": U("1507924538820-ede94a04019d"),
-  "summit-protocol": U("1540575467063-178a50c2df87"),
-  "harvest-gala": U("1464366400600-7168b8af9bc3"),
-};
 
 export const offeringImages: Record<string, string> = {
   corporate: U("1540039155733-5bb30b53aa14", 1100),

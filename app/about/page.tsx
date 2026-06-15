@@ -1,9 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 import type { Metadata } from "next";
-import { company, stats, values, history, aboutImage } from "@/lib/content";
+import { company, values, aboutImage } from "@/lib/content";
 import { Container, Eyebrow, SectionHeading, CTAButton } from "@/components/ui";
 import { Reveal } from "@/components/Reveal";
-import { CountUp } from "@/components/CountUp";
 import { PageHero } from "@/components/PageHero";
 import { Strengths } from "@/components/Strengths";
 import { Quote } from "@/components/icons";
@@ -68,29 +67,8 @@ export default function AboutPage() {
       {/* Strengths */}
       <Strengths background="plain" />
 
-      {/* Stats */}
-      <section className="border-b border-line bg-ink-2 py-20 md:py-24">
-        <Container>
-          <div className="grid grid-cols-2 gap-y-12 md:grid-cols-4">
-            {stats.map((stat, i) => (
-              <Reveal
-                key={stat.label}
-                delay={i * 100}
-                className="flex flex-col items-center gap-2 text-center"
-              >
-                <span className="font-serif text-5xl text-gold md:text-6xl">
-                  <CountUp value={stat.value} />
-                  {stat.suffix}
-                </span>
-                <span className="text-sm text-muted">{stat.label}</span>
-              </Reveal>
-            ))}
-          </div>
-        </Container>
-      </section>
-
       {/* Values */}
-      <section className="border-b border-line py-24 md:py-32">
+      <section className="border-b border-line bg-ink-2 py-24 md:py-32">
         <Container>
           <SectionHeading eyebrow="OUR VALUES" title="우리가 일하는 방식" />
           <div className="mt-14 grid gap-5 md:grid-cols-3">
@@ -107,32 +85,6 @@ export default function AboutPage() {
                 <p className="text-sm leading-relaxed text-muted">
                   {value.description}
                 </p>
-              </Reveal>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      {/* History timeline */}
-      <section className="border-b border-line bg-ink-2 py-24 md:py-32">
-        <Container>
-          <SectionHeading eyebrow="OUR JOURNEY" title="하람파트너스의 발자취" />
-          <div className="mt-16 flex flex-col">
-            {history.map((item, i) => (
-              <Reveal key={item.year} delay={i * 80}>
-                <div className="group grid grid-cols-[auto_1fr] gap-6 border-t border-line py-8 transition-colors last:border-b sm:grid-cols-[160px_1fr] sm:gap-12 md:py-10">
-                  <span className="font-display text-3xl text-gold sm:text-4xl">
-                    {item.year}
-                  </span>
-                  <div className="flex flex-col gap-2">
-                    <h3 className="font-serif text-xl transition-transform duration-500 group-hover:translate-x-1">
-                      {item.title}
-                    </h3>
-                    <p className="max-w-xl text-sm leading-relaxed text-muted">
-                      {item.description}
-                    </p>
-                  </div>
-                </div>
               </Reveal>
             ))}
           </div>

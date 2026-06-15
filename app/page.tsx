@@ -1,19 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import {
-  company,
-  stats,
   services,
   rentalCategories,
   processSteps,
-  projects,
-  partners,
   heroImage,
-  projectImages,
 } from "@/lib/content";
 import { Container, Eyebrow, CTAButton, SectionHeading } from "@/components/ui";
 import { Reveal } from "@/components/Reveal";
-import { CountUp } from "@/components/CountUp";
 import { Atmosphere } from "@/components/Atmosphere";
 import { Strengths } from "@/components/Strengths";
 import {
@@ -33,7 +27,7 @@ export default function HomePage() {
           <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
             <div className="flex flex-col gap-7">
               <p className="rise label" style={{ animationDelay: "120ms" }}>
-                EVENT PLANNING &amp; OPERATION · SINCE {company.founded}
+                EVENT PLANNING &amp; OPERATION
               </p>
               <h1 className="font-serif text-[2.6rem] leading-[1.12] sm:text-6xl md:text-[4.2rem] md:leading-[1.05] text-balance">
                 <span className="rise block" style={{ animationDelay: "220ms" }}>
@@ -58,8 +52,8 @@ export default function HomePage() {
                 style={{ animationDelay: "660ms" }}
               >
                 <CTAButton href="/contact">프로젝트 의뢰하기</CTAButton>
-                <CTAButton href="/portfolio" variant="ghost">
-                  포트폴리오 보기
+                <CTAButton href="/services" variant="ghost">
+                  서비스 살펴보기
                 </CTAButton>
               </div>
             </div>
@@ -240,30 +234,6 @@ export default function HomePage() {
         </Container>
       </section>
 
-      {/* ───────────────── Stats ───────────────── */}
-      <section className="border-t border-line py-24 md:py-32">
-        <Container>
-          <Reveal>
-            <Eyebrow>BY THE NUMBERS</Eyebrow>
-          </Reveal>
-          <div className="mt-12 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-line bg-line md:grid-cols-4">
-            {stats.map((stat, i) => (
-              <Reveal
-                key={stat.label}
-                delay={i * 100}
-                className="flex flex-col gap-3 bg-ink p-8 md:p-10"
-              >
-                <span className="font-serif text-4xl text-gold md:text-5xl">
-                  <CountUp value={stat.value} />
-                  {stat.suffix}
-                </span>
-                <span className="text-sm text-muted">{stat.label}</span>
-              </Reveal>
-            ))}
-          </div>
-        </Container>
-      </section>
-
       {/* ───────────────── Process ───────────────── */}
       <section className="relative overflow-hidden border-t border-line bg-ink-2 py-24 md:py-32">
         <Container>
@@ -293,89 +263,6 @@ export default function HomePage() {
         </Container>
       </section>
 
-      {/* ───────────────── Portfolio highlight ───────────────── */}
-      <section className="border-t border-line py-24 md:py-32">
-        <Container>
-          <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-            <SectionHeading
-              eyebrow="SELECTED WORK"
-              title={
-                <>
-                  최근 진행한
-                  <br />
-                  대표 프로젝트.
-                </>
-              }
-            />
-            <Reveal delay={150}>
-              <Link
-                href="/portfolio"
-                className="link-underline inline-flex items-center gap-2 text-sm text-gold"
-              >
-                전체 포트폴리오
-                <ArrowUpRight className="h-4 w-4" />
-              </Link>
-            </Reveal>
-          </div>
-
-          <div className="mt-14 grid gap-5 md:grid-cols-3">
-            {projects.slice(0, 3).map((project, i) => (
-              <Reveal key={project.id} delay={i * 110}>
-                <Link
-                  href="/portfolio"
-                  className="card-hover group flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-surface"
-                >
-                  <div className="relative aspect-[4/3] overflow-hidden border-b border-line">
-                    <img
-                      src={projectImages[project.id]}
-                      alt={project.title}
-                      loading="lazy"
-                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                    <span className="absolute left-4 top-4 rounded-full border border-white/20 bg-black/45 px-3 py-1 text-xs text-white backdrop-blur">
-                      {project.category}
-                    </span>
-                  </div>
-                  <div className="flex flex-1 flex-col gap-4 p-7">
-                    <div className="flex items-center gap-3 text-xs text-faint">
-                      <span>{project.year}</span>
-                      <span className="h-1 w-1 rounded-full bg-faint" />
-                      <span>{project.scale}</span>
-                    </div>
-                    <h3 className="font-serif text-xl leading-snug transition-colors duration-500 group-hover:text-gold">
-                      {project.title}
-                    </h3>
-                    <p className="text-sm leading-relaxed text-muted">
-                      {project.summary}
-                    </p>
-                  </div>
-                </Link>
-              </Reveal>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      {/* ───────────────── Partners marquee ───────────────── */}
-      <section className="overflow-hidden border-t border-line py-16">
-        <Container>
-          <Reveal className="mb-10 text-center">
-            <span className="label">TRUSTED BY</span>
-          </Reveal>
-        </Container>
-        <div className="relative flex overflow-hidden">
-          <div className="marquee-track flex shrink-0 items-center gap-16 pr-16">
-            {[...partners, ...partners].map((p, i) => (
-              <span
-                key={`${p}-${i}`}
-                className="whitespace-nowrap font-display text-2xl tracking-[0.18em] text-faint transition-colors hover:text-paper"
-              >
-                {p}
-              </span>
-            ))}
-          </div>
-        </div>
-      </section>
     </>
   );
 }

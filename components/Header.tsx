@@ -3,8 +3,22 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { company, navLinks } from "@/lib/content";
-import { Monogram, Menu, Close, ArrowUpRight } from "@/components/icons";
+import { company, navLinks, serviceMenu } from "@/lib/content";
+import {
+  Monogram,
+  Menu,
+  Close,
+  ArrowUpRight,
+  ServiceIcon,
+  IconSound,
+  IconLighting,
+} from "@/components/icons";
+
+function menuIcon(id: string) {
+  if (id === "sound") return <IconSound className="h-5 w-5" />;
+  if (id === "lighting") return <IconLighting className="h-5 w-5" />;
+  return <ServiceIcon id={id as never} className="h-5 w-5" />;
+}
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -56,15 +70,71 @@ export function Header() {
 
         <nav className="hidden items-center gap-9 md:flex">
           {navLinks.map((link) => {
-            const active = pathname === link.href;
+            const active =
+              pathname === link.href ||
+              (link.href !== "/" && pathname.startsWith(`${link.href}/`));
+            const linkClass = `link-underline text-sm tracking-tight transition-colors ${
+              active ? "text-gold" : "text-muted hover:text-paper"
+            }`;
+
+            if (link.href === "/services") {
+              return (
+                <div key={link.href} className="group relative">
+                  <Link
+                    href={link.href}
+                    className={`${linkClass} inline-flex items-center gap-1`}
+                  >
+                    {link.label}
+                  </Link>
+                  {/* Hover dropdown */}
+                  <div className="invisible absolute left-1/2 top-full z-50 -translate-x-1/2 pt-5 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+                    <div className="w-[560px] rounded-2xl border border-line bg-ink/95 p-5 shadow-[0_30px_60px_-30px_rgba(26,22,14,0.35)] backdrop-blur-xl">
+                      <div className="grid grid-cols-2 gap-x-4">
+                        {serviceMenu.map((groupItem) => (
+                          <div
+                            key={groupItem.heading}
+                            className="flex flex-col"
+                          >
+                            <span className="label px-3 pb-2 pt-1">
+                              {groupItem.heading}
+                            </span>
+                            {groupItem.items.map((it) => (
+                              <Link
+                                key={it.id}
+                                href={it.href}
+                                className="flex items-center gap-3 rounded-lg px-3 py-2.5 transition-colors hover:bg-surface-2"
+                              >
+                                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-line text-gold">
+                                  {menuIcon(it.id)}
+                                </span>
+                                <span className="flex flex-col leading-tight">
+                                  <span className="text-sm text-paper">
+                                    {it.label}
+                                  </span>
+                                  <span className="font-display text-[0.68rem] tracking-wide text-faint">
+                                    {it.tagline}
+                                  </span>
+                                </span>
+                              </Link>
+                            ))}
+                          </div>
+                        ))}
+                      </div>
+                      <Link
+                        href="/services"
+                        className="mt-3 flex items-center justify-center gap-2 border-t border-line pt-3 text-sm text-gold"
+                      >
+                        서비스 전체 보기
+                        <ArrowUpRight className="h-4 w-4" />
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              );
+            }
+
             return (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`link-underline text-sm tracking-tight transition-colors ${
-                  active ? "text-gold" : "text-muted hover:text-paper"
-                }`}
-              >
+              <Link key={link.href} href={link.href} className={linkClass}>
                 {link.label}
               </Link>
             );
@@ -91,21 +161,44 @@ export function Header() {
 
       {/* Mobile drawer */}
       <div
-        className={`md:hidden overflow-hidden border-t border-line bg-ink/95 backdrop-blur-xl transition-[max-height,opacity] duration-500 ${
-          open ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+        className={`md:hidden overflow-y-auto border-t border-line bg-ink/95 backdrop-blur-xl transition-[max-height,opacity] duration-500 ${
+          open ? "max-h-[80vh] opacity-100" : "max-h-0 opacity-0"
         }`}
       >
         <nav className="flex flex-col gap-1 px-6 py-6">
           {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              onClick={() => setOpen(false)}
-              className="flex items-center justify-between border-b border-line py-4 font-serif text-lg text-paper"
-            >
-              {link.label}
-              <ArrowUpRight className="h-5 w-5 text-gold" />
-            </Link>
+            <div key={link.href}>
+              <Link
+                href={link.href}
+                onClick={() => setOpen(false)}
+                className="flex items-center justify-between border-b border-line py-4 font-serif text-lg text-paper"
+              >
+                {link.label}
+                <ArrowUpRight className="h-5 w-5 text-gold" />
+              </Link>
+              {link.href === "/services" ? (
+                <div className="flex flex-col border-b border-line py-2">
+                  {serviceMenu.map((groupItem) => (
+                    <div key={groupItem.heading} className="flex flex-col">
+                      <span className="label px-1 pb-1 pt-3">
+                        {groupItem.heading}
+                      </span>
+                      {groupItem.items.map((it) => (
+                        <Link
+                          key={it.id}
+                          href={it.href}
+                          onClick={() => setOpen(false)}
+                          className="flex items-center gap-3 py-2.5 pl-1 text-sm text-muted"
+                        >
+                          <span className="text-gold">{menuIcon(it.id)}</span>
+                          {it.label}
+                        </Link>
+                      ))}
+                    </div>
+                  ))}
+                </div>
+              ) : null}
+            </div>
           ))}
           <Link
             href="/contact"
