@@ -39,7 +39,7 @@ export default function ContactPage() {
           <>
             행사의 시작은
             <br />
-            <span className="gold-text">한 통의 문의</span>입니다.
+            <span className="text-white">한 통의 문의</span>입니다.
           </>
         }
         description="기획 단계부터 함께합니다. 행사에 대한 간단한 정보만 남겨주시면 담당 기획자가 맞춤 제안을 드립니다."

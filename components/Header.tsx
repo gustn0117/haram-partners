@@ -43,8 +43,8 @@ export function Header() {
     };
   }, [open]);
 
-  // 홈 최상단(스크롤 전)에서는 어두운 히어로 이미지 위라 글자를 밝게
-  const lightHeader = pathname === "/" && !scrolled && !open;
+  // 모든 페이지가 최상단에 어두운 배경 히어로를 두므로, 스크롤 전에는 글자를 밝게
+  const lightHeader = !scrolled && !open;
 
   return (
     <header

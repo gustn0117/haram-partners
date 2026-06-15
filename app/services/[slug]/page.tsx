@@ -65,31 +65,27 @@ export default async function OfferingDetailPage({
 
   return (
     <>
-      {/* Header */}
-      <section className="border-b border-line pt-32 pb-16 md:pt-40 md:pb-20">
-        <Container>
+      {/* Header — 배경형 히어로 (빗금 플레이스홀더, 실제 사진 확보 시 교체) */}
+      <section className="relative flex min-h-[48vh] items-end overflow-hidden border-b border-line pt-32 pb-14 md:min-h-[54vh] md:pb-20">
+        <Placeholder tone="dark" />
+        <Container className="relative z-2">
           <Link
             href="/services"
-            className="inline-flex items-center gap-2 text-sm text-muted transition-colors hover:text-gold"
+            className="inline-flex items-center gap-2 text-sm text-white/70 transition-colors hover:text-white"
           >
             <ArrowLeft className="h-4 w-4" />
             서비스 전체
           </Link>
-          <div className="mt-8 grid items-center gap-10 lg:grid-cols-[1fr_1fr] lg:gap-16">
-            <div className="flex flex-col gap-5">
-              <span className="font-display text-sm tracking-wide text-gold">
-                {tagline}
-              </span>
-              <h1 className="font-serif text-4xl leading-[1.15] sm:text-5xl text-balance">
-                {title}
-              </h1>
-              <p className="max-w-xl text-base leading-relaxed text-muted">
-                {description}
-              </p>
-            </div>
-            <div className="relative aspect-[16/11] overflow-hidden rounded-2xl border border-line">
-              <Placeholder tone="light" label={title} />
-            </div>
+          <div className="mt-6 flex max-w-2xl flex-col gap-5">
+            <span className="font-display text-sm tracking-wide text-white/70">
+              {tagline}
+            </span>
+            <h1 className="font-serif text-3xl leading-[1.15] text-white sm:text-4xl md:text-[2.9rem] text-balance">
+              {title}
+            </h1>
+            <p className="text-base leading-relaxed text-white/80">
+              {description}
+            </p>
           </div>
         </Container>
       </section>

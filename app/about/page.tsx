@@ -22,7 +22,7 @@ export default function AboutPage() {
           <>
             행사의 격은
             <br />
-            <span className="gold-text">디테일</span>에서 완성됩니다.
+            <span className="text-white">디테일</span>에서 완성됩니다.
           </>
         }
         description={company.intro}

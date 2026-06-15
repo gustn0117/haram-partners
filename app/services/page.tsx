@@ -62,7 +62,7 @@ export default function ServicesPage() {
           <>
             기획부터 장비까지,
             <br />
-            <span className="gold-text">필요한 모든 것.</span>
+            <span className="text-white">필요한 모든 것.</span>
           </>
         }
         description="행사 기획·운영과 음향·조명 장비 렌탈을 직접 제공합니다. 각 영역을 눌러 자세한 내용을 확인하세요."
