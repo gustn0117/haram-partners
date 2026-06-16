@@ -510,6 +510,7 @@ export const faqs: { q: string; a: string }[] = [
 export const navLinks = [
   { href: "/about", label: "회사소개" },
   { href: "/services", label: "서비스" },
+  { href: "/addons", label: "부가서비스" },
   { href: "/contact", label: "문의" },
 ];
 
@@ -527,13 +528,10 @@ export const aboutMenu: { href: string; label: string }[] = [
 // 헤더 호버 드롭다운 (아이콘 없이 1열 목록)
 export const dropdownMenus: Record<string, { href: string; label: string }[]> = {
   "/about": aboutMenu,
-  "/services": [
-    ...services.map((s) => ({
-      href: `/services/${s.id}`,
-      label: s.title,
-    })),
-    { href: "/services#addons", label: "부가서비스" },
-  ],
+  "/services": services.map((s) => ({
+    href: `/services/${s.id}`,
+    label: s.title,
+  })),
 };
 
 // ─────────────────────────────────────────────────────────────

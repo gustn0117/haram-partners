@@ -1,27 +1,11 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { services, processSteps, addons } from "@/lib/content";
+import { services, processSteps } from "@/lib/content";
 import { Container, Eyebrow, SectionHeading, CTAButton } from "@/components/ui";
 import { Reveal } from "@/components/Reveal";
 import { PageHero } from "@/components/PageHero";
-import {
-  ServiceIcon,
-  ArrowUpRight,
-  IconWeb,
-  IconDoc,
-  MapPin,
-  IconBrand,
-  IconPhotoBooth,
-} from "@/components/icons";
-
-const addonIcons = {
-  web: IconWeb,
-  venue: MapPin,
-  marketing: IconBrand,
-  media: IconPhotoBooth,
-  print: IconDoc,
-} as const;
+import { ServiceIcon, ArrowUpRight } from "@/components/icons";
 
 export const metadata: Metadata = {
   title: "서비스",
@@ -124,49 +108,6 @@ export default function ServicesPage() {
                 />
               </Reveal>
             ))}
-          </div>
-        </Container>
-      </section>
-
-      {/* 부가서비스 */}
-      <section
-        id="addons"
-        className="scroll-mt-24 border-b border-line bg-ink-2 py-20 md:py-28"
-      >
-        <Container>
-          <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-            <SectionHeading eyebrow="ADD-ON SERVICES" title="부가서비스" />
-            <Reveal delay={150} className="max-w-md">
-              <p className="text-sm leading-relaxed text-muted">
-                행사 그 자체를 넘어, 준비부터 마무리까지 필요한 일들을 함께
-                해결해 드립니다. 행사 기획과 묶어 한 번에 진행할 수 있습니다.
-              </p>
-            </Reveal>
-          </div>
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {addons.map((a, i) => {
-              const Icon = addonIcons[a.icon];
-              return (
-                <Reveal
-                  key={a.id}
-                  delay={i * 70}
-                  className="flex h-full flex-col gap-5 rounded-2xl border border-line bg-surface p-7"
-                >
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-line-strong text-gold">
-                    <Icon className="h-6 w-6" />
-                  </div>
-                  <div className="flex flex-col gap-2">
-                    <span className="font-display text-xs tracking-wide text-gold">
-                      {a.tagline}
-                    </span>
-                    <h3 className="font-serif text-xl">{a.name}</h3>
-                    <p className="text-sm leading-relaxed text-muted">
-                      {a.description}
-                    </p>
-                  </div>
-                </Reveal>
-              );
-            })}
           </div>
         </Container>
       </section>
