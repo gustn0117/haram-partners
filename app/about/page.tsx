@@ -1,6 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
 import type { Metadata } from "next";
-import Image from "next/image";
 import {
   company,
   values,
@@ -62,20 +61,6 @@ export default function AboutPage() {
             </Reveal>
           </div>
         </Container>
-      </section>
-
-      {/* Image band */}
-      <section className="border-b border-line">
-        <div className="relative h-[40vh] min-h-72 w-full overflow-hidden md:h-[52vh]">
-          <Image
-            src="/about/field-operation.png"
-            alt=""
-            fill
-            sizes="100vw"
-            className="object-cover"
-          />
-          <div className="absolute inset-0 bg-black/10" aria-hidden />
-        </div>
       </section>
 
       {/* Story / 운영 철학 */}
