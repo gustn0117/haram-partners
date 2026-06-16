@@ -1,9 +1,9 @@
+import Image from "next/image";
 import Link from "next/link";
 import { services, processSteps, faqs } from "@/lib/content";
 import { Container, Eyebrow, SectionHeading } from "@/components/ui";
 import { Reveal } from "@/components/Reveal";
 import { Strengths } from "@/components/Strengths";
-import { Placeholder } from "@/components/Placeholder";
 import { FaqList } from "@/components/FaqList";
 import { ServiceIcon, ArrowUpRight, ArrowRight } from "@/components/icons";
 
@@ -11,19 +11,34 @@ export default function HomePage() {
   return (
     <>
       {/* ───────────────── Hero ───────────────── */}
-      <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
-        {/* Background placeholder (빗금) — 실제 메인 비주얼 확보 시 교체 */}
-        <Placeholder tone="dark" />
+      <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-paper">
+        <Image
+          src="/hero/concert-hall.png"
+          alt=""
+          fill
+          preload
+          sizes="100vw"
+          className="absolute inset-0 object-cover"
+        />
+        <div className="absolute inset-0 bg-black/55" aria-hidden />
+        <div
+          className="absolute inset-0 bg-linear-to-b from-black/45 via-transparent to-black/75"
+          aria-hidden
+        />
+        <div
+          className="absolute inset-0 bg-linear-to-r from-black/35 via-transparent to-black/35"
+          aria-hidden
+        />
 
         <Container className="relative z-2 text-center">
-          <div className="mx-auto flex max-w-3xl flex-col items-center gap-7">
+          <div className="mx-auto flex w-full min-w-0 max-w-3xl flex-col items-center gap-7">
             <p
-              className="rise text-xs font-semibold uppercase tracking-[0.18em] text-white/70"
+              className="rise w-full min-w-0 break-normal text-xs font-semibold uppercase tracking-[0.18em] text-white/70"
               style={{ animationDelay: "120ms" }}
             >
               EVENT PLANNING &amp; OPERATION
             </p>
-            <h1 className="font-serif text-[2.7rem] leading-[1.12] text-white sm:text-6xl md:text-[4.4rem] md:leading-[1.05] text-balance">
+            <h1 className="font-serif w-full min-w-0 text-[2.7rem] leading-[1.12] text-white sm:text-6xl md:text-[4.4rem] md:leading-[1.05] text-balance">
               <span className="rise block" style={{ animationDelay: "220ms" }}>
                 브랜드의 순간을
               </span>
@@ -32,26 +47,31 @@ export default function HomePage() {
               </span>
             </h1>
             <p
-              className="rise max-w-xl text-base leading-relaxed text-white/80 sm:text-lg"
+              className="rise w-full max-w-[21rem] break-normal text-base leading-relaxed text-white/80 sm:max-w-xl sm:text-lg"
               style={{ animationDelay: "520ms" }}
             >
-              기획부터 연출, 현장 운영까지 — 기업 행사와 공연·페스티벌의 모든
-              순간을 하나의 흐름으로 완성하는 행사 기획·운영 파트너.
+              <span className="block sm:inline">기획부터 연출, 현장 운영까지</span>
+              <span className="hidden sm:inline"> — </span>
+              <span className="block sm:inline">기업 행사와 공연·페스티벌의</span>
+              <span className="hidden sm:inline"> 모든 </span>
+              <span className="block sm:inline">
+                순간을 하나의 흐름으로 완성합니다.
+              </span>
             </p>
             <div
-              className="rise flex flex-wrap items-center justify-center gap-4 pt-2"
+              className="rise flex w-full max-w-[21rem] min-w-0 flex-col items-center justify-center gap-4 pt-2 sm:max-w-none sm:flex-row"
               style={{ animationDelay: "660ms" }}
             >
               <Link
                 href="/contact"
-                className="group inline-flex items-center gap-3 rounded-sm bg-white px-7 py-3.5 text-sm font-medium tracking-tight text-gold transition-colors duration-500 hover:bg-white/90"
+                className="group inline-flex w-full items-center justify-center gap-3 rounded-sm bg-white px-7 py-3.5 text-sm font-medium tracking-tight text-gold transition-colors duration-500 hover:bg-white/90 sm:w-auto"
               >
                 프로젝트 의뢰하기
                 <ArrowRight className="h-4 w-4 transition-transform duration-500 group-hover:translate-x-1" />
               </Link>
               <Link
                 href="/services"
-                className="group inline-flex items-center gap-3 rounded-sm border border-white/45 px-7 py-3.5 text-sm font-medium tracking-tight text-white transition-colors duration-500 hover:border-white hover:bg-white/10"
+                className="group inline-flex w-full items-center justify-center gap-3 rounded-sm border border-white/45 px-7 py-3.5 text-sm font-medium tracking-tight text-white transition-colors duration-500 hover:border-white hover:bg-white/10 sm:w-auto"
               >
                 서비스 살펴보기
                 <ArrowRight className="h-4 w-4 transition-transform duration-500 group-hover:translate-x-1" />
