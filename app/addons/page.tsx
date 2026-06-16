@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { addons } from "@/lib/content";
 import { Container, Eyebrow, SectionHeading, CTAButton } from "@/components/ui";
 import { Reveal } from "@/components/Reveal";
@@ -9,6 +10,7 @@ import {
   MapPin,
   IconBrand,
   IconPhotoBooth,
+  ArrowUpRight,
 } from "@/components/icons";
 
 const addonIcons = {
@@ -49,23 +51,27 @@ export default function AddonsPage() {
             {addons.map((a, i) => {
               const Icon = addonIcons[a.icon];
               return (
-                <Reveal
-                  key={a.id}
-                  delay={i * 70}
-                  className="flex h-full flex-col gap-5 rounded-2xl border border-line bg-surface p-7"
-                >
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-line-strong text-gold">
-                    <Icon className="h-6 w-6" />
-                  </div>
-                  <div className="flex flex-col gap-2">
-                    <span className="font-display text-xs tracking-wide text-gold">
-                      {a.tagline}
-                    </span>
-                    <h3 className="font-serif text-xl">{a.name}</h3>
-                    <p className="text-sm leading-relaxed text-muted">
-                      {a.description}
-                    </p>
-                  </div>
+                <Reveal key={a.id} delay={i * 70}>
+                  <Link
+                    href={`/addons/${a.id}`}
+                    className="card-hover group flex h-full flex-col gap-5 rounded-2xl border border-line bg-surface p-7"
+                  >
+                    <div className="flex items-center justify-between">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-line-strong text-gold transition-colors duration-500 group-hover:border-gold">
+                        <Icon className="h-6 w-6" />
+                      </div>
+                      <ArrowUpRight className="h-5 w-5 text-faint transition-all duration-500 group-hover:text-gold group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    </div>
+                    <div className="flex flex-col gap-2">
+                      <span className="font-display text-xs tracking-wide text-gold">
+                        {a.tagline}
+                      </span>
+                      <h3 className="font-serif text-xl">{a.name}</h3>
+                      <p className="text-sm leading-relaxed text-muted">
+                        {a.description}
+                      </p>
+                    </div>
+                  </Link>
                 </Reveal>
               );
             })}
