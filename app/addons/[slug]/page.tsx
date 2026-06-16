@@ -1,13 +1,21 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { addons, faqs } from "@/lib/content";
 import { Container, CTAButton, SectionHeading } from "@/components/ui";
-import { Placeholder } from "@/components/Placeholder";
 import { FaqList } from "@/components/FaqList";
 import { ArrowLeft, Plus } from "@/components/icons";
 
 type Params = { slug: string };
+
+const addonHeroImages: Record<string, string> = {
+  web: "/addons/detail/web.png",
+  venue: "/addons/detail/venue.png",
+  marketing: "/addons/detail/marketing.png",
+  media: "/addons/detail/media.png",
+  print: "/addons/detail/print.png",
+};
 
 export function generateStaticParams() {
   return addons.map((a) => ({ slug: a.id }));
@@ -34,12 +42,29 @@ export default async function AddonDetailPage({
   if (!addon) notFound();
 
   const { name, tagline, description } = addon;
+  const heroImage = addonHeroImages[addon.id];
 
   return (
     <>
-      {/* Header */}
-      <section className="relative flex min-h-[48vh] items-end overflow-hidden border-b border-line pt-32 pb-14 md:min-h-[54vh] md:pb-20">
-        <Placeholder tone="dark" />
+      {/* Header — 배경형 히어로 */}
+      <section className="relative flex min-h-[48vh] items-end overflow-hidden border-b border-line bg-paper pt-32 pb-14 md:min-h-[54vh] md:pb-20">
+        <Image
+          src={heroImage}
+          alt=""
+          fill
+          preload
+          sizes="100vw"
+          className="absolute inset-0 object-cover"
+        />
+        <div className="absolute inset-0 bg-black/45" aria-hidden />
+        <div
+          className="absolute inset-0 bg-linear-to-r from-black/75 via-black/40 to-black/20"
+          aria-hidden
+        />
+        <div
+          className="absolute inset-0 bg-linear-to-b from-black/25 via-transparent to-black/70"
+          aria-hidden
+        />
         <Container className="relative z-2">
           <Link
             href="/addons"
@@ -52,10 +77,10 @@ export default async function AddonDetailPage({
             <span className="font-display text-sm tracking-wide text-white/70">
               {tagline}
             </span>
-            <h1 className="font-serif text-3xl leading-[1.15] text-white sm:text-4xl md:text-[2.9rem] text-balance">
+            <h1 className="font-serif min-w-0 break-normal text-3xl leading-[1.15] text-white [text-wrap:wrap] sm:text-4xl md:text-[2.9rem]">
               {name}
             </h1>
-            <p className="text-base leading-relaxed text-white/80">
+            <p className="min-w-0 break-normal text-base leading-relaxed text-white/80 [text-wrap:wrap]">
               {description}
             </p>
           </div>

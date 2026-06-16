@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { addons } from "@/lib/content";
 import { Container, Eyebrow, SectionHeading, CTAButton } from "@/components/ui";
@@ -20,6 +21,14 @@ const addonIcons = {
   media: IconPhotoBooth,
   print: IconDoc,
 } as const;
+
+const addonCardImages: Record<string, string> = {
+  web: "/addons/detail/web.png",
+  venue: "/addons/detail/venue.png",
+  marketing: "/addons/detail/marketing.png",
+  media: "/addons/detail/media.png",
+  print: "/addons/detail/print.png",
+};
 
 export const metadata: Metadata = {
   title: "부가서비스",
@@ -54,15 +63,22 @@ export default function AddonsPage() {
                 <Reveal key={a.id} delay={i * 70}>
                   <Link
                     href={`/addons/${a.id}`}
-                    className="card-hover group flex h-full flex-col gap-5 rounded-2xl border border-line bg-surface p-7"
+                    className="card-hover group flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-surface"
                   >
-                    <div className="flex items-center justify-between">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-line-strong text-gold transition-colors duration-500 group-hover:border-gold">
+                    <div className="relative aspect-[16/10] overflow-hidden border-b border-line">
+                      <Image
+                        src={addonCardImages[a.id]}
+                        alt=""
+                        fill
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-black/25" aria-hidden />
+                      <div className="absolute left-4 top-4 flex h-10 w-10 items-center justify-center rounded-sm border border-line-strong bg-ink/70 text-gold backdrop-blur">
                         <Icon className="h-6 w-6" />
                       </div>
-                      <ArrowUpRight className="h-5 w-5 text-faint transition-all duration-500 group-hover:text-gold group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                     </div>
-                    <div className="flex flex-col gap-2">
+                    <div className="flex flex-1 flex-col gap-3 p-7">
                       <span className="font-display text-xs tracking-wide text-gold">
                         {a.tagline}
                       </span>
@@ -70,6 +86,10 @@ export default function AddonsPage() {
                       <p className="text-sm leading-relaxed text-muted">
                         {a.description}
                       </p>
+                      <span className="mt-auto inline-flex items-center gap-2 pt-3 text-sm text-gold">
+                        자세히 보기
+                        <ArrowUpRight className="h-4 w-4 transition-transform duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                      </span>
                     </div>
                   </Link>
                 </Reveal>
