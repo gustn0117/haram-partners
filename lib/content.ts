@@ -344,6 +344,29 @@ export const departments: {
   },
 ];
 
+// 자체 보유 장비
+export const equipment: {
+  name: string;
+  tagline: string;
+  image: string;
+  description: string;
+}[] = [
+  {
+    name: "무빙 라이트",
+    tagline: "Moving Head",
+    image: "/equipment/moving.png",
+    description:
+      "상하좌우로 자유롭게 움직이며 빛의 동선을 만드는 무대 연출용 무빙 헤드 조명입니다.",
+  },
+  {
+    name: "음향 스피커",
+    tagline: "Sound System",
+    image: "/equipment/speaker.webp",
+    description:
+      "현장 규모에 맞춰 또렷한 소리를 전달하는 전문 음향 스피커 시스템입니다.",
+  },
+];
+
 // 회사소개 — 운영 철학 서술 (긴 본문)
 export const aboutStory: { heading: string; body: string }[] = [
   {
@@ -440,6 +463,7 @@ export const navLinks = [
 export const aboutMenu: { href: string; label: string }[] = [
   { href: "/about#philosophy", label: "운영 철학" },
   { href: "/about#strengths", label: "핵심 강점" },
+  { href: "/about#equipment", label: "보유 장비" },
   { href: "/about#team", label: "조직도" },
   { href: "/about#values", label: "우리가 일하는 방식" },
   { href: "/about#faq", label: "자주 묻는 질문" },

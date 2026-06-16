@@ -1,5 +1,13 @@
+/* eslint-disable @next/next/no-img-element */
 import type { Metadata } from "next";
-import { company, values, aboutStory, departments, faqs } from "@/lib/content";
+import {
+  company,
+  values,
+  aboutStory,
+  departments,
+  equipment,
+  faqs,
+} from "@/lib/content";
 import { Container, Eyebrow, SectionHeading, CTAButton } from "@/components/ui";
 import { Reveal } from "@/components/Reveal";
 import { PageHero } from "@/components/PageHero";
@@ -90,6 +98,51 @@ export default function AboutPage() {
 
       {/* Strengths */}
       <Strengths background="plain" id="strengths" />
+
+      {/* Equipment / 자체 보유 장비 */}
+      <section
+        id="equipment"
+        className="scroll-mt-20 border-b border-line bg-ink-2 py-24 md:py-32"
+      >
+        <Container>
+          <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+            <SectionHeading eyebrow="OUR EQUIPMENT" title="자체 보유 장비" />
+            <Reveal delay={150} className="max-w-md">
+              <p className="text-sm leading-relaxed text-muted">
+                음향·조명 핵심 장비를 직접 보유합니다. 외주 렌탈 없이 검증된
+                장비를 행사에 바로 투입하고, 자사 오퍼레이터가 직접 운용합니다.
+              </p>
+            </Reveal>
+          </div>
+          <div className="mt-14 grid gap-5 sm:grid-cols-2">
+            {equipment.map((item, i) => (
+              <Reveal
+                key={item.name}
+                delay={i * 90}
+                className="flex flex-col overflow-hidden rounded-2xl border border-line bg-surface"
+              >
+                <div className="flex aspect-[4/3] items-center justify-center border-b border-line bg-ink-2 p-8">
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    loading="lazy"
+                    className="h-full w-full object-contain"
+                  />
+                </div>
+                <div className="flex flex-col gap-2 p-7">
+                  <span className="font-display text-xs tracking-wide text-gold">
+                    {item.tagline}
+                  </span>
+                  <h3 className="font-serif text-xl">{item.name}</h3>
+                  <p className="text-sm leading-relaxed text-muted">
+                    {item.description}
+                  </p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </Container>
+      </section>
 
       {/* Departments / 조직도 */}
       <section
