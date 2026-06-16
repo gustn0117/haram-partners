@@ -38,6 +38,7 @@ export default function AddonsPage() {
           </>
         }
         description="행사 그 자체를 넘어, 준비부터 마무리까지 필요한 일들을 함께 해결해 드립니다. 행사 기획과 묶어 한 번에 진행할 수 있습니다."
+        backgroundImage="/addons/hero.png"
       />
 
       {/* Add-on services */}
