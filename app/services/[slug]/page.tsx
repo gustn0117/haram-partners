@@ -1,13 +1,22 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { services, processSteps, faqs, type Service } from "@/lib/content";
 import { Container, CTAButton, SectionHeading } from "@/components/ui";
-import { Placeholder } from "@/components/Placeholder";
 import { FaqList } from "@/components/FaqList";
 import { ArrowLeft, Plus } from "@/components/icons";
 
 type Params = { slug: string };
+
+const serviceHeroImages: Record<string, string> = {
+  corporate: "/services/hero/corporate.png",
+  festival: "/services/hero/festival.png",
+  brand: "/services/hero/brand.png",
+  operation: "/services/hero/operation.png",
+  photobooth: "/services/hero/photobooth.png",
+  education: "/services/hero/education.png",
+};
 
 export function generateStaticParams() {
   return services.map((s) => ({ slug: s.id }));
@@ -34,12 +43,29 @@ export default async function OfferingDetailPage({
   if (!service) notFound();
 
   const { title, tagline, description } = service;
+  const heroImage = serviceHeroImages[service.id];
 
   return (
     <>
-      {/* Header — 배경형 히어로 (빗금 플레이스홀더, 실제 사진 확보 시 교체) */}
-      <section className="relative flex min-h-[48vh] items-end overflow-hidden border-b border-line pt-32 pb-14 md:min-h-[54vh] md:pb-20">
-        <Placeholder tone="dark" />
+      {/* Header — 배경형 히어로 */}
+      <section className="relative flex min-h-[48vh] items-end overflow-hidden border-b border-line bg-paper pt-32 pb-14 md:min-h-[54vh] md:pb-20">
+        <Image
+          src={heroImage}
+          alt=""
+          fill
+          preload
+          sizes="100vw"
+          className="absolute inset-0 object-cover"
+        />
+        <div className="absolute inset-0 bg-black/45" aria-hidden />
+        <div
+          className="absolute inset-0 bg-linear-to-r from-black/75 via-black/40 to-black/20"
+          aria-hidden
+        />
+        <div
+          className="absolute inset-0 bg-linear-to-b from-black/25 via-transparent to-black/70"
+          aria-hidden
+        />
         <Container className="relative z-2">
           <Link
             href="/services"
@@ -48,14 +74,14 @@ export default async function OfferingDetailPage({
             <ArrowLeft className="h-4 w-4" />
             서비스 전체
           </Link>
-          <div className="mt-6 flex max-w-2xl flex-col gap-5">
-            <span className="font-display text-sm tracking-wide text-white/70">
+          <div className="mt-6 flex w-full min-w-0 max-w-2xl flex-col gap-5">
+            <span className="font-display min-w-0 break-normal text-sm tracking-wide text-white/70">
               {tagline}
             </span>
-            <h1 className="font-serif text-3xl leading-[1.15] text-white sm:text-4xl md:text-[2.9rem] text-balance">
+            <h1 className="font-serif min-w-0 break-normal text-3xl leading-[1.15] text-white [text-wrap:wrap] sm:text-4xl md:text-[2.9rem]">
               {title}
             </h1>
-            <p className="text-base leading-relaxed text-white/80">
+            <p className="min-w-0 break-normal text-base leading-relaxed text-white/80 [text-wrap:wrap]">
               {description}
             </p>
           </div>
@@ -99,18 +125,18 @@ function ServiceBody({ service }: { service: Service }) {
       {/* Overview */}
       <section className="border-b border-line py-20 md:py-28">
         <Container>
-          <div className="grid gap-10 md:grid-cols-[0.8fr_1.2fr] md:gap-16">
-            <div className="flex flex-col gap-3">
+          <div className="grid min-w-0 gap-10 md:grid-cols-[0.8fr_1.2fr] md:gap-16">
+            <div className="flex min-w-0 flex-col gap-3">
               <span className="label">OVERVIEW</span>
               <h2 className="font-serif text-2xl sm:text-3xl">
                 이렇게 접근합니다
               </h2>
             </div>
-            <div className="flex flex-col gap-6">
+            <div className="flex min-w-0 flex-col gap-6">
               {service.overview.map((p, i) => (
                 <p
                   key={i}
-                  className="text-base leading-[1.85] text-paper/90 sm:text-lg"
+                  className="min-w-0 break-normal text-base leading-[1.85] text-paper/90 [text-wrap:wrap] sm:text-lg"
                 >
                   {p}
                 </p>
@@ -123,8 +149,8 @@ function ServiceBody({ service }: { service: Service }) {
       {/* Program + Scope */}
       <section className="border-b border-line py-20 md:py-28">
         <Container>
-          <div className="grid gap-12 md:grid-cols-2 md:gap-16">
-            <div className="flex flex-col gap-6">
+          <div className="grid min-w-0 gap-12 md:grid-cols-2 md:gap-16">
+            <div className="flex min-w-0 flex-col gap-6">
               <div className="flex flex-col gap-2">
                 <span className="label">PROGRAM</span>
                 <h2 className="font-serif text-2xl">주요 진행 항목</h2>
@@ -138,14 +164,14 @@ function ServiceBody({ service }: { service: Service }) {
                     <span className="font-display text-sm text-gold">
                       {String(i + 1).padStart(2, "0")}
                     </span>
-                    <span className="text-base transition-transform duration-500 group-hover:translate-x-1">
+                    <span className="min-w-0 break-normal text-base [text-wrap:wrap] transition-transform duration-500 group-hover:translate-x-1">
                       {item}
                     </span>
                   </li>
                 ))}
               </ul>
             </div>
-            <div className="flex flex-col gap-6">
+            <div className="flex min-w-0 flex-col gap-6">
               <div className="flex flex-col gap-2">
                 <span className="label">SCOPE</span>
                 <h2 className="font-serif text-2xl">진행 범위</h2>
@@ -154,7 +180,9 @@ function ServiceBody({ service }: { service: Service }) {
                 {service.scope.map((s) => (
                   <li key={s} className="flex items-start gap-3 text-base">
                     <Plus className="mt-1 h-4 w-4 shrink-0 text-gold" />
-                    <span className="text-paper/90">{s}</span>
+                    <span className="min-w-0 break-normal text-paper/90 [text-wrap:wrap]">
+                      {s}
+                    </span>
                   </li>
                 ))}
               </ul>
@@ -171,12 +199,14 @@ function ServiceBody({ service }: { service: Service }) {
             {service.recommendedFor.map((r, i) => (
               <div
                 key={r}
-                className="flex flex-col gap-4 rounded-2xl border border-line bg-surface p-7"
+                className="flex min-w-0 flex-col gap-4 rounded-2xl border border-line bg-surface p-7"
               >
                 <span className="font-display text-3xl text-faint">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <p className="text-base leading-relaxed text-paper/90">{r}</p>
+                <p className="min-w-0 break-normal text-base leading-relaxed text-paper/90 [text-wrap:wrap]">
+                  {r}
+                </p>
               </div>
             ))}
           </div>
