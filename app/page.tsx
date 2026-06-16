@@ -38,24 +38,17 @@ export default function HomePage() {
             >
               EVENT PLANNING &amp; OPERATION
             </p>
-            <h1 className="font-serif w-full min-w-0 text-[2.7rem] leading-[1.12] text-white sm:text-6xl md:text-[4.4rem] md:leading-[1.05] text-balance">
-              <span className="rise block" style={{ animationDelay: "220ms" }}>
-                브랜드의 순간을
-              </span>
-              <span className="rise block" style={{ animationDelay: "360ms" }}>
-                설계합니다.
-              </span>
+            <h1 className="rise font-serif w-full min-w-0 text-[2.4rem] leading-[1.15] text-white sm:text-5xl md:text-[4rem] md:leading-[1.05] md:whitespace-nowrap text-balance" style={{ animationDelay: "220ms" }}>
+              브랜드의 순간을 설계합니다.
             </h1>
             <p
               className="rise w-full max-w-[21rem] break-normal text-base leading-relaxed text-white/80 sm:max-w-xl sm:text-lg"
               style={{ animationDelay: "520ms" }}
             >
-              <span className="block sm:inline">기획부터 연출, 현장 운영까지</span>
-              <span className="hidden sm:inline"> — </span>
-              <span className="block sm:inline">기업 행사와 공연·페스티벌의</span>
-              <span className="hidden sm:inline"> 모든 </span>
-              <span className="block sm:inline">
-                순간을 하나의 흐름으로 완성합니다.
+              <span className="block">기획부터 연출, 현장 운영까지 —</span>
+              <span className="block">
+                기업 행사와 공연·페스티벌의 모든 순간을 하나의 흐름으로
+                완성합니다.
               </span>
             </p>
             <div
