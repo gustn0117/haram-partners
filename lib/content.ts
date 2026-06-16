@@ -492,18 +492,18 @@ export const equipment: {
   description: string;
 }[] = [
   {
-    name: "무빙 라이트",
-    tagline: "Moving Head",
-    image: "/equipment/moving.png",
+    name: "음향 시스템",
+    tagline: "Audio System",
+    image: "/equipment/audio-system.webp",
     description:
-      "상하좌우로 자유롭게 움직이며 빛의 동선을 만드는 무대 연출용 무빙 헤드 조명입니다.",
+      "행사 규모와 공간 특성에 맞춰 스피커, 콘솔, 모니터, 케이블 구성을 통합 운용하는 자체 음향 시스템입니다.",
   },
   {
-    name: "음향 스피커",
-    tagline: "Sound System",
-    image: "/equipment/speaker.webp",
+    name: "조명 시스템",
+    tagline: "Lighting System",
+    image: "/equipment/lighting-system.webp",
     description:
-      "현장 규모에 맞춰 또렷한 소리를 전달하는 전문 음향 스피커 시스템입니다.",
+      "무빙 라이트와 LED 워시, 콘솔, 트러스 구성을 하나로 설계해 장면 전환과 무대 분위기를 완성하는 조명 시스템입니다.",
   },
 ];
 
