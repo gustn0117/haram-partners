@@ -37,6 +37,7 @@ export default function ContactPage() {
           </>
         }
         description="기획 단계부터 함께합니다. 행사에 대한 간단한 정보만 남겨주시면 담당 기획자가 맞춤 제안을 드립니다."
+        backgroundImage="/contact/hero.png"
       />
 
       <section className="py-20 md:py-28">

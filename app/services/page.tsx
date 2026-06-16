@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { services, processSteps } from "@/lib/content";
 import { Container, Eyebrow, SectionHeading, CTAButton } from "@/components/ui";
 import { Reveal } from "@/components/Reveal";
 import { PageHero } from "@/components/PageHero";
-import { Placeholder } from "@/components/Placeholder";
 import { ServiceIcon, ArrowUpRight } from "@/components/icons";
 
 export const metadata: Metadata = {
@@ -20,6 +20,15 @@ type Card = {
   description: string;
 };
 
+const serviceCardImages: Record<string, string> = {
+  corporate: "/services/hero/corporate.png",
+  festival: "/services/hero/festival.png",
+  brand: "/services/hero/brand.png",
+  operation: "/services/hero/operation.png",
+  photobooth: "/services/hero/photobooth.png",
+  education: "/services/hero/education.png",
+};
+
 function OfferingCard({
   card,
   icon,
@@ -33,7 +42,14 @@ function OfferingCard({
       className="card-hover group flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-surface"
     >
       <div className="relative aspect-[16/10] overflow-hidden border-b border-line">
-        <Placeholder tone="light" />
+        <Image
+          src={serviceCardImages[card.id]}
+          alt=""
+          fill
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          className="object-cover transition-transform duration-700 group-hover:scale-105"
+        />
+        <div className="absolute inset-0 bg-black/25" aria-hidden />
         <span className="absolute left-4 top-4 flex h-10 w-10 items-center justify-center rounded-sm border border-line-strong bg-ink/70 text-gold backdrop-blur">
           {icon}
         </span>
@@ -66,6 +82,7 @@ export default function ServicesPage() {
           </>
         }
         description="행사의 기획·연출·현장 운영을 직접 책임집니다. 각 영역을 눌러 자세한 내용을 확인하세요."
+        backgroundImage="/services/hero/overview.png"
       />
 
       {/* 서비스 영역 */}

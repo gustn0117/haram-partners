@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import type { Metadata } from "next";
+import Image from "next/image";
 import {
   company,
   values,
@@ -12,7 +13,6 @@ import { Container, Eyebrow, SectionHeading, CTAButton } from "@/components/ui";
 import { Reveal } from "@/components/Reveal";
 import { PageHero } from "@/components/PageHero";
 import { Strengths } from "@/components/Strengths";
-import { Placeholder } from "@/components/Placeholder";
 import { FaqList } from "@/components/FaqList";
 import { Quote } from "@/components/icons";
 
@@ -35,6 +35,7 @@ export default function AboutPage() {
           </>
         }
         description={company.intro}
+        backgroundImage="/about/hero.png"
       />
 
       {/* Mission statement */}
@@ -66,7 +67,14 @@ export default function AboutPage() {
       {/* Image band */}
       <section className="border-b border-line">
         <div className="relative h-[40vh] min-h-72 w-full overflow-hidden md:h-[52vh]">
-          <Placeholder tone="light" label="현장 사진" />
+          <Image
+            src="/about/field-operation.png"
+            alt=""
+            fill
+            sizes="100vw"
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-black/10" aria-hidden />
         </div>
       </section>
 
