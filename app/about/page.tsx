@@ -119,7 +119,7 @@ export default function AboutPage() {
                     src={item.image}
                     alt={item.name}
                     loading="lazy"
-                    className="h-full w-full object-contain"
+                    className="block max-h-full max-w-full object-contain"
                   />
                 </div>
                 <div className="flex flex-col gap-2 p-7">
