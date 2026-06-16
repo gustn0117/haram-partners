@@ -305,6 +305,26 @@ export function Monogram(props: IconProps) {
   );
 }
 
+export function IconWeb(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <rect x="3" y="4.5" width="18" height="15" rx="2" />
+      <path d="M3 8.5h18" />
+      <path d="M6 6.5h.01M8.4 6.5h.01" />
+    </svg>
+  );
+}
+
+export function IconDoc(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M14 3H7.5A1.5 1.5 0 0 0 6 4.5v15A1.5 1.5 0 0 0 7.5 21h9a1.5 1.5 0 0 0 1.5-1.5V7l-4-4Z" />
+      <path d="M13.7 3.3V7.5H18" />
+      <path d="M9 12.5h6M9 16h6" />
+    </svg>
+  );
+}
+
 export function IconImage(props: IconProps) {
   return (
     <svg {...base} {...props}>

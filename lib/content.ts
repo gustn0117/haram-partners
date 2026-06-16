@@ -212,6 +212,61 @@ export const services: Service[] = [
 ];
 
 // ─────────────────────────────────────────────────────────────
+//  부가서비스 — 행사를 둘러싼 지원 서비스
+// ─────────────────────────────────────────────────────────────
+
+export type AddonIcon = "web" | "venue" | "marketing" | "media" | "print";
+
+export const addons: {
+  id: string;
+  name: string;
+  tagline: string;
+  icon: AddonIcon;
+  description: string;
+}[] = [
+  {
+    id: "web",
+    name: "홈페이지·랜딩 제작",
+    tagline: "Website",
+    icon: "web",
+    description:
+      "행사 소개부터 참가 신청·안내까지 한 곳에서 해결하는 행사 전용 홈페이지와 랜딩페이지를 기획·디자인·제작합니다.",
+  },
+  {
+    id: "venue",
+    name: "장소 섭외·대관",
+    tagline: "Venue",
+    icon: "venue",
+    description:
+      "행사 성격과 규모, 예산에 맞는 공간을 찾아 제안하고, 견적·일정 협의부터 대관 계약까지 대행합니다.",
+  },
+  {
+    id: "marketing",
+    name: "마케팅·홍보",
+    tagline: "Marketing",
+    icon: "marketing",
+    description:
+      "행사 전후의 온·오프라인 홍보를 설계합니다. SNS 운영·광고 집행, 보도자료 배포, 콘텐츠 제작까지 함께 진행합니다.",
+  },
+  {
+    id: "media",
+    name: "사진·영상 기록",
+    tagline: "Media",
+    icon: "media",
+    description:
+      "행사의 순간을 사진과 영상으로 기록합니다. 현장 스케치부터 하이라이트 영상까지 결과물로 남겨드립니다.",
+  },
+  {
+    id: "print",
+    name: "인쇄·제작물",
+    tagline: "Print",
+    icon: "print",
+    description:
+      "초청장·현수막·사인물부터 기념품까지, 행사에 필요한 인쇄물과 제작물을 디자인부터 제작까지 일괄 진행합니다.",
+  },
+];
+
+// ─────────────────────────────────────────────────────────────
 //  핵심 강점 (장비 직접 보유 · 직속 운영)
 // ─────────────────────────────────────────────────────────────
 
@@ -472,10 +527,13 @@ export const aboutMenu: { href: string; label: string }[] = [
 // 헤더 호버 드롭다운 (아이콘 없이 1열 목록)
 export const dropdownMenus: Record<string, { href: string; label: string }[]> = {
   "/about": aboutMenu,
-  "/services": services.map((s) => ({
-    href: `/services/${s.id}`,
-    label: s.title,
-  })),
+  "/services": [
+    ...services.map((s) => ({
+      href: `/services/${s.id}`,
+      label: s.title,
+    })),
+    { href: "/services#addons", label: "부가서비스" },
+  ],
 };
 
 // ─────────────────────────────────────────────────────────────
