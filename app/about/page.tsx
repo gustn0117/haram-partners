@@ -114,7 +114,7 @@ export default function AboutPage() {
                 delay={i * 90}
                 className="flex flex-col overflow-hidden rounded-2xl border border-line bg-surface"
               >
-                <div className="flex aspect-[4/3] items-center justify-center overflow-hidden border-b border-line bg-ink-2 p-6">
+                <div className="flex aspect-[4/3] items-center justify-center overflow-hidden border-b border-line bg-surface p-6">
                   <img
                     src={item.image}
                     alt={item.name}
