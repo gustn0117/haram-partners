@@ -2,9 +2,10 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { services, processSteps, faqs, type Service } from "@/lib/content";
+import { services, processSteps, faqs, siteUrl, type Service } from "@/lib/content";
 import { Container, CTAButton, SectionHeading } from "@/components/ui";
 import { FaqList } from "@/components/FaqList";
+import { JsonLd } from "@/components/JsonLd";
 import { ArrowLeft, Plus } from "@/components/icons";
 
 type Params = { slug: string };
@@ -30,7 +31,11 @@ export async function generateMetadata({
   const { slug } = await params;
   const service = services.find((s) => s.id === slug);
   if (!service) return { title: "서비스" };
-  return { title: service.title, description: service.description };
+  return {
+    title: service.title,
+    description: service.description,
+    alternates: { canonical: `/services/${service.id}` },
+  };
 }
 
 export default async function OfferingDetailPage({
@@ -45,8 +50,41 @@ export default async function OfferingDetailPage({
   const { title, tagline, description } = service;
   const heroImage = serviceHeroImages[service.id];
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "홈", item: siteUrl },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "서비스",
+        item: `${siteUrl}/services`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: title,
+        item: `${siteUrl}/services/${service.id}`,
+      },
+    ],
+  };
+
+  const serviceJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: title,
+    serviceType: title,
+    description,
+    provider: { "@type": "Organization", name: "하람파트너스", url: siteUrl },
+    areaServed: "KR",
+    url: `${siteUrl}/services/${service.id}`,
+  };
+
   return (
     <>
+      <JsonLd data={breadcrumbJsonLd} />
+      <JsonLd data={serviceJsonLd} />
       {/* Header — 배경형 히어로 */}
       <section className="relative flex min-h-[48vh] items-end overflow-hidden border-b border-line bg-paper pt-32 pb-14 md:min-h-[54vh] md:pb-20">
         <Image

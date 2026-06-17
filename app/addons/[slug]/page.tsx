@@ -2,9 +2,10 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { addons, faqs } from "@/lib/content";
+import { addons, faqs, siteUrl } from "@/lib/content";
 import { Container, CTAButton, SectionHeading } from "@/components/ui";
 import { FaqList } from "@/components/FaqList";
+import { JsonLd } from "@/components/JsonLd";
 import { ArrowLeft, Plus } from "@/components/icons";
 
 type Params = { slug: string };
@@ -29,7 +30,11 @@ export async function generateMetadata({
   const { slug } = await params;
   const addon = addons.find((a) => a.id === slug);
   if (!addon) return { title: "부가서비스" };
-  return { title: addon.name, description: addon.description };
+  return {
+    title: addon.name,
+    description: addon.description,
+    alternates: { canonical: `/addons/${addon.id}` },
+  };
 }
 
 export default async function AddonDetailPage({
@@ -44,8 +49,29 @@ export default async function AddonDetailPage({
   const { name, tagline, description } = addon;
   const heroImage = addonHeroImages[addon.id];
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "홈", item: siteUrl },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "부가서비스",
+        item: `${siteUrl}/addons`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name,
+        item: `${siteUrl}/addons/${addon.id}`,
+      },
+    ],
+  };
+
   return (
     <>
+      <JsonLd data={breadcrumbJsonLd} />
       {/* Header — 배경형 히어로 */}
       <section className="relative flex min-h-[48vh] items-end overflow-hidden border-b border-line bg-paper pt-32 pb-14 md:min-h-[54vh] md:pb-20">
         <Image

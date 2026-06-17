@@ -18,7 +18,8 @@ import { Quote } from "@/components/icons";
 export const metadata: Metadata = {
   title: "회사소개",
   description:
-    "2014년부터 이어온 하람파트너스의 철학과 연혁, 그리고 행사를 완성하는 사람들의 이야기.",
+    "행사기획 전문 하람파트너스의 운영 철학과 조직, 자체 보유 장비 이야기. 장비도 사람도 모두 당사 안에서, 기획부터 현장 운영까지 직접 책임집니다.",
+  alternates: { canonical: "/about" },
 };
 
 export default function AboutPage() {

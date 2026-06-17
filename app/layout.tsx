@@ -67,6 +67,20 @@ export const metadata: Metadata = {
     title: "하람파트너스 | 행사기획·운영 전문",
     description:
       "행사기획 전문 하람파트너스 — 브랜드의 순간을 설계합니다. 기획부터 현장 운영까지.",
+    images: [
+      {
+        url: "/hero/concert-hall.png",
+        width: 1672,
+        height: 941,
+        alt: "하람파트너스 행사기획",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "하람파트너스 | 행사기획·운영 전문",
+    description: "행사기획 전문 하람파트너스 — 브랜드의 순간을 설계합니다.",
+    images: ["/hero/concert-hall.png"],
   },
   verification: {
     other: {

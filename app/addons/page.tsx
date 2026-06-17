@@ -34,6 +34,7 @@ export const metadata: Metadata = {
   title: "부가서비스",
   description:
     "홈페이지 제작, 장소 섭외·대관, 마케팅·홍보, 사진·영상, 인쇄물까지. 행사 준비부터 마무리까지 필요한 부가서비스를 함께 제공합니다.",
+  alternates: { canonical: "/addons" },
 };
 
 export default function AddonsPage() {

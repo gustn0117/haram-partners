@@ -5,11 +5,23 @@ import { Container, Eyebrow, SectionHeading } from "@/components/ui";
 import { Reveal } from "@/components/Reveal";
 import { Strengths } from "@/components/Strengths";
 import { FaqList } from "@/components/FaqList";
+import { JsonLd } from "@/components/JsonLd";
 import { ServiceIcon, ArrowUpRight, ArrowRight } from "@/components/icons";
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
 
 export default function HomePage() {
   return (
     <>
+      <JsonLd data={faqJsonLd} />
       {/* ───────────────── Hero ───────────────── */}
       <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-paper">
         <Image

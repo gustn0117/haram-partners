@@ -10,7 +10,8 @@ import { ServiceIcon, ArrowUpRight } from "@/components/icons";
 export const metadata: Metadata = {
   title: "서비스",
   description:
-    "기업 행사·컨퍼런스, 공연·페스티벌, 브랜드 프로모션, 의전·운영, 포토부스까지. 하람파트너스의 서비스 영역을 한눈에 확인하세요.",
+    "기업 행사·컨퍼런스, 공연·페스티벌, 브랜드 프로모션, 의전·운영, 포토부스, 교육·기관 행사까지. 하람파트너스의 행사기획 서비스 영역을 한눈에 확인하세요.",
+  alternates: { canonical: "/services" },
 };
 
 type Card = {

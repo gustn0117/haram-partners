@@ -10,7 +10,8 @@ import { MapPin, Phone, Clock } from "@/components/icons";
 export const metadata: Metadata = {
   title: "문의",
   description:
-    "하람파트너스에 행사 기획·운영을 문의하세요. 영업일 기준 1일 이내에 담당 기획자가 회신드립니다.",
+    "하람파트너스에 행사기획·운영을 문의하세요. 전화 또는 문의 폼으로 남겨주시면 영업일 기준 1일 이내에 담당 기획자가 회신드립니다.",
+  alternates: { canonical: "/contact" },
 };
 
 const channels = [
