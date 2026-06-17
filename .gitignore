@@ -42,3 +42,6 @@ next-env.d.ts
 
 # local reference screenshots
 /스크린샷*.jpg
+
+# local inquiry storage
+/data

@@ -9,11 +9,34 @@ const budgets = ["1천만원 이하", "1천–3천만원", "3천–1억원", "1�
 export function ContactForm() {
   const [sent, setSent] = useState(false);
   const [type, setType] = useState(services[0].title);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    // 데모용 — 실제 전송은 백엔드 연동 시 이 부분만 교체합니다.
-    setSent(true);
+    setSubmitting(true);
+    setError("");
+    const form = e.currentTarget;
+    const payload = Object.fromEntries(new FormData(form).entries());
+    try {
+      const res = await fetch("/api/inquiries", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error || "전송에 실패했습니다.");
+      }
+      form.reset();
+      setSent(true);
+    } catch (err) {
+      setError(
+        err instanceof Error ? err.message : "전송 중 오류가 발생했습니다.",
+      );
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   if (sent) {
@@ -121,11 +144,14 @@ export function ContactForm() {
         />
       </Field>
 
+      {error ? <p className="text-sm text-red-500">{error}</p> : null}
+
       <button
         type="submit"
-        className="group mt-1 inline-flex items-center justify-center gap-3 rounded-sm bg-gold px-8 py-4 text-sm font-medium text-white transition-colors duration-500 hover:bg-gold-deep"
+        disabled={submitting}
+        className="group mt-1 inline-flex items-center justify-center gap-3 rounded-sm bg-gold px-8 py-4 text-sm font-medium text-white transition-colors duration-500 hover:bg-gold-deep disabled:opacity-60"
       >
-        문의 보내기
+        {submitting ? "보내는 중…" : "문의 보내기"}
         <ArrowRight className="h-4 w-4 transition-transform duration-500 group-hover:translate-x-1" />
       </button>
     </form>
