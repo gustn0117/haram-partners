@@ -76,7 +76,7 @@ export default async function AddonDetailPage({
       <section className="relative flex min-h-[48vh] items-end overflow-hidden border-b border-line bg-paper pt-32 pb-14 md:min-h-[54vh] md:pb-20">
         <Image
           src={heroImage}
-          alt=""
+          alt={`${name} — 하람파트너스 부가서비스`}
           fill
           priority
           sizes="100vw"

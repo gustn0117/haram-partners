@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -127,6 +127,10 @@ export const metadata: Metadata = {
       "naver-site-verification": "3b3a7ef6f32bac899fb9de75197725e1207f4602",
     },
   },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#0d1b2e",
 };
 
 export default function RootLayout({

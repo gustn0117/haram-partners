@@ -26,7 +26,7 @@ export default function HomePage() {
       <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-paper">
         <Image
           src="/hero/concert-hall.png"
-          alt=""
+          alt="하람파트너스 행사기획 — 공연·행사 현장"
           fill
           priority
           sizes="100vw"
