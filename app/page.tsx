@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { services, processSteps, faqs, regions } from "@/lib/content";
+import { services, processSteps, faqs } from "@/lib/content";
 import { Container, Eyebrow, SectionHeading } from "@/components/ui";
 import { Reveal } from "@/components/Reveal";
 import { Strengths } from "@/components/Strengths";
@@ -221,42 +221,6 @@ export default function HomePage() {
                 </p>
               </Reveal>
             ))}
-          </div>
-        </Container>
-      </section>
-
-      {/* ───────────────── 진행 지역 ───────────────── */}
-      <section className="border-t border-line bg-ink-2 py-24 md:py-32">
-        <Container>
-          <div className="grid gap-10 md:grid-cols-[0.9fr_1.1fr] md:gap-16">
-            <SectionHeading
-              eyebrow="WHERE WE WORK"
-              title={
-                <>
-                  전국 어디서나,
-                  <br />
-                  행사기획.
-                </>
-              }
-            />
-            <Reveal delay={120} className="flex flex-col gap-7">
-              <p className="text-base leading-[1.85] text-muted">
-                수도권은 물론 충청·영남·호남·강원·제주까지, 하람파트너스는 전국
-                어디든 직접 찾아가 행사를 기획하고 운영합니다. 서울 행사기획부터
-                대전·청주·천안, 부산·대구·창원·울산, 광주·전주, 강원·제주까지 —
-                지역과 규모에 관계없이 같은 기준으로 책임집니다.
-              </p>
-              <ul className="flex flex-wrap gap-2">
-                {regions.map((r) => (
-                  <li
-                    key={r}
-                    className="rounded-sm border border-line bg-surface px-3.5 py-2 text-sm text-paper/80"
-                  >
-                    {r} 행사기획
-                  </li>
-                ))}
-              </ul>
-            </Reveal>
           </div>
         </Container>
       </section>
