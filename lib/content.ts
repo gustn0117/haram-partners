@@ -5,6 +5,26 @@
 
 export const siteUrl = "https://harampartners.com";
 
+// 진행 지역 — 실제 서비스 지역만 남기세요 (숨김 텍스트 아님, 화면에 노출)
+export const regions = [
+  "서울",
+  "경기",
+  "인천",
+  "강원",
+  "대전",
+  "세종",
+  "청주",
+  "천안",
+  "부산",
+  "대구",
+  "울산",
+  "창원",
+  "경북",
+  "광주",
+  "전주",
+  "제주",
+];
+
 export const company = {
   nameKo: "하람파트너스",
   nameEn: "HARAM PARTNERS",
