@@ -78,7 +78,7 @@ export default async function AddonDetailPage({
           src={heroImage}
           alt=""
           fill
-          preload
+          priority
           sizes="100vw"
           className="absolute inset-0 object-cover"
         />

@@ -28,7 +28,7 @@ export default function HomePage() {
           src="/hero/concert-hall.png"
           alt=""
           fill
-          preload
+          priority
           sizes="100vw"
           className="absolute inset-0 object-cover"
         />

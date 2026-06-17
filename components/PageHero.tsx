@@ -22,7 +22,7 @@ export function PageHero({
             src={backgroundImage}
             alt=""
             fill
-            preload
+            priority
             sizes="100vw"
             className="absolute inset-0 object-cover"
           />
