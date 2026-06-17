@@ -3,6 +3,8 @@
 //  실제 정보 확정 시 이 파일만 교체하면 전체 사이트에 반영됩니다.
 // ─────────────────────────────────────────────────────────────
 
+export const siteUrl = "https://harampartners.com";
+
 export const company = {
   nameKo: "하람파트너스",
   nameEn: "HARAM PARTNERS",
